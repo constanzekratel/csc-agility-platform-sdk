@@ -76,7 +76,7 @@
       <pathelement location="${bin}"/>
       <fileset dir="${ivy.lib}">
          <include name="junit-4.11.jar"/>
-         <include name="wiremock-1.43.jar"/>
+         <include name="wiremock-1.58.jar"/>
          <include name="mockito-all-1.10.19.jar"/>
          <include name="jackson-annotations-2.3.1.jar"/>
          <include name="jackson-core-2.3.1.jar"/>
