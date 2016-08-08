@@ -1,4 +1,4 @@
-# csc-agility-platform-sdk
+# CSC Agility Platform SDK
 The projects contained in this repository are used for developing Cloud Adapters or Service Adapters for the CSC Agility Platform&trade;. The projects are as follows.
 * com.servicemesh.core - Foundation classes for every Agility Platform SDK.
 * com.servicemesh.io - Supports I/O via HTTP/HTTPS, Proxies, and Remote Shell.
@@ -9,7 +9,7 @@ The projects contained in this repository are used for developing Cloud Adapters
 
 ## Build Configuration
 
-The projects in this repository are compatible with Java 7 and ant 1.9.3.
+The projects in this repository are compatible with Java 7 and Apache Ant 1.9.3.
 
 If you want to edit these projects using eclipse you will need to set up 3 build path variables.
 * IVY-LIB - Contains the path to the ivy-lib directory under csc-agility-platform-sdk
