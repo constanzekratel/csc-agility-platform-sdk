@@ -107,6 +107,10 @@ import com.servicemesh.core.messaging.Status;
 import com.servicemesh.core.reactor.Reactor;
 import com.servicemesh.io.proxy.Proxy;
 import com.servicemesh.io.proxy.ProxyType;
+import com.servicemesh.agility.sdk.service.msgs.DownloadArtifactRequest;
+import com.servicemesh.agility.sdk.service.msgs.DownloadArtifactResponse;
+import com.servicemesh.agility.sdk.service.msgs.GetAllArtifactsRequest;
+import com.servicemesh.agility.sdk.service.msgs.GetAllArtifactsResponse;
 
 /**
  * The base class for a service adapter
@@ -144,7 +148,7 @@ public abstract class ServiceAdapter implements BundleActivator
 
     /**
      * Gets the service provider type(s) supported by this adapter. Used to register the osgi service.
-     * 
+     *
      * @return The service provider type(s) for OSGi registration.
      */
     public abstract List<ServiceProviderType> getServiceProviderTypes();
@@ -152,7 +156,7 @@ public abstract class ServiceAdapter implements BundleActivator
     /**
      * Required meta-data to describe capabilities of the adapter/service provider. The returned RegistrationRequest is sent to
      * the agility platform and the onRegistration method called with the response.
-     * 
+     *
      * @return The completed registration request.
      */
     public abstract RegistrationRequest getRegistrationRequest();
@@ -160,7 +164,7 @@ public abstract class ServiceAdapter implements BundleActivator
     /**
      * Provides any information requested by the adapter during the registration request including the persistent identifier for
      * the service provider.
-     * 
+     *
      * @param response
      */
     public abstract void onRegistration(RegistrationResponse response);
@@ -218,6 +222,14 @@ public abstract class ServiceAdapter implements BundleActivator
         return new AssetOperations();
     }
 
+    /**
+     * @return An optional interface to manage artifacts
+     */
+    public IArtifactRepositoryManagement getArtifactRepositoryManagementOperations()
+    {
+        return null;
+    }
+
     public static List<Proxy> getProxyConfig(ServiceProviderRequest request)
     {
         //  Get the MANAGER -> CLOUD proxies, if any:
@@ -226,7 +238,6 @@ public abstract class ServiceAdapter implements BundleActivator
 
     public static List<Proxy> getProxyConfig(ServiceProviderRequest request, ProxyUsage usage)
     {
-
         //  Get the proxies specified by the usage type requested
         List<Proxy> proxies = new ArrayList<Proxy>();
 
@@ -516,7 +527,7 @@ public abstract class ServiceAdapter implements BundleActivator
 
     private void register()
     {
-        // 
+        //
         // Service provider operations
         //
 
@@ -2079,6 +2090,59 @@ public abstract class ServiceAdapter implements BundleActivator
                     return Promise.pure(t);
                 }
             }
+        });
+
+        //IArtifactRepositoryManagement operations registers the operation to get the list of artifacts through the artifactory adapter
+        register(GetAllArtifactsRequest.class, new Function<GetAllArtifactsRequest, Promise<GetAllArtifactsResponse>>() {
+            @Override
+            public Promise<GetAllArtifactsResponse> invoke(GetAllArtifactsRequest request)
+            {
+                try
+                {
+                    IArtifactRepositoryManagement operations = getArtifactRepositoryManagementOperations();
+                    if (operations != null)
+                    {
+                        return operations.getAllArtifacts(request);
+                    }
+                    else
+                    {
+                        GetAllArtifactsResponse response = new GetAllArtifactsResponse();
+                        response.setStatus(Status.COMPLETE);
+                        return Promise.pure(response);
+                    }
+                }
+                catch (Throwable t)
+                {
+                    return Promise.pure(t);
+                }
+            }
+
+        });
+        //IArtifactRepositoryManagement operations registers the operation to  download the specified through the artifactory adapter
+        register(DownloadArtifactRequest.class, new Function<DownloadArtifactRequest, Promise<DownloadArtifactResponse>>() {
+            @Override
+            public Promise<DownloadArtifactResponse> invoke(DownloadArtifactRequest request)
+            {
+                try
+                {
+                    IArtifactRepositoryManagement operations = getArtifactRepositoryManagementOperations();
+                    if (operations != null)
+                    {
+                        return operations.downloadArtifacts(request);
+                    }
+                    else
+                    {
+                        DownloadArtifactResponse response = new DownloadArtifactResponse();
+                        response.setStatus(Status.COMPLETE);
+                        return Promise.pure(response);
+                    }
+                }
+                catch (Throwable t)
+                {
+                    return Promise.pure(t);
+                }
+            }
+
         });
     }
 
