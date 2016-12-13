@@ -791,6 +791,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			
 			<xsd:element name="isArtifact" type="xsd:boolean">
 				<xsd:annotation>
 					<xsd:appinfo>
@@ -800,6 +801,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
+			
 			<xsd:element name="artifactRepoPath" type="xsd:string">
 				<xsd:annotation>
 					<xsd:appinfo>
@@ -809,7 +811,37 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
 					</xsd:appinfo>
 				</xsd:annotation>
 			</xsd:element>
-
-		</xsd:sequence>
+			
+			<xsd:element name="createdDate" type="xsd:date" minOccurs="0">
+              <xsd:annotation>
+                 <xsd:appinfo>
+                    <annox:annotate target="field">
+                       <a:ApiField comment="Date on which the Artifact Repository was created" systemGenerated="true" />
+                    </annox:annotate>
+                 </xsd:appinfo>
+              </xsd:annotation>
+           </xsd:element>
+           
+			<xsd:element name="lastModified" type="xsd:date" minOccurs="0">
+              <xsd:annotation>
+                 <xsd:appinfo>
+                    <annox:annotate target="field">
+                       <a:ApiField comment="Date on which the Artifact was last modified" systemGenerated="true" />
+                    </annox:annotate>
+                 </xsd:appinfo>
+              </xsd:annotation>
+           </xsd:element>
+           
+            <xsd:element name="size" type="xsd:long" minOccurs="0">
+              <xsd:annotation>
+                 <xsd:appinfo>
+                    <annox:annotate target="field">
+                       <a:ApiField comment="Size of the Binary element in bytes" />
+                    </annox:annotate>
+                 </xsd:appinfo>
+              </xsd:annotation>
+           </xsd:element>
+           
+	</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>

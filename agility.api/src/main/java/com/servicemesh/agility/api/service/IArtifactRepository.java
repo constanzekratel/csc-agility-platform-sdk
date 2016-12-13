@@ -18,7 +18,7 @@ public interface IArtifactRepository
      * @param String
      * @throws Exception
      */
-    public List<ArtifactBinary> getAllArtifacts(int serviceProviderId) throws Exception;
+    public List<ArtifactBinary> getAllArtifacts(int serviceProviderId, String repositoryPath) throws Exception;
 
     /**
      * Return the list of all service providers of for an artifact
