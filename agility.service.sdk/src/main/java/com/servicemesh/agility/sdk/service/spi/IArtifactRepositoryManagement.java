@@ -1,3 +1,8 @@
+/**
+ *              Copyright (c) 2008-2013 ServiceMesh, Incorporated; All Rights Reserved
+ *              Copyright (c) 2013-Present Computer Sciences Corporation
+ */
+
 package com.servicemesh.agility.sdk.service.spi;
 
 import com.servicemesh.agility.sdk.service.msgs.DownloadArtifactRequest;
