@@ -3,6 +3,7 @@ package com.servicemesh.agility.api.service;
 import java.util.List;
 
 import com.servicemesh.agility.api.Artifact;
+import com.servicemesh.agility.api.ArtifactBinary;
 import com.servicemesh.agility.api.ServiceProvider;
 
 /**
@@ -17,7 +18,7 @@ public interface IArtifactRepository
      * @param String
      * @throws Exception
      */
-    public List<Artifact> getAllArtifacts(String repoPath) throws Exception;
+    public List<ArtifactBinary> getAllArtifacts(int serviceProviderId, String repositoryPath) throws Exception;
 
     /**
      * Return the list of all service providers of for an artifact
