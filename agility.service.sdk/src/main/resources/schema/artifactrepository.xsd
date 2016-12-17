@@ -77,9 +77,7 @@
 		<xsd:complexContent>
 			<xsd:extension base="service:ServiceProviderResponse">
 				<xsd:sequence>
-					<xsd:element name="artifactBinaries" type="agility:ArtifactBinary"
-						minOccurs="0" maxOccurs="unbounded">
-					</xsd:element>
+					<xsd:element name="artifactBinaries" type="agility:ArtifactBinaries" />
 				</xsd:sequence>
 			</xsd:extension>
 		</xsd:complexContent>

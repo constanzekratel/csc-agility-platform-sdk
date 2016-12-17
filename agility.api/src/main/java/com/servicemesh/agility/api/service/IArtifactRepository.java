@@ -3,7 +3,7 @@ package com.servicemesh.agility.api.service;
 import java.util.List;
 
 import com.servicemesh.agility.api.Artifact;
-import com.servicemesh.agility.api.ArtifactBinary;
+import com.servicemesh.agility.api.ArtifactBinaries;
 import com.servicemesh.agility.api.ServiceProvider;
 
 /**
@@ -15,10 +15,11 @@ public interface IArtifactRepository
     /**
      * Return the list of all artifacts for this repository
      *
-     * @param String
+     * @param serviceProviderId
+     * @param repositoryPath
      * @throws Exception
      */
-    public List<ArtifactBinary> getAllArtifacts(int serviceProviderId, String repositoryPath) throws Exception;
+    public ArtifactBinaries getAllArtifacts(int serviceProviderId, String repositoryPath) throws Exception;
 
     /**
      * Return the list of all service providers of for an artifact
@@ -30,7 +31,7 @@ public interface IArtifactRepository
     /**
      * Publish artifact meta data to agility
      *
-     * @param String
+     * @param artifact
      * @throws Exception
      */
     public void publishArtifactMetadata(Artifact artifact) throws Exception;
@@ -38,9 +39,10 @@ public interface IArtifactRepository
     /**
      * Return the artifact
      *
-     * @param String
+     * @param serviceProviderId
+     * @param repoPath
      * @throws Exception
      */
-    public byte[] downloadArtifacts(String repoPath) throws Exception;
+    public byte[] downloadArtifacts(int serviceProviderId, String repoPath) throws Exception;
 
 }
