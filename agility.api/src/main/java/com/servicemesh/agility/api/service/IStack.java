@@ -8,9 +8,6 @@ import com.servicemesh.agility.api.Task;
 
 public interface IStack
 {
-
-    public Task deleteAllVersions(Stack stack) throws Exception;
-
     public List<Task> buildStack(int stackId, boolean shutdownOnSuccess, boolean shutdownOnFailure) throws Exception;
 
     /**
