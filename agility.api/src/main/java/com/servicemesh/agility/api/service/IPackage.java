@@ -129,5 +129,14 @@ public interface IPackage
      * @throws Exception
      */
     public Task removeReconfigureScript(Package pkg, Script script) throws Exception;
-
+    
+    /**
+     * Delete all versions of a Package
+     * 
+     * @param Package A version of the Package
+     * @return Task A Task resource that can be monitored for complettion
+     * @throws Exception
+     */
+    public Task deleteAllVersions(Package pkg) throws Exception;
+    
 }
