@@ -779,6 +779,32 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
          </xsd:extension>
       </xsd:complexContent>
    </xsd:complexType>
+	
+	<xsd:complexType name="ArtifactBinaries">
+      <xsd:annotation>
+         <xsd:appinfo>
+            <annox:annotate target="class">
+               <jxml:XmlRootElement>
+                  <jxml:name>ArtifactBinaries</jxml:name>
+               </jxml:XmlRootElement>
+               <a:ApiModel comment = "Collection of ArtifactBinary objects." 
+                           description = "" 
+                           externalDocLink = "" />
+            </annox:annotate>
+         </xsd:appinfo>
+      </xsd:annotation>
+		      <xsd:sequence>
+		         <xsd:element name="ArtifactBinary" type="agility:ArtifactBinary" minOccurs="0" maxOccurs="unbounded">
+		            <xsd:annotation>
+		               <xsd:appinfo>
+		                  <annox:annotate target="field">
+		                     <a:ApiField comment="Collection of ArtifactBinary objects." />
+		                  </annox:annotate>
+		               </xsd:appinfo>
+		            </xsd:annotation>
+		         </xsd:element>
+		      </xsd:sequence>
+   </xsd:complexType>
    
    <xsd:complexType name="ArtifactBinary">
 		<xsd:sequence>
