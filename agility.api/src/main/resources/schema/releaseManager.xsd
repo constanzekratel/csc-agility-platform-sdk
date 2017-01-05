@@ -868,6 +868,17 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
               </xsd:annotation>
            </xsd:element>
            
+           <xsd:element name="serviceProviderId" type="xsd:int">
+				<xsd:annotation>
+					<xsd:appinfo>
+			            <annox:annotate target="field">
+			              <a:ApiField comment="Service Provider Id" />
+			            </annox:annotate>
+			          </xsd:appinfo>
+					</xsd:annotation>
+			</xsd:element>
+           
+           
 	</xsd:sequence>
 	</xsd:complexType>
    
