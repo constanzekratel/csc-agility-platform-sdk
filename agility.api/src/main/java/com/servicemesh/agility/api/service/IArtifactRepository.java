@@ -2,8 +2,8 @@ package com.servicemesh.agility.api.service;
 
 import java.util.List;
 
-import com.servicemesh.agility.api.Artifact;
 import com.servicemesh.agility.api.ArtifactBinaries;
+import com.servicemesh.agility.api.ArtifactBinary;
 import com.servicemesh.agility.api.ServiceProvider;
 
 /**
@@ -31,10 +31,10 @@ public interface IArtifactRepository
     /**
      * Publish artifact meta data to agility
      *
-     * @param artifact
+     * @param artifactBinary
      * @throws Exception
      */
-    public void publishArtifactMetadata(Artifact artifact) throws Exception;
+    public void publishArtifactMetadata(ArtifactBinary artifactBinary) throws Exception;
 
     /**
      * Return the artifact
