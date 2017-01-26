@@ -61,7 +61,10 @@ public interface IInstance
      * @return Returns a task that can be monitored by the caller.
      * @throws Exception
      */
-    public Task executeScriptTask(Instance instance, Script script, List<AssetProperty> variables) throws Exception;
+    default Task executeScriptTask(Instance instance, Script script, List<AssetProperty> variables) throws Exception
+    {
+        throw new UnsupportedOperationException("ExecuteScriptTask is not supported at this time");
+    }
 
     /**
      * If supported by the underlying cloud adapter creates a named snapshot of the virtual machine state.
