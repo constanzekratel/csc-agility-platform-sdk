@@ -160,14 +160,17 @@ public interface IVersion<T extends VersionedItem> extends IWorkflow<T>
      * @throws Exception
      */
     public T setHead(int id, Context context) throws Exception;
-    
+
     /**
-	 * Delete all versions of an Asset
-	 * 
-	 * @param T A version of the asset
-	 * @return Task A Task resource that can be monitored for complettion
-	 * @throws Exception
-	 */
-	public Task deleteAllVersions(T asset) throws Exception;
+     * Delete all versions of an Asset
+     *
+     * @param T A version of the asset
+     * @return Task A Task resource that can be monitored for complettion
+     * @throws Exception
+     */
+    default Task deleteAllVersions(T asset) throws Exception
+    {
+        throw new UnsupportedOperationException("Delete all versions is not supported at this time");
+    }
 
 }
