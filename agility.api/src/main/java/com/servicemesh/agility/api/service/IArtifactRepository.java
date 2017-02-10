@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.servicemesh.agility.api.ArtifactBinaries;
 import com.servicemesh.agility.api.ServiceProvider;
+import com.servicemesh.agility.api.Task;
 
 /**
  * Exposes operations for the Artifactory Adapter
@@ -33,7 +34,7 @@ public interface IArtifactRepository
      * @param artifactBinary
      * @throws Exception
      */
-    public void publishArtifactMetadata(ArtifactBinaries artifactBinaries) throws Exception;
+    public Task publishArtifactMetadata(ArtifactBinaries artifactBinaries) throws Exception;
 
     /**
      * Return the artifact
