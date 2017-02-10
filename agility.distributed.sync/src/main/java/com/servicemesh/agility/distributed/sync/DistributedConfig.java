@@ -1,11 +1,8 @@
 package com.servicemesh.agility.distributed.sync;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -27,6 +24,11 @@ public class DistributedConfig implements Watcher
 
     private final static Logger logger = Logger.getLogger(DistributedConfig.class);
     private static ZooKeeper _zooKeeper = null;
+    private final static String ZOOKEEPER_ADDR_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_ADDR";
+    private final static String ZOOKEEPER_PORT_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_PORT";
+    private final static String ZOOKEEPER_TIMEOUT_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_TIMEOUT";
+    private final static String ZOOKEEPER_RETRY_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_RETRY_COUNT";
+    private final static String ZOOKEEPER_DELAY_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_RETRY_DELAY";
 
     public static synchronized ZooKeeper getZooKeeper()
     {
@@ -34,17 +36,10 @@ public class DistributedConfig implements Watcher
         {
             if (_zooKeeper == null)
             {
-                Properties properties = new Properties();
-                File file = new File(System.getProperty("karaf.home") + "/etc/com.servicemesh.agility.distributed.sync.cfg");
-                if (file.exists())
-                {
-                    properties.load(new FileInputStream(file));
-                }
-
                 Map<String, String> env = System.getenv();
-                String url = properties.getProperty("zookeeper.url", "localhost:2181");
-                String zookeeper_addr = env.get("ZOOKEEPER_PORT_2181_TCP_ADDR");
-                String zookeeper_port = env.get("ZOOKEEPER_PORT_2181_TCP_PORT");
+                String url = null;
+                String zookeeper_addr = env.get(ZOOKEEPER_ADDR_VAR_NAME);
+                String zookeeper_port = env.get(ZOOKEEPER_PORT_VAR_NAME);
                 if (zookeeper_addr != null && !zookeeper_addr.isEmpty())
                 {
                     if (zookeeper_port != null && !zookeeper_port.isEmpty())
@@ -53,21 +48,36 @@ public class DistributedConfig implements Watcher
                     }
                     else
                     {
-                        url = zookeeper_addr + ":2181";
+                        throw new RuntimeException(
+                                "Zookeeper port environment variable " + ZOOKEEPER_PORT_VAR_NAME + " not defined");
                     }
                 }
+                else
+                {
+                    throw new RuntimeException(
+                            "Zookeeper address environment variable " + ZOOKEEPER_ADDR_VAR_NAME + " not defined");
+                }
 
-                String timeout = properties.getProperty("zookeeper.timeout", "10000");
-                String retryCount = properties.getProperty("zookeeper.retryCount", "10");
+                String timeout = env.get(ZOOKEEPER_TIMEOUT_VAR_NAME);
+                if (timeout == null)
+                {
+                    timeout = "7200000"; //Default timeout
+                }
+
+                // Default value for retryCount is already set in ProcotolSupport class
+                String retryCount = env.get(ZOOKEEPER_RETRY_VAR_NAME);
                 if (retryCount != null)
                 {
                     ProtocolSupport.retryCount = Integer.parseInt(retryCount);
                 }
-                String retryDelay = properties.getProperty("zookeeper.retryDelay", "10000");
+
+                // Default value for retryDelay is already set in ProcotolSupport class
+                String retryDelay = env.get(ZOOKEEPER_DELAY_VAR_NAME);
                 if (retryDelay != null)
                 {
                     ProtocolSupport.retryDelay = Long.parseLong(retryDelay);
                 }
+
                 logger.debug("Connecting to zookeeper at: " + url);
                 _zooKeeper = new ZooKeeper(url, Integer.parseInt(timeout), new DistributedConfig());
                 bumpZkHeartbeatPriority();
