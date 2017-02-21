@@ -842,7 +842,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
          </xsd:extension>
       </xsd:complexContent>
    </xsd:complexType>
-	
+
 	<xsd:complexType name="ArtifactBinaries">
       <xsd:annotation>
          <xsd:appinfo>
@@ -856,17 +856,37 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             </annox:annotate>
          </xsd:appinfo>
       </xsd:annotation>
-		      <xsd:sequence>
-		         <xsd:element name="ArtifactBinary" type="agility:ArtifactBinary" minOccurs="0" maxOccurs="unbounded">
-		            <xsd:annotation>
-		               <xsd:appinfo>
-		                  <annox:annotate target="field">
-		                     <a:ApiField comment="Collection of ArtifactBinary objects." />
-		                  </annox:annotate>
-		               </xsd:appinfo>
-		            </xsd:annotation>
-		         </xsd:element>
-		      </xsd:sequence>
+    	<xsd:sequence>
+	        <xsd:element name="artifactRepoPath" type="xsd:string">
+				<xsd:annotation>
+					<xsd:appinfo>
+						<annox:annotate target="field">
+							<a:ApiField comment="Artifact Repository Path" />
+					   </annox:annotate>
+					</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+	
+	        <xsd:element name="serviceProviderId" type="xsd:int">
+	             <xsd:annotation>
+		             <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="Service Provider Id" />
+            			</annox:annotate>
+          			</xsd:appinfo>
+				</xsd:annotation>
+			</xsd:element>
+      
+		     <xsd:element name="ArtifactBinary" type="agility:ArtifactBinary" minOccurs="0" maxOccurs="unbounded">
+		          <xsd:annotation>
+		              <xsd:appinfo>
+		                 <annox:annotate target="field">
+		                    <a:ApiField comment="Collection of ArtifactBinary objects." />
+		                 </annox:annotate>
+		              </xsd:appinfo>
+		          </xsd:annotation>
+		     </xsd:element>
+        </xsd:sequence>
    </xsd:complexType>
    
 	<xsd:complexType name="ArtifactBinary">
@@ -886,16 +906,6 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
 					<xsd:appinfo>
 						<annox:annotate target="field">
 							<a:ApiField comment="Artifact or Folder" />
-						</annox:annotate>
-					</xsd:appinfo>
-				</xsd:annotation>
-			</xsd:element>
-			
-			<xsd:element name="artifactRepoPath" type="xsd:string">
-				<xsd:annotation>
-					<xsd:appinfo>
-						<annox:annotate target="field">
-							<a:ApiField comment="Artifact Repository Path" />
 						</annox:annotate>
 					</xsd:appinfo>
 				</xsd:annotation>
@@ -930,17 +940,6 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                  </xsd:appinfo>
               </xsd:annotation>
            </xsd:element>
-           
-      <xsd:element name="serviceProviderId" type="xsd:int">
-	<xsd:annotation>
-		<xsd:appinfo>
-            <annox:annotate target="field">
-              <a:ApiField comment="Service Provider Id" />
-            </annox:annotate>
-          </xsd:appinfo>
-		</xsd:annotation>
-	</xsd:element>
-           
 	</xsd:sequence>
 	</xsd:complexType>
 </xsd:schema>
