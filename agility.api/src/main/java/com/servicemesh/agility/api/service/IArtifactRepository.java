@@ -3,6 +3,7 @@ package com.servicemesh.agility.api.service;
 import java.util.List;
 
 import com.servicemesh.agility.api.ArtifactBinaries;
+import com.servicemesh.agility.api.ArtifactBuilds;
 import com.servicemesh.agility.api.ServiceProvider;
 
 /**
@@ -44,4 +45,11 @@ public interface IArtifactRepository
      */
     public byte[] downloadArtifacts(int serviceProviderId, String repoPath) throws Exception;
 
+    /**
+     * Return the list of builds of an artifact
+     *
+     * @param artifactId
+     * @throws Exception
+     */
+    public ArtifactBuilds getBuildsOfAnArtifact(int artifactId) throws Exception;
 }

@@ -336,6 +336,68 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
       </xsd:sequence>
    </xsd:complexType>
 
+   <xsd:complexType name="ArtifactBuilds">
+      <xsd:annotation>
+         <xsd:appinfo>
+            <annox:annotate target="class">
+               <jxml:XmlRootElement>
+                  <jxml:name>ArtifactBuilds</jxml:name>
+               </jxml:XmlRootElement>
+               <a:ApiModel comment = "Builds of an artifact in the Artifact Repository." 
+                           description = "" 
+                           externalDocLink = "" />
+            </annox:annotate>
+         </xsd:appinfo>
+      </xsd:annotation>
+      <xsd:sequence>
+         <xsd:element name="artifactId" type="xsd:int">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="ID of an artifact." />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="artifactRepoId" type="xsd:int">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="ID of the Artifact Repository that contains the artifact." />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="artifactPath" type="xsd:string">
+             <xsd:annotation>
+                <xsd:appinfo>
+                   <annox:annotate target="field">
+                      <a:ApiField comment="Path from root to the Artifact." />
+                   </annox:annotate>
+                </xsd:appinfo>
+             </xsd:annotation>
+         </xsd:element>
+		 <xsd:element name="artifactName" type="xsd:string">
+             <xsd:annotation>
+                <xsd:appinfo>
+                   <annox:annotate target="field">
+                      <a:ApiField comment="Name of the Artifact." />
+                   </annox:annotate>
+                </xsd:appinfo>
+             </xsd:annotation>
+         </xsd:element>
+         <xsd:element name="artifactBuilds" type="agility:Linklist">
+             <xsd:annotation>
+                <xsd:appinfo>
+                   <annox:annotate target="field">
+                      <a:ApiField comment="List of the Artifact builds." />
+                   </annox:annotate>
+                </xsd:appinfo>
+             </xsd:annotation>
+         </xsd:element>
+      </xsd:sequence>
+   </xsd:complexType>
+   
    <xsd:complexType name="ArtifactConfiguration">
       <xsd:annotation>
          <xsd:appinfo>
