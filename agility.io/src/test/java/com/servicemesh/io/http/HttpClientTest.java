@@ -442,7 +442,7 @@ public class HttpClientTest
         reset();
         String responseBody = "<response>Some content</response>";
         stubFor(get(urlEqualTo("/agility/api/current/template")).willReturn(
-                aResponse().withStatus(200).withHeader("Content-Type", "text/xml").withBody(responseBody).withFixedDelay(1000)));
+                aResponse().withStatus(200).withHeader("Content-Type", "text/xml").withBody(responseBody).withFixedDelay(5000)));
 
         String stringUri = "https://localhost:" + instanceRule.httpsPort() + "/agility/api/current/template";
         IHttpRequest request = HttpClientFactory.getInstance().createRequest(HttpMethod.GET, new URI(stringUri));
