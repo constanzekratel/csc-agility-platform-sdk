@@ -1,5 +1,7 @@
 package com.servicemesh.agility.distributed.impl;
 
+import java.util.Map;
+
 import org.apache.log4j.Logger;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -23,12 +25,18 @@ public class Activator implements BundleActivator
     {
         try
         {
-            _listenerTracker =
-                    new ServiceTracker(context, IDistributedListener.class.getName(), new DistributedListenerTracker(context));
-            _listenerTracker.open();
+            Map<String, String> env = System.getenv();
+            String leaderElectionParticipation = env.get("LEADER_ELECTION_PARTICIPATION");
+            if (leaderElectionParticipation != null && leaderElectionParticipation.equalsIgnoreCase("true"))
+            {
+                _listenerTracker =
+                        new ServiceTracker(context, IDistributedListener.class.getName(),
+                                new DistributedListenerTracker(context));
+                _listenerTracker.open();
 
-            pNode = new DistributedNodeProcessor(context, _listenerTracker);
-            pNode.process();
+                pNode = new DistributedNodeProcessor(context, _listenerTracker);
+                pNode.process();
+            }
         }
         catch (Throwable t)
         {
