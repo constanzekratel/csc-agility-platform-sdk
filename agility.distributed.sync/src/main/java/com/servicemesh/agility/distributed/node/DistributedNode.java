@@ -4,16 +4,17 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
+
 import com.servicemesh.agility.distributed.sync.DistributedConfig;
 import com.servicemesh.agility.distributed.sync.UIDGenerator;
 
 public class DistributedNode
 {
-
+    private static final Logger logger = Logger.getLogger(DistributedNode.class);
     final public static String ZKPATH = "/agility/node";
 
     private static String _nodeID = UIDGenerator.generateUID();
-    private static String _leaderID;
 
     public static String getID()
     {
@@ -22,17 +23,21 @@ public class DistributedNode
 
     public static String getLeaderID()
     {
-        return _leaderID;
-    }
-
-    public static void setLeaderID(String leaderID)
-    {
-        _leaderID = leaderID;
+        try
+        {
+            return DistributedConfig.getFirstChild(DistributedNode.ZKPATH).getPrefix();
+        }
+        catch (Exception ex)
+        {
+            logger.error(ex.getMessage(), ex);
+        }
+        return null;
     }
 
     public static boolean isLeader()
     {
-        return (_leaderID != null && _nodeID.equals(_leaderID));
+        String leader = getLeaderID();
+        return (leader != null && _nodeID.equals(leader));
     }
 
     public static Set<String> getInstances() throws Exception

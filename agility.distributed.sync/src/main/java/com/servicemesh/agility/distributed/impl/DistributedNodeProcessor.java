@@ -80,7 +80,6 @@ public class DistributedNodeProcessor
             // this node's id then we'l set this as the leader.  Otherwise, find the node in the set just
             // before this node's id and put a zookeeper watcher on that
             String leaderId = DistributedConfig.getFirstChild(DistributedNode.ZKPATH).getPrefix();
-            DistributedNode.setLeaderID(leaderId);
             if (thisNodeId.equals(leaderId))
             {
                 logger.info("This cluster node elected as leader with Id: " + leaderId);
