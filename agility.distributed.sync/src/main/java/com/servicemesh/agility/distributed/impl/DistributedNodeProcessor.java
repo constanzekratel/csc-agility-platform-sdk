@@ -6,6 +6,7 @@
 package com.servicemesh.agility.distributed.impl;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 
@@ -47,6 +48,38 @@ public class DistributedNodeProcessor
         // Create the parent path /agility/node
         DistributedConfig.create(DistributedNode.ZKPATH, CreateMode.PERSISTENT);
 
+        //Lets try to delete the previous node that belonged to the same ID this node has.
+        //We want to do this to avoid having more than one zookeeper entry identifying the same
+        //node.
+        List<String> allRegisteredNodes = DistributedConfig.getChildren(DistributedNode.ZKPATH);
+        logger.debug("All registered Nodes: " + allRegisteredNodes);
+
+        //Since the node ID is of the form <unique_id>-<address_of_node>, we need to remove the -<address_of_node>
+        //part when deleting stale nodes.  This is done to remove stale zookeeper entries for this node,
+        //even when the node address has changed.
+        int index = nodeID.lastIndexOf("-");
+        String nodeIdToMatch = nodeID.substring(0, index);
+        logger.debug("Matching node ID to delete: " + nodeIdToMatch);
+
+        //Lets loop through the registered nodes and delete all the stale zookeeper entries for this node.
+        for (String registeredNode : allRegisteredNodes)
+        {
+            if (registeredNode.startsWith(nodeIdToMatch))
+            {
+                String nodeToDelete = DistributedNode.ZKPATH + "/" + registeredNode;
+                try
+                {
+                    logger.info("Deleting stale node with id: " + nodeToDelete);
+                    DistributedConfig.delete(nodeToDelete);
+                }
+                catch (Exception ex)
+                {
+                    logger.error("Unable to delete node: " + nodeToDelete, ex);
+                }
+            }
+        }
+
+        //Lets create a brand new zookeeper entry with this node's ID
         // Create the node path as /agility/node/<uuid>-<sequential_id>
         // The sequential_id is a monotonically increasing number assigned by zookeeper
         String nodePath = DistributedNode.ZKPATH + "/" + nodeID + "-";

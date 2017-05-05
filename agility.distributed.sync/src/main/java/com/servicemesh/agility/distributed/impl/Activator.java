@@ -25,8 +25,14 @@ public class Activator implements BundleActivator
     {
         try
         {
-            Map<String, String> env = System.getenv();
-            String leaderElectionParticipation = env.get("LEADER_ELECTION_PARTICIPATION");
+            //Respect if leader election participation property is defined as a system property.
+            //If not, then use the system environment to find the property.
+            String leaderElectionParticipation = System.getProperty("LEADER_ELECTION_PARTICIPATION");
+            if (leaderElectionParticipation == null)
+            {
+                Map<String, String> env = System.getenv();
+                leaderElectionParticipation = env.get("LEADER_ELECTION_PARTICIPATION");
+            }
             if (leaderElectionParticipation != null && leaderElectionParticipation.equalsIgnoreCase("true"))
             {
                 _listenerTracker =
