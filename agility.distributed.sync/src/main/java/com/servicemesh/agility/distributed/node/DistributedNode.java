@@ -10,6 +10,7 @@ import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
@@ -35,7 +36,23 @@ public class DistributedNode
     {
         if (_nodeID == null)
         {
-            _nodeID = UIDGenerator.generateUID() + "-" + getNodeAddress();
+            //Respect if NODE_ID property is defined as a system property.
+            //If not, then use the system environment to find the property.
+            String id = System.getProperty("NODE_ID");
+            if (id == null)
+            {
+                Map<String, String> env = System.getenv();
+                id = env.get("NODE_ID");
+            }
+
+            if (id == null || id.isEmpty())
+            {
+                _nodeID = UIDGenerator.generateUID() + "-" + getNodeAddress();
+            }
+            else
+            {
+                _nodeID = id + "-" + getNodeAddress();
+            }
         }
         return _nodeID;
     }
