@@ -17,6 +17,7 @@ import org.apache.log4j.Logger;
 
 import com.servicemesh.agility.distributed.sync.DistributedConfig;
 import com.servicemesh.agility.distributed.sync.UIDGenerator;
+import com.servicemesh.agility.distributed.sync.ZNodeName;
 
 public class DistributedNode
 {
@@ -87,7 +88,11 @@ public class DistributedNode
     {
         try
         {
-            return DistributedConfig.getFirstChild(DistributedNode.ZKPATH).getPrefix();
+            ZNodeName nodeName = DistributedConfig.getFirstChild(DistributedNode.ZKPATH);
+            if (nodeName != null)
+            {
+                return nodeName.getPrefix();
+            }
         }
         catch (Exception ex)
         {
