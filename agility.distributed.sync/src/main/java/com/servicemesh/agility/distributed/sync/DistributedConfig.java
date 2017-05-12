@@ -378,7 +378,11 @@ public class DistributedConfig implements Watcher
     public static ZNodeName getFirstChild(String path) throws Exception
     {
         SortedSet<ZNodeName> sorted = getSortedChildren(path);
-        return sorted.first();
+        if (!sorted.isEmpty())
+        {
+            return sorted.first();
+        }
+        return null;
     }
 
     public static boolean watchNode(String node, Watcher watcher)
