@@ -162,6 +162,18 @@ public class DistributedNode
     }
 
     /**
+     * Get the list of all nodes by zookeeper node path.
+     *
+     * @return List of nodes
+     * @throws Exception
+     */
+    public static List<String> getInstancesByPath() throws Exception
+    {
+        List<String> paths = DistributedConfig.getChildren(ZKPATH);
+        return paths;
+    }
+
+    /**
      * Take a zookeeper path in the form of /agility/node/{uuid}-{address}-{sequential_id} and parses it to return the
      * {uuid}-{address} (ID of the node).
      *
