@@ -208,6 +208,16 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="scriptUsages" type="agility:ScriptUsage" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="List of script usage references." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
             </xsd:sequence>
          </xsd:extension>
       </xsd:complexContent>
