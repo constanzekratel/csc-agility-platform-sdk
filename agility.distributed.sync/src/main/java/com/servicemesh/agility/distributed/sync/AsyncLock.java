@@ -82,7 +82,7 @@ public class AsyncLock
 
         public void lock() throws Exception
         {
-            DistributedConfig.create(_lock.getDir(), CreateMode.PERSISTENT);
+            DistributedConfig.create(_lock.getDir(), CreateMode.EPHEMERAL);
             _lock.lock();
         }
 
