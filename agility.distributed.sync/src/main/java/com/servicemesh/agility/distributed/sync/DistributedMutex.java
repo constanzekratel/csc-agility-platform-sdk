@@ -54,7 +54,7 @@ public class DistributedMutex
             }
             else
             {
-                DistributedConfig.create(_lock.getDir(), CreateMode.EPHEMERAL);
+                DistributedConfig.create(_lock.getDir(), CreateMode.PERSISTENT);
 
                 // create a lock node for this thread
                 try
