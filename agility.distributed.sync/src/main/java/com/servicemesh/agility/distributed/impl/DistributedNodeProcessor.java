@@ -137,20 +137,21 @@ public class DistributedNodeProcessor
 
             // If this node got elected as leader then got ahead and execute all the registered
             // IDistributedListener services that are supposed to only be running under the leader.
+            // Note that listeners should check to make sure they are the leader node when called.  All
+            // nodes will receive this notification as we want to recover any tasks started on the
+            // failed node.  Currently in Agility there are 2 class that implement this interface:
+            // VMTaskMonitor - this restarts tasks if possible
+            // SchedulerContextListener - starts the Quartz scheduler
+            //
             ServiceReference[] services = _listeners.getServiceReferences();
             if (services != null)
             {
-                if (newLeader)
+                for (ServiceReference sref : services)
                 {
-                    logger.info(
-                            "Starting the distributed listener services on this node");
-                    for (ServiceReference sref : services)
-                    {
-                        IDistributedListener listener = (IDistributedListener) _context.getService(sref);
-                        logger.info("Distributing listener node changed for " + listener.getClass().getSimpleName());
-                        listener.nodesChanged(leaderId, uuids);
-                        _context.ungetService(sref);
-                    }
+                    IDistributedListener listener = (IDistributedListener) _context.getService(sref);
+                    logger.info("Distributing listener node changed for " + listener.getClass().getSimpleName());
+                    listener.nodesChanged(leaderId, uuids);
+                    _context.ungetService(sref);
                 }
             }
         }
