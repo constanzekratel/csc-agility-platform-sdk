@@ -49,7 +49,17 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
                   <xsd:annotation>
                      <xsd:appinfo>
                         <annox:annotate target="field">
-                           <a:ApiField comment="List of Property objects used to define the cloud." />
+                           <a:ApiField comment="List of Properties specific to the request." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
+               <xsd:element name="requestSetting" type="agility:AssetProperty" minOccurs="0" maxOccurs="unbounded">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="List of Asset Properties used for the request." />
                         </annox:annotate>
                      </xsd:appinfo>
                   </xsd:annotation>
