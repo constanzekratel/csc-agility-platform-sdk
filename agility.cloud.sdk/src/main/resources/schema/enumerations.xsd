@@ -59,6 +59,11 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
          <xsd:enumeration value="storageSyncLimited"/>
          <xsd:enumeration value="skipStartupAfterClone"/>
          <xsd:enumeration value="hostAffinitySupported"/>
+         <xsd:enumeration value="noRemoteConnection"/>
+         <xsd:enumeration value="textField1Supported"/>
+         <xsd:enumeration value="textField1Name"/>
+         <xsd:enumeration value="textField2Supported"/>
+         <xsd:enumeration value="textField2Name"/>
       </xsd:restriction>
    </xsd:simpleType>
       
