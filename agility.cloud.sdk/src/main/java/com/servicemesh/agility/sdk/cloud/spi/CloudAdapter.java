@@ -25,6 +25,7 @@ import com.servicemesh.agility.api.UpdateRequest;
 import com.servicemesh.agility.sdk.cloud.impl.AsyncTracker;
 import com.servicemesh.agility.sdk.cloud.msgs.AddressRangeSyncRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.AddressRangeSyncResponse;
+import com.servicemesh.agility.sdk.cloud.msgs.CloudActionRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudChangeRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudPropertyRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudPropertyResponse;
@@ -254,6 +255,11 @@ public abstract class CloudAdapter implements BundleActivator
     public ICloudChanged getCloudChangedOperations()
     {
         return null;
+    }
+    
+    public ICloudAction getCloudActionOperations()
+    {
+    		return null;
     }
 
     /*
@@ -2269,6 +2275,38 @@ public abstract class CloudAdapter implements BundleActivator
                 }
             }
         });
+        
+        //
+        //  Cloud Action
+        //
+        register(CloudActionRequest.class, new Dispatch<CloudActionRequest, CloudResponse>() {
+            @Override
+            public ICancellable execute(CloudActionRequest request, ResponseHandler<CloudResponse> handler)
+            {
+                ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                try
+                {
+                    ICloudAction operations = getCloudActionOperations();
+                    if (operations != null)
+                    {
+                        Thread.currentThread().setContextClassLoader(operations.getClass().getClassLoader());
+                        return operations.executeAction(request, handler);
+                    }
+                    else
+                    {
+                        CloudResponse response = new CloudResponse();
+                        response.setStatus(Status.COMPLETE);
+                        handler.onResponse(response);
+                        return null;
+                    }
+                }
+                finally
+                {
+                    Thread.currentThread().setContextClassLoader(cl);
+                }
+            }
+        });
+
 
     }
 
