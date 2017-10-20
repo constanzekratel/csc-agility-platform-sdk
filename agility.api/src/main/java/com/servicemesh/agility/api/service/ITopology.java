@@ -6,6 +6,7 @@ import com.servicemesh.agility.api.Task;
 import com.servicemesh.agility.api.Template;
 import com.servicemesh.agility.api.Topology;
 import com.servicemesh.agility.api.TopologyStats;
+import com.servicemesh.agility.api.LaunchItemDeployment;
 
 public interface ITopology<T>
 {
@@ -46,5 +47,13 @@ public interface ITopology<T>
      * @throws Exception
      */
     public void finalizeDelete(Task parentTask, Topology topology, boolean isParentContext) throws Exception;
+
+    /**
+     * For a given topology object, the associated LaunchItemDeployment will be returned.  If none exists, null will be returned.
+     *
+     * @param topology - topology object from which to get the LaunchItemDeploymnet
+     * @throws Exception
+     */
+    public LaunchItemDeployment getLaunchItemDeployment(Topology topology) throws Exception;
 
 }
