@@ -27,6 +27,7 @@ import com.servicemesh.agility.sdk.cloud.msgs.AddressRangeSyncRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.AddressRangeSyncResponse;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudActionRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudChangeRequest;
+import com.servicemesh.agility.sdk.cloud.msgs.CloudPingRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudPropertyRequest;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudPropertyResponse;
 import com.servicemesh.agility.sdk.cloud.msgs.CloudResponse;
@@ -258,6 +259,11 @@ public abstract class CloudAdapter implements BundleActivator
     }
     
     public ICloudAction getCloudActionOperations()
+    {
+    		return null;
+    }
+    
+    public ICloudPing getCloudPingOperations()
     {
     		return null;
     }
@@ -2307,6 +2313,36 @@ public abstract class CloudAdapter implements BundleActivator
             }
         });
 
+        //
+        //  Ping Cloud
+        //
+        register(CloudPingRequest.class, new Dispatch<CloudPingRequest, CloudResponse>() {
+            @Override
+            public ICancellable execute(CloudPingRequest request, ResponseHandler<CloudResponse> handler)
+            {
+                ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                try
+                {
+                    ICloudPing operations = getCloudPingOperations();
+                    if (operations != null)
+                    {
+                        Thread.currentThread().setContextClassLoader(operations.getClass().getClassLoader());
+                        return operations.pingCloud(request, handler);
+                    }
+                    else
+                    {
+                        CloudResponse response = new CloudResponse();
+                        response.setStatus(Status.COMPLETE);
+                        handler.onResponse(response);
+                        return null;
+                    }
+                }
+                finally
+                {
+                    Thread.currentThread().setContextClassLoader(cl);
+                }
+            }
+        });
 
     }
 
@@ -2355,7 +2391,7 @@ public abstract class CloudAdapter implements BundleActivator
     }
     
     /*
-     * This is the default handler for syncing Hostss.  Since only the vSphere adapter needs this, a default
+     * This is the default handler for syncing Hosts.  Since only the vSphere adapter needs this, a default
      * implementation is provided here so that all the other adapters don't have to handle this message.
      * 
      * The vSphere adapter will override the getHostSync() method above and provide it's own implementation
