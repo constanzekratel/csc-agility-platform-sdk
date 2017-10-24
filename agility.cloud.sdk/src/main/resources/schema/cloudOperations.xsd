@@ -86,7 +86,7 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
    </xsd:complexType>
    
    
- <!--  Use for requesting credentials from cloud adapte.  See ICredentialInfoSelector -->  
+ <!--  Use for requesting credentials from cloud adapters.  See ICredentialInfoSelector -->  
  
    <xsd:complexType name="CredentialSelectRequest">
       <xsd:annotation>
@@ -284,6 +284,29 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
 			        </xsd:annotation>
 				</xsd:element>
 	
+            </xsd:sequence>
+         </xsd:extension>
+      </xsd:complexContent>
+   </xsd:complexType>
+   
+   <xsd:complexType name="CloudPingRequest">
+      <xsd:annotation>
+         <xsd:appinfo>
+            <annox:annotate target="class">
+               <jxml:XmlRootElement>
+                  <jxml:name>CloudPingRequest</jxml:name>
+               </jxml:XmlRootElement>
+               <a:ApiModel comment = "Request object used to request a Ping operation by the adapter" 
+                           description = "" 
+                           externalDocLink = "" />
+            </annox:annotate>
+         </xsd:appinfo>
+      </xsd:annotation>
+
+      <xsd:complexContent>
+         <xsd:extension base="cloud:CloudRequest">
+            <xsd:sequence>
+            
             </xsd:sequence>
          </xsd:extension>
       </xsd:complexContent>

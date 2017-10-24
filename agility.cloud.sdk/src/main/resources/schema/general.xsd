@@ -65,6 +65,26 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="requestDeployment" type="agility:LaunchItemDeployment">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<annox:annotate target="field">
+								<a:ApiField comment="Launch Item Deployment, if needed, for request (optional)" />
+							</annox:annotate>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+				
+				<xsd:element name="requestTopology" type="agility:Topology">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<annox:annotate target="field">
+								<a:ApiField comment="Topology, if needed, for the request (optional)" />
+							</annox:annotate>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
+               
             </xsd:sequence>
          </xsd:extension>
       </xsd:complexContent>
