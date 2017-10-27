@@ -89,6 +89,26 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             </xsd:annotation>
          </xsd:element>
          
+         <xsd:element name="hidden" type="xsd:boolean" default="false">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="True if the property is hidden to be from UI display." />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         
+         <xsd:element name="locked" type="xsd:boolean" default="false">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="True if the property is to be locked and not allow changes." />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         
          <xsd:element name="propertyType" type="agility:Link" minOccurs="0" maxOccurs="1">
             <xsd:annotation>
                <xsd:appinfo>
