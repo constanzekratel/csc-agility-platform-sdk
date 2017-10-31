@@ -13,7 +13,11 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
    xmlns:a="http://annox.dev.java.net/com.servicemesh.agility.tools.annotation"
    xmlns:jl="http://annox.dev.java.net/java.lang"
    xmlns:jxml="http://annox.dev.java.net/javax.xml.bind.annotation"
-   xmlns:core="http://servicemesh.com/core/messaging">
+   xmlns:core="http://servicemesh.com/core/messaging"
+   xmlns:agility="http://servicemesh.com/agility/api">
+   
+   <xsd:import namespace="http://servicemesh.com/agility/api"
+		schemaLocation="../../../../../../agility.api/src/main/resources/schema/user.xsd" />
 
    <xsd:simpleType name="Status" >
       <xsd:annotation>
@@ -71,21 +75,11 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
             </xsd:annotation>
          </xsd:element>
          
-         <xsd:element name="user" type="xsd:string">
+         <xsd:element name="user" type="agility:User">
             <xsd:annotation>
                <xsd:appinfo>
                   <annox:annotate target="field">
                      <a:ApiField comment="User who initiated the request." />
-                  </annox:annotate>
-               </xsd:appinfo>
-            </xsd:annotation>
-         </xsd:element>
-         
-          <xsd:element name="userEmail" type="xsd:string">
-            <xsd:annotation>
-               <xsd:appinfo>
-                  <annox:annotate target="field">
-                     <a:ApiField comment="User email address who initiated the request." />
                   </annox:annotate>
                </xsd:appinfo>
             </xsd:annotation>

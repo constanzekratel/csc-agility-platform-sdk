@@ -5,9 +5,7 @@ import java.io.InputStreamReader;
 
 import org.apache.log4j.Logger;
 
-import com.servicemesh.core.async.AsyncService;
-import com.servicemesh.core.async.RequestHandler;
-import com.servicemesh.core.async.ResponseHandler;
+import com.servicemesh.agility.api.User;
 import com.servicemesh.core.collections.hash.HashMapLongG;
 import com.servicemesh.core.messaging.Request;
 import com.servicemesh.core.messaging.SleepReq;
@@ -101,7 +99,9 @@ public class SleeperService extends AsyncService
                         SleepReq sr = new SleepReq();
                         sr.setDelay(delay);
                         sr.setText(line + "(" + i + ")");
-                        sr.setUser("John Catalano");
+                        User user = new User();
+                        user.setName("name");
+                        sr.setUser(user);
                         sr.setRepeat(repeat);
                         svc.sendRequest(sr, new ResponseHandler<SleepResp>() {
                             @Override
