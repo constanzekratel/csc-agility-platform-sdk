@@ -461,7 +461,7 @@ public abstract class CloudAdapter implements BundleActivator
         filter.setName("qterm.field.instanceId");
         filter.setValue(instanceId);
         SearchRequest search = new SearchRequest();
-        //search.setUser(user);
+        search.setUser(user);
         search.setType(Instance.class.getName());
         search.getParams().add(filter);
         apiService.sendRequest(search, new ResponseHandler<ApiResponse>() {
