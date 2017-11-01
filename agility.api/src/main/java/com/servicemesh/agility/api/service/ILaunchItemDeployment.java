@@ -8,7 +8,7 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
 
     /**
      * Deploys launch item
-     * 
+     *
      * @param deployment
      * @param start
      *            optionally starts the deployment.
@@ -19,5 +19,7 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
     public Task deploy(LaunchItemDeployment deployment, boolean start) throws Exception;
 
     public LaunchItemDeployment deployment(LaunchItemDeployment item, boolean start) throws Exception;
+
+    String setFreezeUntil(int id, String freezeUntil, Context context) throws Exception;
 
 }

@@ -34,9 +34,6 @@ public interface IService<T>
 
     String patchPropertyValue(int id, String patchDocument, Context context) throws Exception;
 
-//TODO is this a good name for the method?
-    String patchFreezeUntil(int id, String patchDocument, Context context) throws Exception;
-
     Task delete(T asset, Asset parent) throws Exception;
 
     Task softDelete(T asset, Asset parent) throws Exception;
