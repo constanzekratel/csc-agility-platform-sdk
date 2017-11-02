@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <!--
-COPYRIGHT (C) 2008-2012 SERVICEMESH, INC.  ALL RIGHTS RESERVED.  CONFIDENTIAL AND PROPRIETARY. 
- 
-ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "WORKS") ARE CONFIDENTIAL AND PROPRIETARY 
-INFORMATION THAT ARE THE EXCLUSIVE PROPERTY OF SERVICEMESH.     ALL WORKS ARE PROVIDED UNDER THE APPLICABLE AGREEMENT OR 
-END USER LICENSE AGREEMENT IN EFFECT BETWEEN YOU AND SERVICEMESH.  UNLESS OTHERWISE SPECIFIED IN THE APPLICABLE AGREEMENT, 
-ALL WORKS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, 
-THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.  ALL USE, DISCLOSURE AND/OR 
+COPYRIGHT (C) 2008-2012 SERVICEMESH, INC.  ALL RIGHTS RESERVED.  CONFIDENTIAL AND PROPRIETARY.
+
+ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "WORKS") ARE CONFIDENTIAL AND PROPRIETARY
+INFORMATION THAT ARE THE EXCLUSIVE PROPERTY OF SERVICEMESH.     ALL WORKS ARE PROVIDED UNDER THE APPLICABLE AGREEMENT OR
+END USER LICENSE AGREEMENT IN EFFECT BETWEEN YOU AND SERVICEMESH.  UNLESS OTHERWISE SPECIFIED IN THE APPLICABLE AGREEMENT,
+ALL WORKS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND EITHER EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO,
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A PARTICULAR PURPOSE.  ALL USE, DISCLOSURE AND/OR
 REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIBITED.
 -->
 
@@ -15,7 +15,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
    xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="qualified"
    xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="2.0" jaxb:extensionBindingPrefixes="xjc annox"
    xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"
-   xmlns:annox="http://annox.dev.java.net" 
+   xmlns:annox="http://annox.dev.java.net"
    xmlns:a="http://annox.dev.java.net/com.servicemesh.agility.tools.annotation"
    xmlns:jl="http://annox.dev.java.net/java.lang"
    xmlns:jxml="http://annox.dev.java.net/javax.xml.bind.annotation"
@@ -24,17 +24,17 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
    <xsd:include schemaLocation="item.xsd" />
    <xsd:include schemaLocation="store.xsd" />
    <xsd:include schemaLocation="general.xsd" />
-   
+
    <xsd:complexType name="LaunchItem">
-   
+
       <xsd:annotation>
          <xsd:appinfo>
             <annox:annotate target="class">
                <jxml:XmlRootElement>
                   <jxml:name>LaunchItem</jxml:name>
                </jxml:XmlRootElement>
-               <a:ApiModel comment = "Launch Item asset." 
-                           description = "" 
+               <a:ApiModel comment = "Launch Item asset."
+                           description = ""
                            externalDocLink = "" />
             </annox:annotate>
          </xsd:appinfo>
@@ -52,7 +52,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="resources" type="agility:StoreResource" minOccurs="0" maxOccurs="unbounded">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -62,7 +62,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="itemId" type="xsd:int" minOccurs="1">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -72,7 +72,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="itemType" type="xsd:string" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -82,7 +82,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="itemName" type="xsd:string" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -92,7 +92,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="product" type="agility:Link" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -102,7 +102,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="edition" type="agility:Link" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -112,7 +112,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="state" type="agility:LaunchItemState" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -122,7 +122,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="accessUriList" type="agility:AccessUriList" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -132,7 +132,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="path" type="xsd:string" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -142,7 +142,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="purchasedBy" type="agility:Link" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -152,7 +152,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="purchasedOn" type="xsd:date" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -162,7 +162,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="deployments" type="agility:Link" minOccurs="0" maxOccurs="unbounded">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -172,7 +172,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="prices" type="agility:StorePrice" minOccurs="0" maxOccurs="unbounded">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -193,19 +193,19 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                </xsd:element>
             </xsd:sequence>
          </xsd:extension>
-      </xsd:complexContent> 
+      </xsd:complexContent>
    </xsd:complexType>
-  
+
    <xsd:complexType name="LaunchItemDeployment">
-   
+
       <xsd:annotation>
          <xsd:appinfo>
             <annox:annotate target="class">
                <jxml:XmlRootElement>
                   <jxml:name>LaunchItemDeployment</jxml:name>
                </jxml:XmlRootElement>
-               <a:ApiModel comment = "LaunchItemDeployment object." 
-                           description = "" 
+               <a:ApiModel comment = "LaunchItemDeployment object."
+                           description = ""
                            externalDocLink = "" />
             </annox:annotate>
          </xsd:appinfo>
@@ -223,7 +223,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="launchItem" type="agility:Link" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -233,7 +233,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="deployedBy" type="agility:Link" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -243,7 +243,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="deployedOn" type="xsd:date" minOccurs="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -253,7 +253,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
-               
+
                <xsd:element name="variable" type="agility:AssetProperty" minOccurs="0" maxOccurs="unbounded">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -263,9 +263,20 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                      </xsd:appinfo>
                   </xsd:annotation>
                </xsd:element>
+
+               <!-- is this an ok name and description?-->
+               <xsd:element name="freezeUntil" type="xsd:date" minOccurs="0" >
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="Used to freeze editing of a LaunchItemDeployment until a certain time." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
             </xsd:sequence>
          </xsd:extension>
-      </xsd:complexContent> 
+      </xsd:complexContent>
    </xsd:complexType>
-   
+
 </xsd:schema>
