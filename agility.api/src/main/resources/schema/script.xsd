@@ -24,7 +24,6 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
    <xsd:include schemaLocation="asset.xsd" />
    <xsd:include schemaLocation="item.xsd" />
    <xsd:include schemaLocation="propertyDefinition.xsd" />
-   <xsd:include schemaLocation="package.xsd" />
    
    <xsd:complexType name="Script">
    
