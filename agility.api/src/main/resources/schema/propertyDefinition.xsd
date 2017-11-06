@@ -70,6 +70,16 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="hidden" type="xsd:boolean" default="false">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, the resulting asset property will be marked as hidden from UI.  Default is false." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
                <xsd:element name="minRequired" type="xsd:int" default="0">
                   <xsd:annotation>
                      <xsd:appinfo>
