@@ -31,7 +31,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   <jxml:name>PropertyDefinitionStageLock</jxml:name>
                </jxml:XmlRootElement>
                <a:ApiModel comment="Property definition stage lock entity." 
-                           description = "Identifies the lock behavior of a property definition at a particular lifecycle stage." 
+                           description = "Identifies the lock behavior of a property definition at a particular lifecycle stage.  This does not mean it is locked, it means the UI should disable editing capability at the stage." 
                            externalDocLink = "" />
             </annox:annotate>
          </xsd:appinfo>
@@ -51,7 +51,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             <xsd:annotation>
                <xsd:appinfo>
                   <annox:annotate target="field">
-                     <a:ApiField comment="Name of stage to which a lock status will be assigned." />
+                     <a:ApiField comment="Name of stage to which a lock status behavior is assigned." />
                   </annox:annotate>
                </xsd:appinfo>
             </xsd:annotation>
@@ -61,7 +61,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             <xsd:annotation>
                <xsd:appinfo>
                   <annox:annotate target="field">
-                     <a:ApiField comment="When true, the property definition (asset property) will be locked at this stage.  Default is false." />
+                     <a:ApiField comment="When true, the property definition (asset property) behavior at this stage is uneditable in the UI.  Default is false." />
                   </annox:annotate>
                </xsd:appinfo>
             </xsd:annotation>
