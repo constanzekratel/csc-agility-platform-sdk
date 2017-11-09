@@ -69,29 +69,4 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
       </xsd:sequence>
    </xsd:complexType>
 
-   <xsd:complexType name="PropertyDefinitionStageLockList">
-      <xsd:annotation>
-         <xsd:appinfo>
-            <annox:annotate target="class">
-               <jxml:XmlRootElement>
-                  <jxml:name>PropertyDefinitionStageLockList</jxml:name>
-               </jxml:XmlRootElement>
-               <a:ApiModel comment="Container object for PropertyDefinitionStageLock entities." />
-            </annox:annotate>
-         </xsd:appinfo>
-      </xsd:annotation>
-
-		<xsd:sequence>
-           <xsd:element name="stageLock" type="agility:PropertyDefinitionStageLock" minOccurs="0" maxOccurs="unbounded">
-		      <xsd:annotation>
-		         <xsd:appinfo>
-		            <annox:annotate target="field">
-		               <a:ApiField comment="List of PropertyDefinitionStageLock objects that identify lock behavior of a property definition at a particular stage." />
-		            </annox:annotate>
-		         </xsd:appinfo>
-		      </xsd:annotation>
-		   </xsd:element>
-		</xsd:sequence>
-   </xsd:complexType>
-
 </xsd:schema>
