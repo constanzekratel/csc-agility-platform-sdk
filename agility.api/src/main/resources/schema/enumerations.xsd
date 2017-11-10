@@ -658,22 +658,4 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
       </xsd:restriction>
    </xsd:simpleType>
 
-   <xsd:simpleType name="LockStage" >
-      <xsd:annotation>
-         <xsd:appinfo>
-            <annox:annotate target="class">
-               <jxml:XmlRootElement>
-                  <jxml:name>LockStage</jxml:name>
-               </jxml:XmlRootElement>
-               <a:ApiModel comment="LockStage Enumeration - stage at which asset property should be locked/unlocked." />
-            </annox:annotate>
-         </xsd:appinfo>
-      </xsd:annotation>
-      <xsd:restriction base="xsd:string" >
-         <xsd:enumeration value="ORDER" />
-         <xsd:enumeration value="DEPLOY" />
-         <xsd:enumeration value="POSTDEPLOY" />
-      </xsd:restriction>
-   </xsd:simpleType>
-
 </xsd:schema>
