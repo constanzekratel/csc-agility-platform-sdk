@@ -95,7 +95,7 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
 					</xsd:annotation>
 				</xsd:element>
 				
-				<xsd:element name="cloudRequestId" type="xsd:integer">
+				<xsd:element name="cloudRequestId" type="xsd:long">
 					<xsd:annotation>
 						<xsd:appinfo>
 							<annox:annotate target="field">
