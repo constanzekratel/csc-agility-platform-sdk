@@ -20,6 +20,13 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
 
     public LaunchItemDeployment deployment(LaunchItemDeployment item, boolean start) throws Exception;
 
-    String setFreezeUntil(int id, String freezeUntil, Context context) throws Exception;
+    public String setFreezeUntil(int id, String freezeUntil, Context context) throws Exception;
+    
+    /*
+     * Support a method for doing all the deployment/property checks, read the configured timeout
+     * and set the freeze, if supported.  This will be called from the Topology.start() and by
+     * any custom action policies that need to lock the subscription.
+     */
+    public void checkAndLock(int launchItemDeployment_id) throws Exception;
 
 }
