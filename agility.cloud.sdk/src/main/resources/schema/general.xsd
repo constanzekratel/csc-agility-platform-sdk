@@ -94,6 +94,16 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
 						</xsd:appinfo>
 					</xsd:annotation>
 				</xsd:element>
+				
+				<xsd:element name="cloudRequestId" type="xsd:long">
+					<xsd:annotation>
+						<xsd:appinfo>
+							<annox:annotate target="field">
+								<a:ApiField comment="Cloud Request ID" />
+							</annox:annotate>
+						</xsd:appinfo>
+					</xsd:annotation>
+				</xsd:element>
                
             </xsd:sequence>
          </xsd:extension>
