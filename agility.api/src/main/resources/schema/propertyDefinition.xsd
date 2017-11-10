@@ -164,6 +164,36 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="orderLockBehavior" type="xsd:boolean" default="false">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be locked by UI at the ORDER stage.  Default is false." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
+               <xsd:element name="deployLockBehavior" type="xsd:boolean" default="false">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be locked by UI at the DEPLOY stage.  Default is false." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
+               <xsd:element name="postdeployLockBehavior" type="xsd:boolean" default="false">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be locked by UI at the POST-DEPLOY stage.  Default is false." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
             </xsd:sequence>
          </xsd:extension>
       </xsd:complexContent>
