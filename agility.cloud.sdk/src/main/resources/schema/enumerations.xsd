@@ -64,6 +64,13 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
          <xsd:enumeration value="textField1Name"/>
          <xsd:enumeration value="textField2Supported"/>
          <xsd:enumeration value="textField2Name"/>
+         <xsd:enumeration value="detailsPanelEnabled"/>
+         <xsd:enumeration value="volumesPanelEnabled"/>
+         <xsd:enumeration value="scriptsPanelEnabled"/>
+         <xsd:enumeration value="operationalScriptsPanelEnabled"/>
+         <xsd:enumeration value="servicesPanelEnabled"/>
+         <xsd:enumeration value="snapshotsPanelEnabled"/>
+         <xsd:enumeration value="propertiesPanelEnabled"/>
       </xsd:restriction>
    </xsd:simpleType>
       
