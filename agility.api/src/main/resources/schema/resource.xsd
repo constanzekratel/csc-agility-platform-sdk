@@ -19,6 +19,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
    xmlns:a="http://annox.dev.java.net/com.servicemesh.agility.tools.annotation"
    xmlns:jl="http://annox.dev.java.net/java.lang"
    xmlns:jxml="http://annox.dev.java.net/javax.xml.bind.annotation"
+   xmlns:jack="http://annox.dev.java.net/org.codehaus.jackson.annotate"
    xmlns:agility="http://servicemesh.com/agility/api">
 
    <xsd:include schemaLocation="asset.xsd" />
@@ -34,6 +35,9 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                <a:ApiModel comment="Resource object." 
                            description = "{{resourceDescription}}" 
                            externalDocLink = "" />
+               <jack:JsonTypeInfo use = "CLASS"
+                                  include = "PROPERTY"
+                                  property = "__type" />
             </annox:annotate>
          </xsd:appinfo>
       </xsd:annotation>
