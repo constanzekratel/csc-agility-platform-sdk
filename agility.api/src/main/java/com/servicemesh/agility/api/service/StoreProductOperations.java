@@ -27,4 +27,8 @@ public interface StoreProductOperations
             throws Exception;
 
     public void deployRejected(LaunchItemDeployment launchItemDeployment, String comment) throws Exception;
+    
+    public void reconfigureApproved(LaunchItemDeployment launchItemDeployment, Integer approverId, String comment) throws Exception;
+    
+    public void reconfigureRejected(LaunchItemDeployment launchItemDeployment, String comment) throws Exception;
 }

@@ -28,5 +28,14 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
      * any custom action policies that need to lock the subscription.
      */
     public void checkAndLock(int launchItemDeployment_id) throws Exception;
-
+    
+    /*
+     * This is called via an API call to start the reconfigure process - either an approval cycle or start the reconfigure:
+     */
+    public Task reconfigure(LaunchItemDeployment deployment) throws Exception;
+    
+    /*
+     * This is called by the StoreManager to actually do the reconfig after approval:
+     */
+    public Task reconfig(LaunchItemDeployment deployment) throws Exception;
 }
