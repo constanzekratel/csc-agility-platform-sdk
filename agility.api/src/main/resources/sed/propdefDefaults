@@ -1,0 +1,4 @@
+s/public boolean orderEditable;/public boolean orderEditable = true;/
+s/public boolean deployEditable;/public boolean deployEditable = true;/
+s/public boolean postdeployEditable;/public boolean postdeployEditable = true;/
+    
