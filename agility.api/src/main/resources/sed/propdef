@@ -2,3 +2,7 @@
 import org.codehaus.jackson.annotate.JsonTypeInfo;
 /@XmlRootElement/a\
     @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="__type")
+s/public boolean orderEditable;/public boolean orderEditable = true;
+s/public boolean deployEditable;/public boolean deployEditable = true;
+s/public boolean postdeployEditable;/public boolean postdeployEditable = true;
+    
