@@ -35,9 +35,9 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                <a:ApiModel comment = "Property assigned to an object of type asset or subclass of asset." 
                            description = "Property values can be uses to apply policies to assets within a project, environment, or other organizational container.  Property values can also be included in scripts as script variables." 
                            externalDocLink = "" />
-               <jack:JsonTypeInfo use = "CLASS"
+       <!--          <jack:JsonTypeInfo use = "CLASS"
                                   include = "PROPERTY"
-                                  property = "__type" />
+                                  property = "__type" /> -->
             </annox:annotate>
          </xsd:appinfo>
       </xsd:annotation>
