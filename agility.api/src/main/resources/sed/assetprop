@@ -1,5 +1,9 @@
 /\(import javax.xml.bind.annotation.XmlType;\)/a\
 import org.codehaus.jackson.annotate.JsonTypeInfo;\
 import org.codehaus.jackson.annotate.JsonSubTypes;
+
+/public class AssetProperty/i \
+@JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="__type", defaultImpl = AssetProperty.class)
+
 /Link propertyType/a\
 @JsonTypeInfo(use=JsonTypeInfo.Id.CLASS, include=JsonTypeInfo.As.PROPERTY, property="__type")
