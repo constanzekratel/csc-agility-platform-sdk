@@ -25,7 +25,7 @@ public class AsyncService
     protected HashMapLongHandlerInfo responseHandlers = new HashMapLongHandlerInfo();
 
     protected HashMapG<Class<? extends Request>, RequestHandler> requestHandlers =
-            new HashMapG<Class<? extends Request>, RequestHandler>();
+            new HashMapG<>();
 
     public AsyncService(Reactor reactor)
     {
@@ -102,7 +102,7 @@ public class AsyncService
     {
         final CompletablePromise<List<RSP>> promise = PromiseFactory.create();
         sendRequest(request, new ResponseHandler<RSP>() {
-            List<RSP> _responses = new ArrayList<RSP>();
+            List<RSP> _responses = new ArrayList<>();
 
             @Override
             public boolean onResponse(RSP response)
@@ -151,7 +151,7 @@ public class AsyncService
                 return false;
             }
         });
-        s_logger.info("Sent request id=" + reqId);
+        s_logger.info("Sent request id=" + reqId + " Type: " + request.getClass().getName());
         return reqId;
     }
 
