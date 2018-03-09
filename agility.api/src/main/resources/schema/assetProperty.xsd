@@ -178,7 +178,7 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             <xsd:annotation>
                <xsd:appinfo>
                   <annox:annotate target="field">
-                     <a:ApiField comment="Stores the selection path to a hierarch/list value. Used by the UI to highlight the selected value." />
+                     <a:ApiField comment="Stores the selection path to a hierarchy/list value. Used by UI to highlight the selected value." />
                   </annox:annotate>
                </xsd:appinfo>
             </xsd:annotation>
