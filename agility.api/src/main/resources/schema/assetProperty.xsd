@@ -173,6 +173,17 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             </xsd:annotation>
          </xsd:element>
          
+         <!-- The path will contain a json string with the following format: {"path" : "<id1>,<id2>,..,<leafId>"} -->
+         <xsd:element name="constraintPath" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="Stores the selection path to a hierarchy/list value. Used by UI to highlight the selected value." />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+
       </xsd:sequence>
    </xsd:complexType>
 
