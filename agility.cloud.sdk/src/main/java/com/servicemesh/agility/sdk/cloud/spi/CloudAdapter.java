@@ -5,7 +5,9 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 
+import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -134,6 +136,7 @@ public abstract class CloudAdapter implements BundleActivator
 
     private static final Logger logger = Logger.getLogger(CloudAdapter.class);
     public static final String AGILITY_API_VERSION = "3.1";
+    private static long LOG_POLL_DELAY_MS = 10000L;
 
     protected AsyncService _service;
     protected ServiceTracker _asyncTracker;
@@ -211,15 +214,15 @@ public abstract class CloudAdapter implements BundleActivator
     public abstract ICredential getCredentialOperations();
 
     public abstract IImage getImageOperations();
-    
+
     /* This method needs to be overridden by the vSphere adapter to process Host sync requests */
     public ISync<HostSyncRequest, HostSyncResponse> getHostSync()
     {
-    	return new HostSyncHandler();  //  Provide a default handler that just completes this phase of sync.
+        return new HostSyncHandler(); //  Provide a default handler that just completes this phase of sync.
     }
 
     /*
-     * These operations are optional for a cloud adapter.  If not implemented, 
+     * These operations are optional for a cloud adapter.  If not implemented,
      * a "not supported" error is returned.
      */
 
@@ -272,7 +275,7 @@ public abstract class CloudAdapter implements BundleActivator
      * These methods handle the asset CRUD notifications.  A cloud adapter can override this
      * method to return a class that implements IAssetNotification and processes the messages.
      * A default implementation is provided below.
-     * 
+     *
      * A cloud adapter will send a list of asset types it's interested in receiving CRUD event
      * messages for when the adapter sends it's initial registration message.
      *
@@ -342,7 +345,7 @@ public abstract class CloudAdapter implements BundleActivator
         Proxy firstProxy = null;
 
         List<com.servicemesh.agility.api.Proxy> possible_proxies = cloud.getProxies();
-        List<com.servicemesh.agility.api.Proxy> proxies = new ArrayList<com.servicemesh.agility.api.Proxy>();
+        List<com.servicemesh.agility.api.Proxy> proxies = new ArrayList<>();
 
         //  Get the MANAGER -> CLOUD proxies, if any:
         for (com.servicemesh.agility.api.Proxy proxy : possible_proxies)
@@ -504,7 +507,7 @@ public abstract class CloudAdapter implements BundleActivator
 
     /*
      * This method should get any arbitrary asset.  The type should be something like:
-     * 
+     *
      *   Container.class.getName()
      */
     public void getAsset(String assetType, int id, final Callback<Asset> callback)
@@ -591,10 +594,16 @@ public abstract class CloudAdapter implements BundleActivator
     {
         try
         {
+            String karaf_home = System.getProperty("karaf.home");
+            LogManager.resetConfiguration();
+            // the file will be watched, and automatically respect any changes
+            // without needing to restart karaf
+            PropertyConfigurator.configureAndWatch(karaf_home + "/etc/com.servicemesh.agility.logging.cfg", LOG_POLL_DELAY_MS);
+
             _context = context;
 
             // register the service
-            Hashtable<String, Object> metadata = new Hashtable<String, Object>();
+            Hashtable<String, Object> metadata = new Hashtable<>();
             metadata.put("serviceType", "cloud");
             metadata.put("cloudType", getCloudType());
             metadata.put("version", AGILITY_API_VERSION);
@@ -1240,7 +1249,7 @@ public abstract class CloudAdapter implements BundleActivator
                 }
             }
         });
-        
+
         register(HostSyncRequest.class, new Dispatch<HostSyncRequest, HostSyncResponse>() {
             @Override
             public ICancellable execute(HostSyncRequest request, ResponseHandler<HostSyncResponse> handler)
@@ -2354,7 +2363,7 @@ public abstract class CloudAdapter implements BundleActivator
     /*
      * This is the default handler for syncing VPCs.  Since only the EC2 adapter needs this, a default
      * implementation is provided here so that all the other adapters don't have to handle this message.
-     * 
+     *
      * The EC2 adapter will override the getVPCSync() method above and provide it's own implementation
      * of the ISync<VPCSyncRequest,VPCSyncResponse> interface.
      */
@@ -2389,11 +2398,11 @@ public abstract class CloudAdapter implements BundleActivator
             return null;
         }
     }
-    
+
     /*
      * This is the default handler for syncing Hosts.  Since only the vSphere adapter needs this, a default
      * implementation is provided here so that all the other adapters don't have to handle this message.
-     * 
+     *
      * The vSphere adapter will override the getHostSync() method above and provide it's own implementation
      * of the ISync<HostSyncRequest,HostSyncResponse> interface.
      */
