@@ -93,6 +93,11 @@ public class DistributedNode
             {
                 return nodeName.getPrefix();
             }
+            else
+            {
+                logger.warn("The Leader ID cannot be determined because the nodeName is null.  Using path '" + 
+                            DistributedNode.ZKPATH + "' did not return children.");
+            }
         }
         catch (Exception ex)
         {
@@ -109,10 +114,18 @@ public class DistributedNode
     public static String getLeaderAddress()
     {
         String leaderID = getLeaderID();
+        String nodeAddress = null;
 
-        int index = leaderID.lastIndexOf("-");
-        String nodeAddress = leaderID.substring(index + 1);
-
+        if (leaderID != null)
+        {
+            int index = leaderID.lastIndexOf("-");
+            nodeAddress = leaderID.substring(index + 1);
+        }
+        else
+        {
+            logger.warn("The Leader ID is null.  Cannot compute node address.");
+        }
+        
         return nodeAddress;
     }
 
