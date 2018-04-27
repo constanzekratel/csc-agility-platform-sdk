@@ -1121,16 +1121,6 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
             </xsd:annotation>
          </xsd:element>
          
-         <xsd:element name="children" type="agility:TreeNode" minOccurs="0" maxOccurs="unbounded">
-            <xsd:annotation>
-               <xsd:appinfo>
-                  <annox:annotate target="field">
-                     <a:ApiField comment="Child node items." systemGenerated="true" />
-                  </annox:annotate>
-               </xsd:appinfo>
-            </xsd:annotation>
-         </xsd:element>
-         
          <xsd:element name="parentType" type="xsd:string" minOccurs="0">
             <xsd:annotation>
                <xsd:appinfo>
@@ -1146,6 +1136,37 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                <xsd:appinfo>
                   <annox:annotate target="field">
                      <a:ApiField comment="Type of the folder if one is defined." systemGenerated="true" />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         
+         <xsd:element name="uuid" type="xsd:string" minOccurs="0">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="UUID of the asset.  Designates special container types." systemGenerated="true" />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         
+         <xsd:element name="associatedDeployment" type="xsd:int" minOccurs="0">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="Deployment for a Topology, if appropriate."  systemGenerated="true" />
+                  </annox:annotate>
+               </xsd:appinfo>
+            </xsd:annotation>
+         </xsd:element>
+         
+       <!--  Leave the children at the end of this structure - it looks better on diagnostics/logs/output -->  
+         <xsd:element name="children" type="agility:TreeNode" minOccurs="0" maxOccurs="unbounded">
+            <xsd:annotation>
+               <xsd:appinfo>
+                  <annox:annotate target="field">
+                     <a:ApiField comment="Child node items." systemGenerated="true" />
                   </annox:annotate>
                </xsd:appinfo>
             </xsd:annotation>

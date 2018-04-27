@@ -180,6 +180,8 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
          <xsd:enumeration value="OrderProvisioning" />
          <xsd:enumeration value="Deleting" />
          <xsd:enumeration value="Unprovisioned" />
+         <xsd:enumeration value="ReconfigurePending" />
+         <xsd:enumeration value="Reconfiguring" />
       </xsd:restriction>
    </xsd:simpleType>
 
@@ -659,3 +661,4 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
    </xsd:simpleType>
 
 </xsd:schema>
+

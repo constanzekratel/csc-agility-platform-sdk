@@ -66,5 +66,13 @@ public interface ICloud
      * @throws Exception
      */
     public Task unsubscribe(int cloudId, int subscriptionId, Context context) throws Exception;
+    
+    /**
+     * Execute a custom action in a cloud
+     * 
+     * 
+     */
+    public Task executeAction(int cloudId, String action, int instanceId, String assetType, int assetId) throws Exception;
+    
 
 }

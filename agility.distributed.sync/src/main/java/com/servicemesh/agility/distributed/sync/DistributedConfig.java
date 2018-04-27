@@ -1,11 +1,10 @@
 package com.servicemesh.agility.distributed.sync;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.apache.zookeeper.CreateMode;
@@ -15,6 +14,7 @@ import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
+import org.apache.zookeeper.data.Stat;
 
 /**
  * Provides distributed configuration data.
@@ -24,6 +24,11 @@ public class DistributedConfig implements Watcher
 
     private final static Logger logger = Logger.getLogger(DistributedConfig.class);
     private static ZooKeeper _zooKeeper = null;
+    private final static String ZOOKEEPER_ADDR_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_ADDR";
+    private final static String ZOOKEEPER_PORT_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_PORT";
+    private final static String ZOOKEEPER_TIMEOUT_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_TIMEOUT";
+    private final static String ZOOKEEPER_RETRY_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_RETRY_COUNT";
+    private final static String ZOOKEEPER_DELAY_VAR_NAME = "ZOOKEEPER_PORT_2181_TCP_RETRY_DELAY";
 
     public static synchronized ZooKeeper getZooKeeper()
     {
@@ -31,17 +36,10 @@ public class DistributedConfig implements Watcher
         {
             if (_zooKeeper == null)
             {
-                Properties properties = new Properties();
-                File file = new File(System.getProperty("karaf.home") + "/etc/com.servicemesh.agility.distributed.sync.cfg");
-                if (file.exists())
-                {
-                    properties.load(new FileInputStream(file));
-                }
-
                 Map<String, String> env = System.getenv();
-                String url = properties.getProperty("zookeeper.url", "localhost:2181");
-                String zookeeper_addr = env.get("ZOOKEEPER_PORT_2181_TCP_ADDR");
-                String zookeeper_port = env.get("ZOOKEEPER_PORT_2181_TCP_PORT");
+                String url = null;
+                String zookeeper_addr = env.get(ZOOKEEPER_ADDR_VAR_NAME);
+                String zookeeper_port = env.get(ZOOKEEPER_PORT_VAR_NAME);
                 if (zookeeper_addr != null && !zookeeper_addr.isEmpty())
                 {
                     if (zookeeper_port != null && !zookeeper_port.isEmpty())
@@ -50,21 +48,36 @@ public class DistributedConfig implements Watcher
                     }
                     else
                     {
-                        url = zookeeper_addr + ":2181";
+                        throw new RuntimeException(
+                                "Zookeeper port environment variable " + ZOOKEEPER_PORT_VAR_NAME + " not defined");
                     }
                 }
+                else
+                {
+                    throw new RuntimeException(
+                            "Zookeeper address environment variable " + ZOOKEEPER_ADDR_VAR_NAME + " not defined");
+                }
 
-                String timeout = properties.getProperty("zookeeper.timeout", "10000");
-                String retryCount = properties.getProperty("zookeeper.retryCount", "10");
+                String timeout = env.get(ZOOKEEPER_TIMEOUT_VAR_NAME);
+                if (timeout == null)
+                {
+                    timeout = "7200000"; //Default timeout
+                }
+
+                // Default value for retryCount is already set in ProcotolSupport class
+                String retryCount = env.get(ZOOKEEPER_RETRY_VAR_NAME);
                 if (retryCount != null)
                 {
                     ProtocolSupport.retryCount = Integer.parseInt(retryCount);
                 }
-                String retryDelay = properties.getProperty("zookeeper.retryDelay", "10000");
+
+                // Default value for retryDelay is already set in ProcotolSupport class
+                String retryDelay = env.get(ZOOKEEPER_DELAY_VAR_NAME);
                 if (retryDelay != null)
                 {
                     ProtocolSupport.retryDelay = Long.parseLong(retryDelay);
                 }
+
                 logger.debug("Connecting to zookeeper at: " + url);
                 _zooKeeper = new ZooKeeper(url, Integer.parseInt(timeout), new DistributedConfig());
                 bumpZkHeartbeatPriority();
@@ -105,7 +118,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Creates distributed configuration data.
-     * 
+     *
      * @param path
      *            The path to the ZooKeeper node that will hold data
      * @param mode
@@ -118,7 +131,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Creates distributed configuration data.
-     * 
+     *
      * @param path
      *            The path to the ZooKeeper node that will hold data
      * @param mode
@@ -133,7 +146,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Creates distributed configuration data.
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -143,7 +156,8 @@ public class DistributedConfig implements Watcher
      * @param watcher
      *            An implementation of the ZooKeeper Watcher interface to monitor data changes
      */
-    public static void create(ZooKeeper zk, String path, CreateMode mode, Watcher watcher) throws Exception
+    public static void create(ZooKeeper zk, String path, CreateMode mode, Watcher watcher)
+            throws Exception
     {
         ProtocolSupport ps = new ProtocolSupport(zk);
         StringBuilder sb = new StringBuilder();
@@ -172,7 +186,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Acquires "ownership" of configuration data by virtue of being its creator.
-     * 
+     *
      * @param path
      *            The path to the ZooKeeper node that will hold data
      * @return True if the path was created by this call
@@ -184,7 +198,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Acquires "ownership" of configuration data by virtue of being its creator.
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -216,7 +230,8 @@ public class DistributedConfig implements Watcher
                     }
                     catch (KeeperException.NodeExistsException ex)
                     {
-                        logger.warn("An exception occurred while acquiring path '" + path + "' for zookeeper session " + zk.getSessionId(), ex);
+                        logger.warn("An exception occurred while acquiring path '" + path + "' for zookeeper session "
+                                + zk.getSessionId(), ex);
                         return false;
                     }
                     return true;
@@ -232,7 +247,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Returns true if configuration data exists.
-     * 
+     *
      * @param path
      *            The path to an existing ZooKeeper node
      * @param watcher
@@ -245,7 +260,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Returns true if configuration data exists.
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -292,7 +307,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Returns children of a configuration data path
-     * 
+     *
      * @param path
      *            The path to an existing ZooKeeper node
      * @return A list of the children nodes of the specified path.
@@ -304,7 +319,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Returns children of a configuration data path
-     * 
+     *
      * @param path
      *            The path to an existing ZooKeeper node
      * @param watcher
@@ -318,7 +333,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Returns children of a configuration data path
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -342,8 +357,59 @@ public class DistributedConfig implements Watcher
     }
 
     /**
+     * @return
+     * @throws Exception
+     */
+    public static SortedSet<ZNodeName> getSortedChildren(String path) throws Exception
+    {
+        List<String> nodes = getChildren(path);
+        SortedSet<ZNodeName> sorted = new TreeSet<ZNodeName>();
+        for (String node : nodes)
+        {
+            sorted.add(new ZNodeName(node));
+        }
+        return sorted;
+    }
+
+    /**
+     * @return
+     * @throws Exception
+     */
+    public static ZNodeName getFirstChild(String path) throws Exception
+    {
+        SortedSet<ZNodeName> sorted = getSortedChildren(path);
+        if (!sorted.isEmpty())
+        {
+            return sorted.first();
+        }
+        return null;
+    }
+
+    public static boolean watchNode(String node, Watcher watcher)
+    {
+        boolean watched = false;
+        try
+        {
+            ZooKeeper zk = getZooKeeper();
+            final Stat nodeStat = zk.exists(node, watcher);
+
+            if (nodeStat != null)
+            {
+                watched = true;
+            }
+
+        }
+        catch (KeeperException | InterruptedException e)
+        {
+            throw new IllegalStateException(e);
+        }
+
+        return watched;
+    }
+
+    /**
      * Deletes distributed configuration data.
-     * 
+     *
      * @param path
      *            The path to an existing ZooKeeper node
      */
@@ -354,7 +420,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Deletes distributed configuration data.
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -381,7 +447,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Deletes children for a configuration data path
-     * 
+     *
      * @param path
      *            The path to an existing ZooKeeper node
      */
@@ -392,7 +458,7 @@ public class DistributedConfig implements Watcher
 
     /**
      * Deletes children for a configuration data path
-     * 
+     *
      * @param zk
      *            A ZooKeeper object
      * @param path
@@ -430,4 +496,5 @@ public class DistributedConfig implements Watcher
         // TODO Auto-generated method stub
 
     }
+
 }

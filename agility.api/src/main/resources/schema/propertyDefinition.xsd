@@ -70,6 +70,16 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="hidden" type="xsd:boolean" default="false">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, the resulting asset property will be marked as hidden from UI.  Default is false." />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
                <xsd:element name="minRequired" type="xsd:int" default="0">
                   <xsd:annotation>
                      <xsd:appinfo>
@@ -154,6 +164,37 @@ REPRODUCTION OF WORKS NOT EXPRESSLY AUTHORIZED BY SERVICEMESH IS STRICTLY PROHIB
                   </xsd:annotation>
                </xsd:element>
                
+               <xsd:element name="orderEditable" type="xsd:boolean" default="true">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be editable by UI at the ORDER stage.  Default is true." 
+                                       introducedIn = "3.3" />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
+               <xsd:element name="deployEditable" type="xsd:boolean" default="true">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be editable by UI at the DEPLOY stage.  Default is true." introducedIn="3.3" />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+               
+               <xsd:element name="postdeployEditable" type="xsd:boolean" default="true">
+                  <xsd:annotation>
+                     <xsd:appinfo>
+                        <annox:annotate target="field">
+                           <a:ApiField comment="When true, asset properties of this type should be editable by UI at the POST-DEPLOY stage.  Default is true." introduced="3.3" />
+                        </annox:annotate>
+                     </xsd:appinfo>
+                  </xsd:annotation>
+               </xsd:element>
+
             </xsd:sequence>
          </xsd:extension>
       </xsd:complexContent>

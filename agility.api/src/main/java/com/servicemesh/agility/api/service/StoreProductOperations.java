@@ -3,6 +3,7 @@ package com.servicemesh.agility.api.service;
 import com.servicemesh.agility.api.Item;
 import com.servicemesh.agility.api.LaunchItem;
 import com.servicemesh.agility.api.LaunchItemDeployment;
+import com.servicemesh.agility.api.LaunchItemState;
 import com.servicemesh.agility.api.PublishRequest;
 
 public interface StoreProductOperations
@@ -27,4 +28,14 @@ public interface StoreProductOperations
             throws Exception;
 
     public void deployRejected(LaunchItemDeployment launchItemDeployment, String comment) throws Exception;
+    
+    public void reconfigureApproved(LaunchItemDeployment launchItemDeployment, Integer approverId, String comment) throws Exception;
+    
+    public void reconfigureRejected(LaunchItemDeployment launchItemDeployment, String comment) throws Exception;
+    
+    public void setDeploymentPendingReconfigure(LaunchItemDeployment launchItemDeployment) throws Exception;
+    
+    public void setDeploymentReconfiguring(LaunchItemDeployment launchItemDeployment) throws Exception;
+    
+    public void setReconfiguringComplete(LaunchItemDeployment launchItemDeployment) throws Exception;
 }

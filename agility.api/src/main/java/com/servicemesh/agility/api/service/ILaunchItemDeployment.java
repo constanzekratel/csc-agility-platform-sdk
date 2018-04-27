@@ -8,7 +8,7 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
 
     /**
      * Deploys launch item
-     * 
+     *
      * @param deployment
      * @param start
      *            optionally starts the deployment.
@@ -20,4 +20,22 @@ public interface ILaunchItemDeployment extends IWorkflow<LaunchItemDeployment>
 
     public LaunchItemDeployment deployment(LaunchItemDeployment item, boolean start) throws Exception;
 
+    public String setFreezeUntil(int id, String freezeUntil, Context context) throws Exception;
+    
+    /*
+     * Support a method for doing all the deployment/property checks, read the configured timeout
+     * and set the freeze, if supported.  This will be called from the Topology.start() and by
+     * any custom action policies that need to lock the subscription.
+     */
+    public void checkAndLock(int launchItemDeployment_id) throws Exception;
+    
+    /*
+     * This is called via an API call to start the reconfigure process - either an approval cycle or start the reconfigure:
+     */
+    public Task reconfigure(LaunchItemDeployment deployment) throws Exception;
+    
+    /*
+     * This is called by the StoreManager to actually do the reconfig after approval:
+     */
+    public Task reconfig(LaunchItemDeployment deployment) throws Exception;
 }

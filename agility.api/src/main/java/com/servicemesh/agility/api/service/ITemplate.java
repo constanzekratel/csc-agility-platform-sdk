@@ -223,7 +223,7 @@ public interface ITemplate
      * 
      * @param template - Template to retrieve operational scripts
      * 
-     * @return - List<Script> A list of Operational Scripts for the Template
+     * @return A list of Operational Scripts for the Template
      * 
      */
     public List<Script> getOperationalScripts(Template template);

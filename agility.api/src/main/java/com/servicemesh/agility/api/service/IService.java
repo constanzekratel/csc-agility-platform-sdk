@@ -29,8 +29,10 @@ public interface IService<T>
     T create(T asset, Asset parent, Context context) throws Exception;
 
     T update(T asset, Asset parent, Context context) throws Exception;
-   
+
     T patch(int id, String patchDocument, Context context) throws Exception;
+
+    String patchPropertyValue(int id, String patchDocument, Context context) throws Exception;
 
     Task delete(T asset, Asset parent) throws Exception;
 
@@ -48,7 +50,7 @@ public interface IService<T>
     // import/export of asset and any contained assets
     void export(T asset, Envelope envelope, List<File> files, ExportOptions options) throws Exception;
 
-    // initialize/cleanup use of service 
+    // initialize/cleanup use of service
     public void init(String login) throws Exception;
 
     public void fini();
