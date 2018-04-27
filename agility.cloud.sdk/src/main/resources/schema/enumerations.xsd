@@ -59,6 +59,7 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
          <xsd:enumeration value="storageSyncLimited"/>
          <xsd:enumeration value="skipStartupAfterClone"/>
          <xsd:enumeration value="hostAffinitySupported"/>
+         <xsd:enumeration value="cpuCoresPerSocketSupported"/>
       </xsd:restriction>
    </xsd:simpleType>
       
