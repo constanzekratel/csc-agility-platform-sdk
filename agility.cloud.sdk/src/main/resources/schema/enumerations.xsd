@@ -59,6 +59,19 @@ ALL SOFTWARE, INFORMATION AND ANY OTHER RELATED COMMUNICATIONS (COLLECTIVELY, "W
          <xsd:enumeration value="storageSyncLimited"/>
          <xsd:enumeration value="skipStartupAfterClone"/>
          <xsd:enumeration value="hostAffinitySupported"/>
+         <xsd:enumeration value="noRemoteConnection"/>
+         <xsd:enumeration value="textField1Supported"/>
+         <xsd:enumeration value="textField1Name"/>
+         <xsd:enumeration value="textField2Supported"/>
+         <xsd:enumeration value="textField2Name"/>
+         <xsd:enumeration value="detailsPanelEnabled"/>
+         <xsd:enumeration value="volumesPanelEnabled"/>
+         <xsd:enumeration value="scriptsPanelEnabled"/>
+         <xsd:enumeration value="operationalScriptsPanelEnabled"/>
+         <xsd:enumeration value="servicesPanelEnabled"/>
+         <xsd:enumeration value="snapshotsPanelEnabled"/>
+         <xsd:enumeration value="propertiesPanelEnabled"/>
+         <xsd:enumeration value="cpuCoresPerSocketSupported"/>
       </xsd:restriction>
    </xsd:simpleType>
       
