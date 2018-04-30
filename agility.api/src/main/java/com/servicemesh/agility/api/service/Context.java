@@ -43,6 +43,12 @@ public class Context
     private boolean _forceOnError = false;
     private boolean _checkUse = true;
     private boolean _minimalConversion = false;
+    
+    // this can be used to pass the desired state of encrypted asset property/variable values.  The get method takes a 
+    // context object and can define how it is to behave.  If the value is set to true, the convert method can keep the 
+    // values encrypted else they will be decrypted.  This is import because sometimes the API repsone object will need 
+    // the values decrypted.  Default to keep them encrypted.
+    private boolean _encrypt = true;
 
     private static final String LINK_TYPE_START = "application/";
     private static final String LINK_TYPE_END = "+xml";
@@ -567,4 +573,15 @@ public class Context
     {
         this._minimalConversion = _minimalConversion;
     }
+    
+    public boolean isEncrypt()
+    {
+        return _encrypt;
+    }
+
+    public void setEncrypt(boolean _encrypt)
+    {
+        this._encrypt = _encrypt;
+    }
+
 }
