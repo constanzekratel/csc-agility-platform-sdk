@@ -238,7 +238,6 @@ public abstract class ServiceAdapter implements BundleActivator
 
     public static List<Proxy> getProxyConfig(ServiceProviderRequest request, ProxyUsage usage)
     {
-
         //  Get the proxies specified by the usage type requested
         List<Proxy> proxies = new ArrayList<Proxy>();
 
@@ -2445,6 +2444,71 @@ public abstract class ServiceAdapter implements BundleActivator
                     Thread.currentThread().setContextClassLoader(cl);
                 }
             }
+        });
+
+        //IArtifactRepositoryManagement operations registers the operation to get the list of artifacts through the artifactory adapter
+        register(GetAllArtifactsRequest.class, new Function<GetAllArtifactsRequest, Promise<GetAllArtifactsResponse>>() {
+            @Override
+            public Promise<GetAllArtifactsResponse> invoke(GetAllArtifactsRequest request)
+            {
+            	ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                try
+                {
+                    IArtifactRepositoryManagement operations = getArtifactRepositoryManagementOperations();
+                    if (operations != null)
+                    {
+                    	Thread.currentThread().setContextClassLoader(operations.getClass().getClassLoader());
+                        return operations.getAllArtifacts(request);
+                    }
+                    else
+                    {
+                        GetAllArtifactsResponse response = new GetAllArtifactsResponse();
+                        response.setStatus(Status.COMPLETE);
+                        return Promise.pure(response);
+                    }
+                }
+                catch (Throwable t)
+                {
+                    return Promise.pure(t);
+                }
+                finally
+                {
+                    Thread.currentThread().setContextClassLoader(cl);
+                }
+            }
+
+        });
+        //IArtifactRepositoryManagement operations registers the operation to  download the specified through the artifactory adapter
+        register(DownloadArtifactRequest.class, new Function<DownloadArtifactRequest, Promise<DownloadArtifactResponse>>() {
+            @Override
+            public Promise<DownloadArtifactResponse> invoke(DownloadArtifactRequest request)
+            {
+            	ClassLoader cl = Thread.currentThread().getContextClassLoader();
+                try
+                {
+                    IArtifactRepositoryManagement operations = getArtifactRepositoryManagementOperations();
+                    if (operations != null)
+                    {
+                    	Thread.currentThread().setContextClassLoader(operations.getClass().getClassLoader());
+                        return operations.downloadArtifacts(request);
+                    }
+                    else
+                    {
+                        DownloadArtifactResponse response = new DownloadArtifactResponse();
+                        response.setStatus(Status.COMPLETE);
+                        return Promise.pure(response);
+                    }
+                }
+                catch (Throwable t)
+                {
+                    return Promise.pure(t);
+                }
+                finally
+                {
+                    Thread.currentThread().setContextClassLoader(cl);
+                }
+            }
+
         });
 
         //IArtifactRepositoryManagement operations registers the operation to get the list of artifacts through the artifactory adapter
