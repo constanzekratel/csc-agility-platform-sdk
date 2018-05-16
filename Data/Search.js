@@ -1,0 +1,1 @@
+define({r:0.5,st:'Stem',n:1,t:[0,71],u:['../Content/Admin/AdapterRetrieval.htm'],s:['$','getpropertydefinit','save'],p:[['$',23],['application',8],['completed',83],['example',59],['important',55],['meta',67],['policies',13],['returns',17],['specify',59],['traffic',4]]});

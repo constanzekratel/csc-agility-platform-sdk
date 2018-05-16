@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Open Source Compliance for Service Adapters</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Open Source Compliance for Service Adapters</span>
+        </div>
+        <h2>Open Source Compliance for Service Adapters</h2>
+        <p class="Body">Adapters that implement functionality using the <span class="AgilityDocsProductName">Agility Platform</span> Services SDK have open source license requirements that must be met before the adapter release and distribution. Because an adapter is installed and used within <span class="AgilityDocsProductName">Agility Platform</span>,   this requirement extends beyond a standard open source license consideration.  With an implementation scope that is larger than the adapter component, license violations can impact the <span class="AgilityDocsProductName">Agility Platform</span> itself.</p>
+        <p class="Body">Every service adapter author is required to ensure that their components are properly licensed.  This includes the following:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">Selecting a license type for your adapter component.  Adapters may be open source or closed (proprietary) source.  If selecting open source, <span class="AgilityDocsCompanyName">DXC Technology</span> recommends using a commonly-acceptable license, such as MIT, BSD, Apache, or Eclipse.  Closed source commercial licenses are also acceptable.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Code used to implement the service adapter must not be stolen, copied, or re-used from copyrighted or licensed open source code, except where permitted by the copyright owner.  Where using publicly available code, from forums such as stackoverflow, the adapter author is solely responsible for ensuring that copyright and license requirements are met.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">All third-party libraries that are referenced/linked by the service adapter <span class="Bold">must</span> be vetted for license compliance. The adapter author is solely responsible for ensuring that their adapter meets all terms required by the included or referenced libraries, such as attribution or limits on distributions.</td>
+            </tr>
+        </table>
+        <p class="Important" data-mc-autonum="Important: &#160;"><span class="autonumber"><span class="Note">Important: &#160;</span></span>Some third-party library providers are not diligent about their inclusion of libraries or dependencies. For example, although licensed as Apache 2.0, a library could have unknowingly included a dependent component that is GPL.  When this occurs, the GPL component contaminates the consuming component, as well as any upstream consuming components.</p>
+        <p class="SubHead">Expressly prohibited licenses</p>
+        <p class="Body">The following licenses are expressly prohibited for use  within <span class="AgilityDocsProductName">Agility Platform</span>&#160;service adapters, and from dependent libraries used by service adapters:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">GPL 2.0 - GNU Public License</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">GPL 3.0</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">AGPL - Afferro GPL</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">LGPL - Limited GPL</td>
+            </tr>
+        </table>
+        <p class="SubHead">Acceptable licenses</p>
+        <p class="Body">The following licenses are expressly allowed and preferred for use within <span class="AgilityDocsProductName">Agility Platform</span>&#160;service adapters, and from dependent libraries used by service adapters:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">MIT</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">BSD</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Apache 2.0</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Eclipse Foundation License</td>
+            </tr>
+        </table>
+        <p class="SubHead" data-mc-conditions="Global.Brand_SM">Other licenses</p>
+        <p class="Body" data-mc-conditions="Global.Brand_SM">The service adapter author should vet all other licenses using knowledgeable advisors. <span class="AgilityDocsCompanyName">DXC Technology</span>&#160;suggests the following advisors:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">DXC Open Source Program</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="AgilityDocsProductName">Agility Platform</span> security team</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Source Auditor - <span class="URL">http://www.sourceauditor.com/</span></td>
+            </tr>
+        </table>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

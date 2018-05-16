@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview|Asysnchronous Results" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>promise.flatMap</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_sdkframework.htm">Asysnchronous Results</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">FlatMap</span>
+        </div>
+        <h3>promise.flatMap</h3>
+        <p class="Body">In many cases, implementing an SDK&#160;entry point requires multiple calls into the service provider. Each of the individual calls should be implemented to return a promise to the intermediate result. The results can then be combined using <span class="Code">flatMap</span>, as demonstrated in the following code example:</p>
+        <div class="CodeSample">
+            <p class="Code">//</p>
+            <p class="Code">// Attach subnet to the load balancer</p>
+            <p class="Code">//</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">private Promise&lt;InstanceResponse&gt; enableSubnets(final InstanceRequest request, List&lt;String&gt; subnetIds)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">try</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent2">final AWSConnection connection = _factory.getConnection(request);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">... // code removed</p>
+            <p class="Code">&#160;</p>
+            <p class="CodeIndent">Promise&lt;AttachLoadBalancerToSubnetsResponse&gt; promise = connection.execute(params, AttachLoadBalancerToSubnetsResponse.class);</p>
+            <p class="CodeIndent">return promise.flatMap(new Function&lt;AttachLoadBalancerToSubnetsResponse, Promise&lt;InstanceResponse&gt;&gt;()</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">@Override</p>
+            <p class="CodeIndent">public Promise&lt;InstanceResponse&gt; invoke(AttachLoadBalancerToSubnetsResponse lbResponse) {</p>
+            <p class="CodeIndent2">return registerInstance(request);</p>
+            <p class="Code">}</p>
+            <p class="Code">});</p>
+            <p class="Code">}</p>
+            <p class="Code">catch(Throwable t)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">// returns a completed promise that is failed</p>
+            <p class="CodeIndent">return Promise.pure(t);</p>
+            <p class="Code">}</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="Body"> After the subnets associated with the instance are added to the load balancer, it executes the registerInstance call. <span class="Code">promise.flatMap</span> wraps the current promise with a promise that completes when the promise returned by the mapping function completes.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

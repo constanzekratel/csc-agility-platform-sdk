@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview|Application Service Design and Deployment" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Service Lifecycle Orchestration</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_framework.htm">Application Service Design and Deployment</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Service Lifecycle Orchestration</span>
+        </div>
+        <h2>Service Lifecycle Orchestration</h2>
+        <p class="Body">Upon deployment of a blueprint, the deployment policy is evaluated and a mapping established between the user-specified service requirements and a configured service provider. <span class="AgilityDocsProductName">Agility Platform</span>&#160;establishes this mapping as a service binding  when it creates the corresponding runtime representation of the blueprint. At the time of deployment, it invokes an entry point in the service adapter to allow a service instance to be created by the adapter if required. For example, this could correspond to a virtual load balancer instance or a database account.</p>
+        <p class="Body">The following diagram illustrates the service orchestration performed by the <span class="AgilityDocsProductName">Agility Platform</span>.</p>
+        <p class="Body">
+            <img src="../Resources/Images/Services/aserviceframeworkorchestration_750x316.png" class="WiderOnline" style="width: 750;height: 316;" />
+        </p>
+        <p class="Body">When lifecycle operations are invoked on instances corresponding to the binding, equivalent operations are invoked on the service adapter to enable the adapter to inject configuration into the instance, modify the external service instance (such as adding a VM&#160;instance to a load balancer), and any other operational requirements. These operations would be invoked from the existing VM&#160;instance-provisioning workflows as asynchronous activities that call out to the Services framework.</p>
+        <p class="Body">&#160;</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

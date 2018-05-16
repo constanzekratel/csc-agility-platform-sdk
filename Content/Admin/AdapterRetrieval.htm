@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview|Service Adapters" data-mc-conditions="Global.DocType_API,Global.DocType_WebApps,Global.DocType_SDKs" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Retrieving Information About Installed Adapters</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="../Services/AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="../Services/ServiceSDK_frameworkServiceAdapters.htm">Service Adapters</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Retrieving Information About Installed Adapters</span>
+        </div>
+        <h3>Retrieving Information About Installed Adapters</h3>
+        <p class="Body">
+            <MadCap:conditionalText data-mc-conditions="Global.DocType_SDKs">The <span class="AgilityDocsProductName">Agility Platform</span>&#160;administrator installs a service adapter to provide the needed integration with a third-party service provider. To manage and track the developer and versions for these adapters, the </MadCap:conditionalText><span class="AgilityDocsProductName">Agility Platform</span> <span class="AgilityDocsProductName_API">REST&#160;API</span>&#160;provides a method that administrators can use to return information about the installed adapters on <MadCap:conditionalText data-mc-conditions="Global.DocType_SDKs">their.</MadCap:conditionalText><span class="AgilityDocsProductName">Agility Platform</span>. </p>
+        <p class="Security" data-mc-autonum="Security: &#160;"><span class="autonumber"><span class="Note">Security: &#160;</span></span>This operation requires that the user be a member of the default <span class="Italic">admin</span> user group defined in the <span class="AgilityDocsProductName">Agility Platform</span>.</p>
+        <p class="Body">Use the GET&#160;/adapter operation to return an <span class="Italic">AdapterInfoList</span> object, such as the following example:</p>
+        <p class="Body"><span class="Code">GET https://&lt;<span class="AgilityDocsBaseHost">agility_ip</span>&gt;:8443/agility/api/&lt;<span class="AgilityDocsAPIVersion">3.3</span>&gt;/adapter</span>
+        </p>
+        <p class="Body">The returned <span class="Italic">AdapterInfoList</span> contains an <span class="Italic">AdapterInfo</span> object for each installed bundle that has "adapter" in its symbolic name, similar to the following example:</p>
+        <p class="Body"><span class="Code">&lt;?xml version="1.0" encoding="UTF-8" standalone="yes"?&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;AdapterInfoList xmlns="http://servicemesh.com/agility/api"&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;adapterInfo&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;symbolicName&gt;com.servicemesh.agility.adapters.cloud.azure-2.0.0&lt;/symbolicName&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;3.0.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;Agility - Azure Cloud Adapter&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;vendor&gt;Unknown&lt;/vendor&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;category&gt;"adapter:cloud"&lt;/category&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.api.script&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.api&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;3.1.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.cloud.helper&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;3.1.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.cloud.msgs&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;3.1.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.cloud.spi&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;3.1.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.async&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body">&lt;/<span class="Code">dependencies&gt;</span></p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.hash&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.heap&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.list&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.search&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.sort&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections.vector&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.collections&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.messaging&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.reactor&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.io.http&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.io.proxy&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/adapterInfo&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;adapterInfo&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;symbolicName&gt;com.servicemesh.agility.adapters.service.azure.<br />trafficmanager&lt;/symbolicName&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;Agility - Azure Traffic Manger Service Provider&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;vendor&gt;DXC Agility Dev&lt;/vendor&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;category&gt;"adapter:service"&lt;/category&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;description&gt;Agility adapter to the Microsoft Azure Traffic Manager service. Revision r89.ae72f22.&lt;/description&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.adapters.core.azure.exception&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.adapters.core.azure.util&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.adapters.core.azure&lt;/name&gt;</span>
+        </p>
+        <p class="Body">&lt;version&gt;1.0.0&lt;/version&gt;</p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.api&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.distributed.sync&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.service.exception&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.service.msgs&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.service.operations&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.service.spi&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.agility.sdk.service.util&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.async&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.messaging&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;version&gt;1.0.0&lt;/version&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.core.reactor&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.io.http&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;name&gt;com.servicemesh.io.proxy&lt;/name&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/dependencies&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/adapterInfo&gt;</span>
+        </p>
+        <p class="Body"><span class="Code">&lt;/AdapterInfoList&gt;</span>
+        </p>
+        <p class="Body">Each <span class="Italic">AdapterInfo</span> object contains the following fields:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ "><span class="Bold">symbolicName</span> - Symbolic name used to uniquely identify an adapter (along with the with version).</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">version</span> - Version qualifier used to uniquely identify an adapter (along with the with the symbolic name).</td>
+            </tr>
+        </table>
+        <p class="BulletedCont"> If the adapter has no version information, this value defaults to <span class="Code">0.0.0</span>.</p>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">name</span> - Human-readable, textual name of an adapter.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">vendor</span> - Human-readable, textual name that specifies the vendor of an adapter.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">category</span> -  The category (type) of adapter, such as "adapter:service" or "adapter:cloud".</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">description</span> - Human-readable, textual description of an adapter.</td>
+            </tr>
+        </table>
+        <p class="BulletedCont">Not all Adapters have a description.</p>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Bold">dependencies</span> - List of package dependencies for an adapter.</td>
+            </tr>
+        </table>
+        <p class="BulletedCont">This is a list of <span class="Italic">PackageInfo</span> objects that have two fields (Name and Version). The version field is optional. Not all Adapters have dependencies.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

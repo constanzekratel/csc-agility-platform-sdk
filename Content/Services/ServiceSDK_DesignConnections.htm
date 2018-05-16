@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration|Design Connection Asset Type" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Supporting Connections for a Service</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceConnectionAssetType.htm">Design Connection Asset Type</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Supporting Connections for a Service</span>
+        </div>
+        <h4>Supporting Connections for a Service</h4>
+        <p class="Body">Blueprint designers define relationships between blueprint design elements using connections. A connection indicates the systems on which a VM relies for script variable values or services. A dependent node cannot start until all dependencies have successfully executed all startup scripts. Additionally, if a dependency stops or restarts, all dependent nodes execute all reconfigure scripts included in assigned packages. </p>
+        <p class="Body">By default, the <span class="AgilityDocsProductName">Agility Platform</span>&#160;installs with two basic design connections defined:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">Workload -&gt; Workload: a workload can depend on another workload</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Workload -&gt; Blueprint: a workload can depend on an embedded blueprint</td>
+            </tr>
+        </table>
+        <p class="Body">A service adapter should define the valid connections between an application service and the workloads, child blueprints, and other application services that are supported within a blueprint design. For a subtype of the Design Item supertype, you can define the valid source/destination connections that will be supported in the Blueprint editor. </p>
+        <p class="Body">To support a connection to or from the service, you create a <span class="Code">ConnectionDefiniton</span>. For all connections, the Source asset depends on the Destination asset. In the <span class="AgilityDocsProductName">Agility Platform</span> user interface, the destination is the asset with the head of the arrow.</p>
+        <p class="Body">To define a connection, will must populate the following five fields at a minimum:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 143px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Field</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Usage</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Name</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">The internal name of the connection</p>
+                        <p class="CellBody">It is recommended that you use a hyphen delimited name where the name is the type of the source DesignItem followed by the type of the destination DesignItem. For example, <span class="Code">workload-service</span> would be a connection from a workload to a service.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Display Name</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">The name of the connection that is displayed in the <span class="AgilityDocsProductName">Agility Platform</span> user interface (Blueprint Editor)</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Source Type</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">A Link to the type of the source DesignItem</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Destination Type</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">A Link to the type of the destination DesignItem</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBody">Connection Type</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBody">A Link to the type of the connection</p>
+                        <p class="CellBody">You should use the DesignConnection type if you do not need a custom connection type.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_DesignConnectionType.htm">Defining a Service Connection</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_DesignConnectionTypeCustom.htm">Using a Custom Design Connection Type</a>
+            </p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

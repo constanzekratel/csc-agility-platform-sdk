@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration|Guidelines for Service Adapter Development" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Adapter Naming Conventions</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_Guidelines.htm">Guidelines for Service Adapter Development</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Adapter Naming Conventions</span>
+        </div>
+        <h3>Adapter Naming Conventions</h3>
+        <p class="Body">Use the following guidelines to define the adapter within the Adapter MANIFEST.MF file: </p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ "><![CDATA[
+
+]]><span class="Italic">Bundle-Version</span>: Specify the adapter version, with an initial adapter version of "1.0.0" </td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Italic">Bundle-Vendor</span>: Designate the organization that developed the adapter.</td>
+            </tr>
+        </table>
+        <p class="BulletedCont">The development group should determine the appropriate designation to identify their development group and use it consistently. This will fall into one of three categories:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• ">Adapters developed by  the core <span class="AgilityDocsProductName">Agility Platform</span> or <span class="AgilityDocsProductName">Agility Platform</span> adapters teams, which is designated by <span class="Code"><span class="AgilityDocsCompanyName">DXC Technology</span> Agility Dev</span>.
+</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_BulletedIndented" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• ">Adapters developed by other groups within <span class="AgilityDocsCompanyName">DXC Technology</span>, which should be designated appropriately (such as <span class="Code">EBG&#160;Pro Serve</span> for a Professional Services teams)
+</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_BulletedIndented" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• ">Adapters developed by third parties outside of <span class="AgilityDocsCompanyName">DXC Technology</span>, which should  be designated by organization name and business line, if applicable (such as <span class="Code">EMC VIPR</span>, <span class="Code">F5 BigIP</span>, or <span class="Code">Frysoft</span>)</td>
+            </tr>
+        </table>
+        <p class="Note" data-mc-autonum="Note: &#160;"><span class="autonumber"><span class="Note">Note: &#160;</span></span>The vendor information for the adapter will be used to determine any Support agreements that are in place, including those specified by contractual relationships with partners or through paid, custom Professional Services projects.</p>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Italic">Bundle-Category</span>:  Use one of the following as an identifier for the adapter type:</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_BulletedIndented" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• "><span class="Code">"adapter:service"</span> identifies a bundle containing an adapter to support a service</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_BulletedIndented" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• "><span class="Code">"adapter:cloud"</span> for a bundle containing an adapter to support a cloud provider</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_BulletedIndented" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 25px;" />
+            <col style="width: 5px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">• </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="• "><span class="Code">"adapter:core"</span> for a bundle containing core functionality that can be  utilized by a service or cloud adapter</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Italic">Bundle-Description</span>: Include build information within the text, which makes it available via the <span class="Code">GET /adapters</span> REST call. </td>
+            </tr>
+        </table>
+        <p class="BulletedCont">For more information about using this REST&#160;API&#160;operation and the return object, see <a href="../Admin/AdapterRetrieval.htm" class="Heading_And_Page MCXref xref xrefHeading_And_Page">Retrieving Information About Installed Adapters</a>. </p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|ServiceAdapter Class and SPI Interfaces" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>JAXBContext for Vendor API</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ServiceAdapterClassSPI.htm">ServiceAdapter Class and SPI Interfaces</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">JAXBContext for Vendor API</span>
+        </div>
+        <h3>JAXBContext for Vendor API</h3>
+        <p class="Body">Many cloud vendors provide an HTTP/REST API for administering a service. As a result, a common pattern for service adapters is the serialization/deserialization of vendor objects via the Java Architecture for XML Binding (JAXB). To effectively run within an OSGi context, it is advisable to retain a JAXBContext for serialization operations.</p>
+        <p class="Body">The following simplified schema provides an illustration of this implementation:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</p>
+            <p class="Code">&lt;xsd:schema</p>
+            <p class="CodeIndent">xmlns:xsd="http://www.w3.org/2001/XMLSchema"</p>
+            <p class="CodeIndent2">xmlns:jaxb="http://java.sun.com/xml/ns/jaxb"</p>
+            <p class="CodeIndent2">xmlns:xjc="http://java.sun.com/xml/ns/jaxb/xjc"</p>
+            <p class="CodeIndent2">xmlns:example="http://schemas.vendor.com/exampleservice"</p>
+            <p class="CodeIndent2">targetNamespace="http://schemas.vendor.com/exampleservice"</p>
+            <p class="CodeIndent2">elementFormDefault="qualified"</p>
+            <p class="CodeIndent2">attributeFormDefault="unqualified"</p>
+            <p class="CodeIndent2">jaxb:extensionBindingPrefixes="xjc"</p>
+            <p class="CodeIndent2">jaxb:version="2.0"&gt;<br /><br /></p>
+            <p class="CodeIndent">&lt;xsd:annotation&gt;</p>
+            <p class="CodeIndent2">&lt;xsd:appinfo&gt;</p>
+            <p class="CodeIndent3">&lt;jaxb:globalBindings&gt;</p>
+            <p class="CodeIndent4">&lt;xjc:simple /&gt;</p>
+            <p class="CodeIndent4">&lt;jaxb:serializable uid="1"/&gt;</p>
+            <p class="CodeIndent3">&lt;/jaxb:globalBindings&gt;</p>
+            <p class="CodeIndent4">&lt;jaxb:schemaBindings&gt;</p>
+            <p class="CodeIndent4">&lt;jaxb:package name="com.vendor.schemas.example.service"/&gt;</p>
+            <p class="CodeIndent3">&lt;/jaxb:schemaBindings&gt;</p>
+            <p class="CodeIndent2">&lt;/xsd:appinfo&gt;</p>
+            <p class="CodeIndent">&lt;/xsd:annotation&gt;<br /><br /></p>
+            <p class="CodeIndent">&lt;xsd:element name="ServiceError" type="example:ServiceError"/&gt;</p>
+            <p class="CodeIndent">&lt;xsd:complexType name="ServiceError"&gt;</p>
+            <p class="CodeIndent2">&lt;xsd:sequence&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:element name="Id" type="xsd:integer"/&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:element name="Message" type="xsd:string"/&gt;</p>
+            <p class="CodeIndent2">&lt;/xsd:sequence&gt;</p>
+            <p class="CodeIndent">&lt;/xsd:complexType&gt;<br /><br /></p>
+            <p class="CodeIndent">&lt;xsd:element name="Service" type="example:Service"/&gt;</p>
+            <p class="CodeIndent">&lt;xsd:complexType name="Service"&gt;</p>
+            <p class="CodeIndent2">&lt;xsd:sequence&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:element name="Name" type="xsd:string" minOccurs="0"/&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:element name="Status" type="example:Status" minOccurs="0"/&gt;</p>
+            <p class="CodeIndent2">&lt;/xsd:sequence&gt;</p>
+            <p class="CodeIndent">&lt;/xsd:complexType&gt;<br /><br /></p>
+            <p class="CodeIndent">&lt;xsd:simpleType name="Status"&gt;</p>
+            <p class="CodeIndent2">&lt;xsd:restriction base="xsd:string"&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:enumeration value="Up"/&gt;</p>
+            <p class="CodeIndent3">&lt;xsd:enumeration value="Down"/&gt;</p>
+            <p class="CodeIndent2">&lt;/xsd:restriction&gt;</p>
+            <p class="CodeIndent">&lt;/xsd:simpleType&gt;</p>
+            <p class="Code">&lt;/xsd:schema&gt;</p>
+            <p class="Body">The service adapter generates JAXB classes from this schema at build time. At runtime, the adapter retains a JAXBContext for its serialization operations.</p>
+            <p class="Code">import java.io.ByteArrayOutputStream;</p>
+            <p class="Code">import javax.xml.bind.JAXBContext;</p>
+            <p class="Code">import javax.xml.bind.Marshaller;</p>
+            <p class="Code">import com.vendor.schemas.example.service.ServiceError;</p>
+            <p class="Code">import com.servicemesh.io.http.HttpClientException;</p>
+            <p class="Code">import com.servicemesh.io.http.HttpUtil;</p>
+            <p class="Code">import com.servicemesh.io.http.IHttpResponse;</p>
+            <p class="Code">public class MyEndpoint</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">private static class ContextHolder</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">private static final JAXBContext CONTEXT = getContext();</p>
+            <p class="CodeIndent2">private static JAXBContext getContext()</p>
+            <p class="CodeIndent2">{</p>
+            <p class="CodeIndent3">ClassLoader cl = Thread.currentThread().getContextClassLoader();</p>
+            <p class="CodeIndent3">try {</p>
+            <p class="CodeIndent4">Thread.currentThread().setContextClassLoader(ServiceError.class.getClassLoader());</p>
+            <p class="CodeIndent4">return JAXBContext.newInstance(ServiceError.class.getPackage().getName());</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">catch(Exception ex) {</p>
+            <p class="CodeIndent4">logger.error(ex);</p>
+            <p class="CodeIndent4">return null;</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">finally {</p>
+            <p class="CodeIndent4">Thread.currentThread().setContextClassLoader(cl);</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">public &lt;T&gt; T deserialize(IHttpResponse response, Class&lt;T&gt; responseClass)</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">if (responseClass.isInstance(response))</p>
+            <p class="CodeIndent3">return responseClass.cast(response);<br /><br /></p>
+            <p class="CodeIndent2">Object object = HttpUtil.decodeObject(response.getContent(), null, ContextHolder.CONTEXT);</p>
+            <p class="CodeIndent2">if(responseClass.isInstance(object)) {</p>
+            <p class="CodeIndent3">return responseClass.cast(object);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">else if (object instanceof ServiceError) {</p>
+            <p class="CodeIndent3">ServiceError errorResponse = (ServiceError)object;</p>
+            <p class="CodeIndent3">throw new RuntimeException(errorResponse.getMessage());</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">throw new RuntimeException("Unable to decode response");</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">public String serialize(Object obj)</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">ByteArrayOutputStream os = new ByteArrayOutputStream();</p>
+            <p class="CodeIndent2">try {</p>
+            <p class="CodeIndent3">Marshaller marshaller = ContextHolder.CONTEXT.createMarshaller();</p>
+            <p class="CodeIndent3">marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);</p>
+            <p class="CodeIndent3">marshaller.marshal(obj, os);</p>
+            <p class="CodeIndent3">return os.toString();</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">catch (Exception ex) {</p>
+            <p class="CodeIndent3">throw new RuntimeException("Unable to encode object: " + ex.getMessage());</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

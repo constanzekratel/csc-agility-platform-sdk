@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview" data-mc-conditions="Global.DocType_SDKs,Global.DocType_Services,Global.DocType_WebApps" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ServiceAdapterInstallation</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Installing and Updating Service Adapters</span>
+        </div>
+        <p class="Body">
+            <MadCap:conditionalText data-mc-conditions="Global.DocType_SDKs">During service adapter development, you can install an adapter bundle to test the adapter functionality in the <span class="AgilityDocsProductName">Agility Platform</span> installation that is running in your testing environment. </MadCap:conditionalText>After you install a service adapter, you can log in to the <span class="AgilityDocsProductName">Agility Platform</span> UI and select the <span class="Bold">Assets</span> item in the <span class="Bold">Admin</span> perspective. The  configured asset types list includes the Asset Types created by the services adapter. </p>
+        <p class="Body">It is a best  practice is to have the adapter code consume the resource properties file generated at build time and include versioning data in the description attribute for the asset type. After a service adapter update, you should be able to verify this information for the affected asset types. </p>
+        <p class="SubHead">Initial adapter installation</p>
+        <p class="Body">For the initial adapter installation, copy the built RPM to the <span class="AgilityDocsProductName">Agility Platform</span> and run a command similar to the following RHEL RPM command:</p>
+        <p class="Body"><span class="Code">$ sudo rpm -ivh agility-adapters-azure-trafficmanager-1.0-0.r89.ae72f22.noarch.rpm</span>
+        </p>
+        <p class="Body"><span class="Code">Preparing... ########################################### [100%]</span>
+        </p>
+        <p class="Body"><span class="Code">1:agility-adapters-azure-########################################### [100%]</span>
+        </p>
+        <p class="Body">The installed package includes the versioning information from the build similar to the following:</p>
+        <p class="Body"><span class="Code">$ rpm -qa | grep trafficmanager</span>
+        </p>
+        <p class="Body"><span class="Code">agility-adapters-azure-trafficmanager-1.0-0.r89.ae72f22</span>
+        </p>
+        <p class="Body">This command places the  adapter jar in the <span class="AgilityDocsProductName">Agility Platform</span> deploy directory:</p>
+        <p class="Body"><span class="Code">$ ls -ltr /opt/agility-platform/deploy/*trafficman*</span>
+        </p>
+        <p class="Body"><span class="Code">-rw-r--r-- 1 smadmin smadmin 439499 Apr 14 12:20 /opt/agility-platform/deploy/com.servicemesh.agility.adapters.service.azure.trafficmanager-1.0.0.jar</span>
+        </p>
+        <p class="SubHead">Simple service adapter update</p>
+        <p class="Body">Use the following RHEL RPM command to update a service adapter when there are minor changes such as bug fixes:</p>
+        <p class="Body"><span class="Code">$ sudo rpm -Uvh agility-adapters-azure-trafficmanager-1.0-0.r91.6288ee6.noarch.rpm</span>
+        </p>
+        <p class="Body"><span class="Code">Preparing... ########################################### [100%]</span>
+        </p>
+        <p class="Body"><span class="Code">1:agility-adapters-azure-########################################### [100%]</span>
+        </p>
+        <p class="Body">This command replaces the older jar and <span class="AgilityDocsProductName">Agility Platform</span> immediately starts running with the updated code:</p>
+        <p class="Body"><span class="Code">$ rpm -qa | grep trafficmanager</span>
+        </p>
+        <p class="Body"><span class="Code">agility-adapters-azure-trafficmanager-1.0-0.r91.6288ee6</span>
+        </p>
+        <p class="Body"><span class="Code">$ ls -ltr /opt/agility-platform/deploy/*trafficman*</span>
+        </p>
+        <p class="Body"><span class="Code">-rw-r--r-- 1 smadmin smadmin 439509 Apr 16 12:35 /opt/agility-platform/deploy/com.servicemesh.agility.adapters.service.azure.trafficmanager-1.0.0.jar</span>
+        </p>
+        <p class="SubHead">Restarting the service framework bundle</p>
+        <p class="Body">The update command is essentially a reinstall of the bundle. A service adapter bundle interacts with the rest of the <span class="AgilityDocsProductName">Agility Platform</span> through the service framework bundle. </p>
+        <p class="Body">If you find issues after you reinstall an adapter with significant changes, restart the service framework bundle using the following:</p>
+        <p class="Body"><span class="Code">$ ssh -p 8022 karaf@127.0.0.1</span>
+        </p>
+        <p class="Body"><span class="Code">Password:</span>
+        </p>
+        <p class="Body"><span class="Code">__ __                  ____</span>
+            <br /><span class="Code">/ //_/____ __________ _/ __/</span>
+            <br /><span class="Code">/ ,&lt;  / __ `/ ___/ __ `/ /_</span>
+            <br /><span class="Code">/ /| |/ /_/ / /  / /_/ / __/</span>
+            <br /><span class="Code">/_/ |_|\__,_/_/   \__,_/_/</span>
+        </p>
+        <p class="Body"><span class="Code">Apache Karaf (3.0.1)</span>
+        </p>
+        <p class="Body"><span class="Code">Hit '&lt;tab&gt;' for a list of available commands</span>
+        </p>
+        <p class="Body"><span class="Code">and '[cmd] --help' for help on a specific command.</span>
+        </p>
+        <p class="Body"><span class="Code">Hit 'system:shutdown' to shutdown Karaf.</span>
+        </p>
+        <p class="Body"><span class="Code">Hit '&lt;ctrl-d&gt;' or type 'logout' to disconnect shell from current session.</span>
+        </p>
+        <p class="Body"><span class="Code">karaf@root()&gt; list -s | grep framework</span>
+        </p>
+        <p class="Body"><span class="Code">149 | Active | 60 | 1.0.0 | com.servicemesh.agility.adapters.service.framework</span>
+        </p>
+        <p class="Body"><span class="Code">karaf@root()&gt; restart 149</span>
+        </p>
+        <p class="Body"><span class="Code">15:19:31.408 [Karaf Console ssh user karaf] INFO c.s.core.async.AsyncService - Sent request id=1</span>
+        </p>
+        <p class="Body"><span class="Code">...</span>
+        </p>
+        <p class="SubHead">Updating a service adapter version</p>
+        <p class="Body">If the service adapter update is a new major or minor version, do not reinstall the adapter over the existing one. Before you use the service adapter installation command, first remove the old version. The following is an example of a removal and install:</p>
+        <p class="Body"><span class="Code">$ sudo rpm -e agility-adapters-azure-trafficmanager-1.0-0.r91.6288ee6</span>
+        </p>
+        <p class="Body"><span class="Code">$ sudo rpm -ivh agility-adapters-azure-trafficmanager-3.2-0.r108.bf83e21.noarch.rpm</span>
+        </p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

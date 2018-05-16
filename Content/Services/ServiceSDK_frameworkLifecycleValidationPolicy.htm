@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview|Policy Support" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Lifecycle Policies</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_frameworkPolicies.htm">Policy Support</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Lifecycle Policies</span>
+        </div>
+        <h3>Lifecycle Policies</h3>
+        <p class="Body">Lifecycle policies can be used to govern a service instance for the following service instance CRUD&#160;and compute lifecycle events:</p>
+        <table class="TableStyle-PlainLines" style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" cellspacing="0">
+            <col style="width: 121px;" class="Column-Column1" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Event</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Definition</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Create</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">The initial creation of a service instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Update</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Any update (modification)&#160;of an existing service instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Delete</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Removal of an existing asset</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Provision</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Creation of runtime service instance asset and service binding</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Release</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Release of the service instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Start</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Start of the service instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBody">Restart</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBody">Restart of the service instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBody">Stop</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBody">Stop of the service instance</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="SubHead">Lifecycle validation example</p>
+        <p class="Body">You can apply a Lifecycle Validation policy to govern service instance prior to the supported instance lifecycle events. The following example will enforce that any service instance created must start with "ServiceInstance" in the name.</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;LifecycleCallout&gt;</p>
+            <p class="Code">&lt;assetType&gt;serviceinstance&lt;/assetType&gt;</p>
+            <p class="Code">&lt;lifecycleEvent&gt;Create&lt;/lifecycleEvent&gt;</p>
+            <p class="Code">&lt;script&gt;&lt;![CDATA[var name = agility.params.get("this").getName();</p>
+            <p class="Code">name != null &amp;&amp; name.startsWith("ServiceInstance");]]&gt;&lt;/script&gt;</p>
+            <p class="Code">&lt;/LifecycleCallout&gt;</p>
+        </div>
+        <p class="SubHead">Lifecycle PostProcess example</p>
+        <p class="Body">You can apply a LifecyclePostProcess policy to govern service instance after the supported instance lifecycle events. The following example will enforce that any service instance provisioned will have "ProvisionTest" added to its name.</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;LifecycleCallout&gt;</p>
+            <p class="Code">&lt;assetType&gt;serviceinstance&lt;/assetType&gt;</p>
+            <p class="Code">&lt;lifecycleEvent&gt;Provision&lt;/lifecycleEvent&gt;</p>
+            <p class="Code">&lt;script&gt;&lt;![CDATA[var asset = agility.params.get("this");</p>
+            <p class="Code">api=agility.getApi();</p>
+            <p class="Code">asset.setName(asset.getName() + " ProvisionTest");</p>
+            <p class="Code">api.update(asset);]]&gt;&lt;/script&gt;</p>
+            <p class="Code">&lt;/LifecycleCallout&gt;</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|Service Provider (IServiceProvider)" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ServiceProviderRequest Class</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_IServiceProvider.htm">Service Provider (IServiceProvider)</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">ServiceProviderRequest Class</span>
+        </div>
+        <h3>ServiceProviderRequest Class</h3>
+        <p class="Body">The Services SDK <span class="Code">ServiceProviderRequest</span> class is the basis for the parameter to the IServiceProvider methods. The <span class="Code">ServiceProviderRequest</span> methods provide information to the service adapter:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 168px;" />
+            <col class="Column-Column1" style="width: 171px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getProvider()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">ServiceProvider</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getSettings()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Property&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns zero or more configuration Property objects as specified by the service adapter RegistrationRequest</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getClouds()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Cloud&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the cloud(s) associated with the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getProxies()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Proxy&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns zero or more proxies used to configure communications with the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getLocations()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Location&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns zero or more locations associated with the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getNetworks()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Network&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns zero or more networks associated with the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviderTypes()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceProviderType&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a list of all service provider types used by assets associated with a provided service</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviders()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceProvider&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a list of all service providers used by assets associated with a provided service</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Note" data-mc-autonum="Note: &#160;"><span class="autonumber"><span class="Note">Note: &#160;</span></span>The <span class="Code">ServiceProviderType</span> and <span class="Code">ServiceProvider</span> lists for associated assets is passed to a service adapter so that it can optionally collaborate with them during an operation.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|The Reactor-Promise Design Pattern" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Promise Status Methods</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ReactorPromiseDesign.htm">The Reactor-Promise Design Pattern</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Promise Status Methods</span>
+        </div>
+        <h3>Promise Status Methods</h3>
+        <p class="Body">Use the following methods to retrieve status information for a <span class="Code">Promise</span>:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">isCancelled()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Boolean</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns true if the request was canceled</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">isCompleted()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Boolean</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns true if the request completed </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">isFailed()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">Boolean</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns true if the request completed with a failure</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">You can use the return values for these methods in combination to determine specific information about a  <span class="Code">Promise</span>:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">State</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">isCancelled()</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">isCompleted()</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">isFailed()</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">In progress</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Completed after a failure</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">true</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Completed successfully</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">true</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">Canceled while in progress</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">true</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">false</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

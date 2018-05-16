@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|ServiceAdapter Class and SPI Interfaces" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ServiceAdapter Methods</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ServiceAdapterClassSPI.htm">ServiceAdapter Class and SPI Interfaces</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">ServiceAdapter Methods</span>
+        </div>
+        <h3>ServiceAdapter Methods</h3>
+        <p class="Body">The service adapter class <span class="BoldItalic">must</span> implement the following <span class="Code">ServiceAdapter</span> abstract methods:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 192px;" />
+            <col class="Column-Column1" style="width: 167px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviderTypes()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceProviderType&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the Service Provider Types to be registered as an OSGi service</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getRegistrationRequest()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">RegistrationRequest</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the metadata for the capabilities provided by the service adapter</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">onRegistration(RegistrationResponse response)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">void</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Called after adapter registration with the <span class="AgilityDocsProductName">Agility Platform</span> service framework</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviderOperations()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">IServiceProvider</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Required interface used to manage the service provider</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceInstanceOperations()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">IServiceInstance</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Required interface used to manage the lifecycle of bindings (service instances) to the service provider</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">For more information about the RegistrationRequest, see <a href="ServiceSDK_RegistrationRequest.htm" class="Heading_And_Page MCXref xref xrefHeading_And_Page">The RegistrationRequest Class and Object</a>.</p>
+        <p class="Body">The service adapter class can optionally choose to override the following <span class="Code">ServiceAdapter</span> methods:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 192px;" />
+            <col class="Column-Column1" style="width: 157px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getInstanceOperations()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">IInstanceLifecycle</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Implements hooks in instance lifecycle for workloads dependent on the service</p>
+                        <p class="CellBodyAPI">The default value is null.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceInstanceLifecycleOperations()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">IServiceInstanceLifecycle</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Implements hooks in service instance lifecycle for service instances dependent on the service</p>
+                        <p class="CellBodyAPI">The default value is null.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getConnectionOperations()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">IConnection</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Manages the lifecycle of connections to the service provider</p>
+                        <p class="CellBodyAPI">The default value is null.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">getAssetNotificationOperations()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">IAssetLifecyle</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Receives lifecycle (CRUD) notifications for specific asset types</p>
+                        <p class="CellBodyAPI">The default value is null.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

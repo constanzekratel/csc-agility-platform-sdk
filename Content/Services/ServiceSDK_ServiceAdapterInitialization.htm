@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|ServiceAdapter Class and SPI Interfaces" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>ServiceAdapter Initialization</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ServiceAdapterClassSPI.htm">ServiceAdapter Class and SPI Interfaces</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">ServiceAdapter Initialization</span>
+        </div>
+        <h3>ServiceAdapter Initialization</h3>
+        <p class="Body">The initialization sequence for the service adapter results in a notification to the <span class="Code">ServiceFramework</span> so that it can service as the proxy for later operations involving the service adapter.</p>
+        <p class="IAnchor">
+            <img src="../Resources/Images/Services/ServiceFrameworkInitialization.svg" class="WiderOnline" />
+        </p>
+        <p class="Body">The <span class="Code">RegistrationResponse</span> passed into <span class="Code">onRegistration</span> includes these methods:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 164px;" />
+            <col class="Column-Column1" style="width: 170px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getAssetTypes()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;AssetType&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the persisted Asset Types upon the completion of registration</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviderTypes()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceProviderType&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the persisted Service Provider Types upon the completion of registration</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceProviders()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceProvider&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns any existing Service Providers for the registered Service Provider Types</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">getClouds()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Cloud&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns any Clouds associated with existing Service Providers</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Note" data-mc-autonum="Note: &#160;"><span class="autonumber"><span class="Note">Note: &#160;</span></span>An empty implementation of <span class="Code">onRegistration</span> is valid if the adapter has no need to immediately work with the registered Service Provider Type(s).</p>
+        <p class="NoteContinue">Because they are only utilized on an as-needed basis for deployed assets associated with the service provided by the service adapter, the <span class="Code">getServiceInstanceLifecycleOperations()</span>, <span class="Code">getConnectionOperations()</span>, and <span class="Code">getAssetNotificationOperations()</span> methods are not called at registration time.</p>
+        <p class="Body">A service adapter class also has access to these <span class="Code">ServiceAdapter</span> methods:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 164px;" />
+            <col class="Column-Column1" style="width: 170px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceRegistry()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">ServiceRegistry</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a ServiceRegistry object that can be used to look up other <span class="AgilityDocsProductName">Agility Platform</span> services</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">createAsset(Asset asset, Asset parent)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise to create an Asset</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getAsset(String assetType, int id)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise to retrieve an Asset by its type name and identifier</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getAssets(String assetType, List&lt;Property&gt; params)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;List&lt;Asset&gt;&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise to retrieve an Asset list by its type name and optional search query parameters</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">updateAsset(Asset asset, Asset parent)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise to update an Asset</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">deleteAsset(Asset asset, Asset parent)</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise to delete an Asset</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration|Asset Type Properties|Property Validators" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Integer Properties with Validators</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ServiceProperties.htm">Asset Type Properties</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ServicePropertyValidators.htm">Property Validators</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Integer Properties with Validators</span>
+        </div>
+        <h4>Integer Properties with Validators</h4>
+        <p class="Body">The following example includes a  range validator to constrains the property values within known range(s):</p>
+        <div class="CodeSample">
+            <p class="Code">Link integerType = new Link();</p>
+            <p class="Code">integerType.setName("integer-any");</p>
+            <p class="Code">integerType.setType("application/" + PropertyType.class.getName() + "+xml");</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">PropertyDefinition rangePD = new PropertyDefinition();</p>
+            <p class="Code">rangePD.setName("ranged-property");</p>
+            <p class="Code">rangePD.setDisplayName("Ranged Property");</p>
+            <p class="Code">rangePD.setDescription("Example of an integer property with two allowed ranges");</p>
+            <p class="Code">rangePD.setReadable(true);</p>
+            <p class="Code">rangePD.setWritable(false);</p>
+            <p class="Code">rangePD.setMaxAllowed(1);</p>
+            <p class="Code">rangePD.setPropertyType(integerType);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">IntegerRange rangeOne = new IntegerRange();</p>
+            <p class="Code">rangeOne.setMin("0");</p>
+            <p class="Code">rangeOne.setMin("20");</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">IntegerRange rangeTwo = new IntegerRange();</p>
+            <p class="Code">rangeTwo.setMin("90");</p>
+            <p class="Code">rangeTwo.setMin("100");</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">IntegerRangeValidator rangeValidator = new IntegerRangeValidator();</p>
+            <p class="Code">rangeValidator.getRanges().add(rangeOne);</p>
+            <p class="Code">rangeValidator.getRanges().add(rangeTwo);</p>
+            <p class="Code">rangePD.setValidator(new FieldValidators());</p>
+            <p class="Code">rangePD.getValidator().getValidators().add(rangeValidator);</p>
+            <p class="Body">The following example includes a   scale validator to constrains the property values to a maximum according to the number of digits:</p>
+            <p class="Code">PropertyDefinition scalePD = new PropertyDefinition();</p>
+            <p class="Code">scalePD.setName("scaled-property");</p>
+            <p class="Code">scalePD.setDisplayName("Scaled Property");</p>
+            <p class="Code">scalePD.setDescription("Example of an integer property with max 3 digits");</p>
+            <p class="Code">scalePD.setReadable(true);</p>
+            <p class="Code">scalePD.setWritable(false);</p>
+            <p class="Code">scalePD.setMaxAllowed(1);</p>
+            <p class="Code">scalePD.setPropertyType(integerType);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">IntegerScaleValidator scaleValidator = new IntegerScaleValidator();</p>
+            <p class="Code">scaleValidator.setMaxDigits(3);</p>
+            <p class="Code">scalePD.setValidator(new FieldValidators());</p>
+            <p class="Code">scalePD.getValidator().getValidators().add(scaleValidator);</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

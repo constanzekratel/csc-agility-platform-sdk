@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|The Reactor-Promise Design Pattern" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>HttpClient with Promises</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ReactorPromiseDesign.htm">The Reactor-Promise Design Pattern</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">HttpClient with Promises</span>
+        </div>
+        <h3>HttpClient with Promises</h3>
+        <p class="Body">Use the Async HttpClient library to easily execute HTTP requests and asynchronously process the HTTP responses. <span class="Code">HttpClient</span> has one public method promise, which takes in a request of type <span class="Code">IHttpRequest</span> and returns a Promise of type <span class="Code">IHttpResponse</span>. </p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 162px;" />
+            <col class="Column-Column1" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">promise(final IHttpRequest request)</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">Promise&lt;IHttpResponse&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Executes a request of type IHttpRequest and returns a Promise of type IHttpResponse</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">The Promise call takes an HTTP request and returns a promise with a value of type <span class="Code">IHttpResponse</span>, such as the following:</p>
+        <div class="CodeSample">
+            <p class="Code">String uri = new String("http://www.csc.com");</p>
+            <p class="Code">IHttpRequest           request = HttpClientFactory.getInstance().createRequest(HttpMethod.GET, uri);</p>
+            <p class="Code">Promise&lt;IHttpResponse&gt; promise = httpClient.promise(request);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">IHttpResponse response = promise.get()</p>
+        </div>
+        <p class="Anchor">
+            <img src="../Resources/Images/Services/Promise_MessageFlowSynch.svg" />
+        </p>
+        <p class="Body">The following is an example of a Promise with callback:</p>
+        <div class="CodeSample">
+            <p class="Code">String uri = new String("http://www.csc.com");</p>
+            <p class="Code">IHttpRequest           request = HttpClientFactory.getInstance().createRequest(HttpMethod.GET, uri);</p>
+            <p class="Code">Promise&lt;IHttpResponse&gt; promise = httpClient.promise(request);</p>
+            <p class="Code">Promise&lt;String&gt; flatPromise = promise.flatMap(new function&lt;IHttpResponse, Promise&lt;String&gt;(){</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">public Promise&lt;R&gt; invoke(IHttpResponse response)</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">if (response.getStatusCode() != 200 ){</p>
+            <p class="CodeIndent3">return Promise.pure(new String("response error"));<br /><br /></p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">return Promise.pure(new String(response.getContent()));</p>
+            <p class="CodeIndent">}</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="Anchor">
+            <img src="../Resources/Images/Services/Promise_MessageFlowCallback.svg" />
+        </p>
+        <p class="Body">The following is an example of implementation of HTTP methods (Get, Post, Put, and Delete):</p>
+        <div class="CodeSample">
+            <p class="Code">@Override</p>
+            <p class="Code">public &lt;T&gt; Promise&lt;T&gt; get(String requestURI, QueryParams params, <br /> &#160;&#160;final Class&lt;T&gt; responseClass)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">return execute(HttpMethod.GET, requestURI, params, null, responseClass);</p>
+            <p class="Code">}</p>
+            <p class="Code">@Override</p>
+            <p class="Code">public &lt;T&gt; Promise&lt;T&gt; post(String requestURI, Object resource, <br /> &#160;&#160;final Class&lt;T&gt; responseClass)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">return execute(HttpMethod.POST, requestURI, null, resource, responseClass);</p>
+            <p class="Code">}</p>
+            <p class="Code">@Override</p>
+            <p class="Code">public &lt;T&gt; Promise&lt;T&gt; put(String requestURI, Object resource, <br /> &#160;&#160;final Class&lt;T&gt; responseClass)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">return execute(HttpMethod.PUT, requestURI, null, resource, responseClass);</p>
+            <p class="Code">}</p>
+            <p class="Code">@Override</p>
+            <p class="Code">public Promise&lt;IHttpResponse&gt; delete(String requestURI)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">return execute(HttpMethod.DELETE, requestURI, null, null, <br /> &#160;&#160;IHttpResponse.class);</p>
+            <p class="Code">}</p>
+            <p class="Code">&lt;T&gt; Promise&lt;T&gt; execute(HttpMethod method,<br /> &#160;&#160;&#160;String requestURI, <br /> &#160;&#160;&#160;QueryParams params, <br /> &#160;&#160;&#160;Object resource,<br /> &#160;&#160;&#160;final Class&lt;T&gt; responseClass)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">try {</p>
+            <p class="CodeIndent2">uri = getURI(requestURI, params);</p>
+            <p class="CodeIndent2">IHttpRequest request = <br /> &#160;&#160;HttpClientFactory.getInstance().createRequest(method, uri);</p>
+            <p class="CodeIndent2">addMsVersionHeader(request);</p>
+            <p class="Code">&#160;</p>
+            <p class="CodeIndent2">if (resource != null) {</p>
+            <p class="CodeIndent3">String content;</p>
+            <p class="CodeIndent3">if (resource instanceof java.lang.String)</p>
+            <p class="CodeIndent4">content = (String)resource;</p>
+            <p class="CodeIndent3">else</p>
+            <p class="CodeIndent4">content = _endpoint.encode(resource);</p>
+            <p class="CodeIndent3">addContentTypeHeader(request);</p>
+            <p class="CodeIndent3">request.setContent(content);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">if (_logger.isDebugEnabled()) {<br /> &#160;&#160;&#160;_logger.debug(method.getName() + " " + uri);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">Promise&lt;IHttpResponse&gt; promise = _httpClient.promise(request);</p>
+            <p class="CodeIndent2">if (responseClass.getCanonicalName()<br /> &#160;&#160;.equals(IHttpResponse.class.getCanonicalName()))</p>
+            <p class="CodeIndent3">return (Promise&lt;T&gt;)promise;</p>
+            <p class="CodeIndent2">else</p>
+            <p class="CodeIndent3">return promise.map(new Function&lt;IHttpResponse, T&gt;() {</p>
+            <p class="CodeIndent4">@Override</p>
+            <p class="CodeIndent4">public T invoke(IHttpResponse response) {<br /> &#160;&#160;return _endpoint.decode(response, responseClass);</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent3">});</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">catch (SignatureException ex) {</p>
+            <p class="CodeIndent2">String err = "Authorization failed: " + ex.toString();</p>
+            <p class="CodeIndent2">return Promise.pure(new Exception(err));</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">catch (Exception e) {</p>
+            <p class="CodeIndent2">String err = "Exception for " + method.getName() + "'" + uri +<br /> &#160;&#160;"': " + e.toString();</p>
+            <p class="CodeIndent2">return Promise.pure(new Exception(err));</p>
+            <p class="CodeIndent">}</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

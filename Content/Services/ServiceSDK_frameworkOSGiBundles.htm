@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview|Service Adapters" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>OSGi Bundles for Service Adapters</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_frameworkServiceAdapters.htm">Service Adapters</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">OSGi Bundles</span>
+        </div>
+        <h3>OSGi Bundles for Service Adapters</h3>
+        <p class="Body">Service adapters created for the <span class="AgilityDocsProductName">Agility Platform</span> Services SDK are distributed and deployed as OSGi bundles. The following naming convention is used:</p>
+        <p class="Code">com.&lt;vendor&gt;.agility.adapters.service.&lt;servicetype&gt;.&lt;version&gt;.jar</p>
+        <p class="Body">The convention for the version number is <span class="Code">V<sub>major</sub>.V<sub>minor</sub>.V<sub>patch</sub></span><br /><br /></p>
+        <p class="Body">The Services SDK includes the following packages.</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ "><span class="Code">com.servicemesh.agility.sdk.service.msgs</span> - JAXB generated classes from xml schema definition of request/response messages</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Code">com.servicemesh.agility.sdk.service.spi</span> - Provides abstract base class for all adapters along with interfaces that are implemented by the adapters to expose supported functionality</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Code">com.servicemesh.agility.sdk.service.operations</span> - Default implementations of the operations/interfaces that can be sub-classed to override specific methods.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Code">com.servicemesh.agility.sdk.service.exceptions</span> - Base class for exceptions thrown by the adapter.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ "><span class="Code">com.servicemesh.agility.sdk.service.helper</span> - Provides helper/convenience methods for manipulating API objects</td>
+            </tr>
+        </table>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

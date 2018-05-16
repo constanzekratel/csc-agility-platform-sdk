@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|Instance Lifecycle (IInstanceLifecycle)" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>InstanceRequest Class</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_IInstanceLifecycle.htm">Instance Lifecycle (IInstanceLifecycle)</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">InstanceRequest Class</span>
+        </div>
+        <h3>InstanceRequest Class</h3>
+        <p class="Body">The Services SDK <span class="Code">InstanceRequest</span> class is the basis for the parameter to the <span class="NoHyphen">IInstanceLifecycle</span> methods. <span class="Code">InstanceRequest</span> extends <span class="Code">ServiceProviderRequest</span> with the following methods:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 163px;" />
+            <col class="Column-Column1" style="width: 143px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getInstance()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Instance</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the VM&#160;instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getTemplate()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Template</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the template for the instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getOperatingSystem()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">OperatingSystem</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the operating system for the VM&#160;instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getServiceInstance()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">ServiceInstance</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns the service instance asset connected to the VM&#160;instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getPeerServiceInstances()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;ServiceInstance&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a List of service instances that are the destination of connections to the template associated with the instance</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getSrcConnections()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Connection&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a List of all connections from the service instance to another <span class="AgilityDocsProductName">Agility Platform</span> asset</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getDestConnections()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Connection&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a List of all connections to the service instance from another <span class="AgilityDocsProductName">Agility Platform</span> asset</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getDependencies()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a List of all <span class="AgilityDocsProductName">Agility Platform</span> assets upon which this service has a dependency</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getDependents()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;Asset&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a List of all <span class="AgilityDocsProductName">Agility Platform</span> assets dependent upon this service </p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">getLaunchItemDeployment()</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">LaunchItemDeployment</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns, if applicable, the  Launch Item Deployment for this service</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">getVariables()</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">List&lt;AssetProperty&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a list of variables inherited from the containment hierarchy</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>Only one value for any variable name is passed. Standard script variable inheritance is used to determine which value is passed if the same variable exists on multiple containers in the parent chain of the service instance. Values for encrypted variables will be decrypted in this list.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Note" data-mc-autonum="Note: &#160;"><span class="autonumber"><span class="Note">Note: &#160;</span></span>Access to variables in  the scope of a ServiceInstance (variables on Projects, Environments, and Topologies that are direct ancestors of the ServiceInstance) is provided for ServiceInstanceOperations, ServiceInstanceLifecycleOperations, InstanceOperations, and ConnectionOperations methods. The variables can be found in the variables list on the request object (request.getVariables). Encrypted variables in the list are passed as decrypted. There is no support for accessing variables outside of these methods or outside the scope of the ServiceInstance. If you have a unique use case that requires access to these out-of -scope variables, use the <span class="AgilityDocsProductName">Agility Platform</span> API to access them. For example: List&lt;AssetProperty&gt; vars = request.getVariables();</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

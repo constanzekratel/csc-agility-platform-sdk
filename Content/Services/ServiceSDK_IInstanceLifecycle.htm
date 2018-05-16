@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Instance Lifecycle (IInstanceLifecycle)</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Instance Lifecycle (IInstanceLifecycle)</span>
+        </div>
+        <h2>Instance Lifecycle (IInstanceLifecycle)</h2>
+        <p class="Body">A Blueprint can contain design connections between a Workload and a Service. When the Blueprint is deployed, <span class="AgilityDocsProductName">Agility Platform</span> creates an&#160;Instance asset for each Workload and a <span class="NoHyphen">ServiceInstance</span> asset  for each Service. The design connections define the dependencies between these  created assets:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 130px;" />
+            <col class="Column-Column1" style="width: 157px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Connection source</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Connection destination</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">Instance</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">ServiceInstance</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Instance is dependent on the ServiceInstance.</p>
+                        <p class="CellBodyAPI">For example, ServiceInstance might represent a load balancing service that will balance traffic between the Instance and other connected VM&#160;Instances.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">ServiceInstance</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">Instance</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI"> ServiceInstance is dependent on the Instance.</p>
+                        <p class="CellBodyAPI">For example, ServiceInstance might represent a data service that requires data from the Instance and other connected VM&#160;Instances.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">The Service SDK <span class="Code">IInstanceLifecycle</span> interface represents the operations for a service adapter to consider when an Instance bound to a ServiceInstance changes state.</p>
+        <p class="Body">These methods operate within the <span class="Code">Promise&lt;InstanceResponse&gt;</span> type:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 297px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preProvision(InstancePreProvisionRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates beginning of the provisioning workflow for a connected Instance</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to abort the provisioning if it cannot support another VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postProvision(InstancePostProvisionRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates completion of the provisioning workflow for a connected Instance</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to register the VM with a service offering and/or allocate service resources for the VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preBoot(InstancePreBootRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance is preparing to boot (cloned but not powered)</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>This provides a hook for a networking service adapter to allocate network resources (such as an IP address) for the VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postBoot(InstancePostBootRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance has booted </p>
+                        <p class="CellBodyAPI">In this state, it should have an IP address but configuration management is not yet applied.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preStop(InstancePreStopRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance is preparing to stop</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postStop(InstancePostStopRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance is stopped without releasing its underlying resources </p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to deregister/cleanup resources associated with the stopped VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preStart(InstancePreStartRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance that is in a stopped state is preparing to start </p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to verify that the VM settings are compatible with the service.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postStart(InstancePostStartRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the startup of the VM for a connected Instance is completed</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to register or provision service resources for the VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preRestart(InstancePreRestartRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance is preparing to restart (similar to the power-cycling of a physical hardware server)</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postRestart(InstancePostRestartRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the restart of the VM for a connected Instance is completed</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to register or provision service resources for the VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preRelease(InstancePreReleaseRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the VM for a connected Instance is going to be destroyed</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">postRelease(InstancePostReleaseRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the destruction of the VM for a connected Instance is completed</p>
+                        <p class="CellNoteAPI" data-mc-autonum="Note: "><span class="autonumber"><span class="Note">Note: </span></span>The service adapter has the option to deregister/cleanup resources associated with the destroyed VM.</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">preReconfigure(InstancePreReconfigureRequest request)</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the Template for a connected Instance is preparing to change a resource</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">postReconfigure(InstancePostReconfigureRequest request)</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Indicates the resource change on a Template for a connected Instance is completed</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">&#160;</p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_InstanceRequestClass.htm">InstanceRequest Class</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_InstanceResponseClass.htm">InstanceResponse Class</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_InstanceOperations.htm">InstanceOperations Methods</a>
+            </p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>
