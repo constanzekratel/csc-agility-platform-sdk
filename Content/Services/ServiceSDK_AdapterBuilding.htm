@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter File Packaging and Versioning" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Building a Service Adapter with Versioning</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_AdapterFilePackagingVersioning.htm">Service Adapter File Packaging and Versioning</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Building a Service Adapter</span>
+        </div>
+        <h2>Building a Service Adapter with Versioning</h2>
+        <p class="Body">There are many ways to build versioning information into an adapter RPM and OSGi manifest. This section provides an example where versioning components are specified once in the Ant build.xml file and then propagated at build time.</p>
+        <p class="SubHead">Mapping the versioning components</p>
+        <p class="Body">The first task is to map the version components into Ant constructs using the  versioning identifiers, such as the following:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;caption-side: top;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col style="width: 222px;" class="Column-Column1" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Version parameter</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Ant&#160;property</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;A&gt;&#160;- Major version number</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;property name="version.major" value="1" /&gt;</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;B&gt;&#160;- Minor version number</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;property name="version.minor" value="0" /&gt;</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;C&gt;&#160;- Build version number</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;property name="version.build" value="0" /&gt;</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;D&gt;&#160;- Source commit count</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;exec executable="bash" outputproperty="git.revision"&gt;</p>
+                        <div class="IndentSnippet">
+                            <p class="CellBodyAPI"> &lt;arg value="-c" /&gt;</p>
+                            <p class="CellBodyAPI"> &lt;arg value="git rev-list HEAD | wc -l | sed 's/^ *//'" /&gt;</p>
+                        </div>
+                        <p class="CellBodyAPI">&lt;/exec&gt;</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;E&gt;&#160;- Hash of latest source commit</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;exec executable="bash" outputproperty="git.commit"&gt;</p>
+                        <div class="IndentSnippet">
+                            <p class="CellBodyAPI">&lt;arg value="-c" /&gt;</p>
+                            <p class="CellBodyAPI">&lt;arg value="git log -n1 --pretty=format:%h HEAD" /&gt;</p>
+                        </div>
+                        <p class="CellBodyAPI">&lt;/exec&gt;</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="Body">You can then collate the five properties for easier use, such as the following:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;property name="bundle.version" value="${version.major}.${version.minor}.${version.build}" /&gt;</p>
+            <p class="Code">&lt;property name="rpm.version" value="${version.major}.${version.minor}-${version.build}"/&gt;</p>
+            <p class="Code">&lt;property name="git.summary" value="${git.revision}.${git.commit}"/&gt;</p>
+        </div>
+        <p class="SubHead">Populating the OSGi bundle information</p>
+        <p class="Body">To populate OSGi bundle information at runtime, use a template for the manifest that includes the following:</p>
+        <div class="CodeSample">
+            <p class="Code">Bundle-Version: %bundle_version</p>
+        </div>
+        <p class="Body">Then copy and update the manifest  via Ant, similar to the following:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;property name="manifest" value="${bin}/META-INF/MANIFEST.MF"/&gt;</p>
+            <p class="Code">&lt;copy file="META-INF/MANIFEST.MF" tofile="${manifest}" overwrite="true"/&gt;</p>
+            <p class="Code">&lt;replace file="${manifest}" token="%bundle_version" value="${bundle.version}"/&gt;</p>
+            <p class="Code">&lt;echo file="${manifest}" append="true"</p>
+            <p class="Code">message="Bundle-Description: Agility adapter to the Microsoft Azure Traffic Manager service. Revision r${git.summary}.${line.separator}"/&gt;</p>
+        </div>
+        <p class="SubHead">Populating the resource properties</p>
+        <p class="Body">Include versioning information in a resource properties file for consumption by the adapter code, similar to the following:</p>
+        <p class="Code">&lt;property name="propfile" value="${bin}/resources/TrafficManagerAdapter.properties"/&gt;</p>
+        <p class="Code">&lt;echo file="${propfile}"&gt;adapter.vendor=<span class="AgilityDocsCompanyName">DXC Technology</span> Agility Dev</p>
+        <div class="CodeSample">
+            <p class="Code">adapter.version=${bundle.version}</p>
+            <p class="Code">adapter.revision=r${git.summary}</p>
+            <p class="Code">&lt;/echo&gt;</p>
+        </div>
+        <p class="Body">The manifest and properties file are included in a jar that meets the <span class="AgilityDocsProductName">Agility Platform</span> naming convention of <span class="Code">&lt;package-name&gt;-&lt;A&gt;.&lt;B&gt;.&lt;C&gt;.jar</span>, such as the following:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;property name="bundle.name" value="${ant.project.name}-${bundle.version}"/&gt;</p>
+            <p class="Code">&lt;property name="bundle.jar" value="${bundle.name}.jar"/&gt;</p>
+            <p class="Code">&lt;property name="bin.bundle.jar" value = "${bin}/${bundle.jar}"/&gt;<br /><br /></p>
+            <p class="Code">&lt;jar destfile="${bin.bundle.jar}" manifest="${manifest}" basedir="${bin}"&gt;</p>
+            <p class="CodeIndent">&lt;fileset dir="${bin}"&gt;</p>
+            <p class="CodeIndent2">&lt;include name="**/*.class"/&gt;</p>
+            <p class="CodeIndent2">&lt;include name="**/*.properties"/&gt;</p>
+            <p class="CodeIndent">&lt;/fileset&gt;</p>
+            <p class="CodeIndent">&lt;fileset dir="${lib}" includes="*.jar"/&gt;</p>
+            <p class="Code">&lt;/jar&gt;</p>
+        </div>
+        <p class="SubHead">Populating the RPM&#160;at runtime</p>
+        <p class="Body">To populate the RPM information at runtime, the specification file includes the following substitutions:</p>
+        <div class="CodeSample">
+            <p class="Code">Version: %rpm_version</p>
+            <p class="Code">Release: %rpm_revision</p>
+        </div>
+        <p class="Body">Then you generate the RPM from Ant, similar to the following:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;property name="rpm.basename" value="agility-adapters-azure-trafficmanager"/&gt;</p>
+            <p class="Code">&lt;property name="rpm.name" value="${rpm.basename}-${rpm.version}"/&gt;<br /><br /></p>
+            <p class="CodeIndent">&lt;resources id="rpm.args"&gt;</p>
+            <p class="CodeIndent2">&lt;string&gt;-bb&lt;/string&gt;</p>
+            <p class="CodeIndent2">&lt;string&gt;--define '_topdir ${basedir}/${rpm}'&lt;/string&gt;</p>
+            <p class="CodeIndent2">&lt;!-- Agility convention is to only put major.minor as RPM version --&gt;</p>
+            <p class="CodeIndent2">&lt;string&gt;--define 'rpm_version ${version.major}.${version.minor}'&lt;/string&gt;</p>
+            <p class="CodeIndent2">&lt;string&gt;--define 'rpm_revision ${version.build}.r${git.summary}'&lt;/string&gt;</p>
+            <p class="CodeIndent2">&lt;string&gt;--buildroot ${basedir}/${buildroot}&lt;/string&gt;</p>
+            <p class="CodeIndent">&lt;/resources&gt;<br /></p>
+            <p class="Code">&lt;pathconvert property="rpm.command" refid="rpm.args" pathsep=" "/&gt;</p>
+            <p class="Code">&lt;rpm specFile="${rpm.basename}.spec" topDir="${rpm}" failOnError="true" command="${rpm.command}"/&gt;</p>
+        </div>
+        <p class="SubHead">Service adapter version update</p>
+        <p class="Body">A service adapter will typically change either its major version number or minor version number when it is updated to a newer version. The build version number can remain at zero if the developer follows the pattern of generating source code control data at build time and including it in RPM and bundle manifest.</p>
+        <p class="Body">This update is a simple process when you use the Ant properties to drive versioning. For example, to move to version 3.2.0, edit the build.xml file as follows:</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;property name="version.major" value="3" /&gt;</p>
+            <p class="Code">&lt;property name="version.minor" value="2" /&gt;</p>
+        </div>
+        <p class="Body">Then you can commit the change and do a clean rebuild.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

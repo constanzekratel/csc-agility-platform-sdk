@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations|The Reactor-Promise Design Pattern" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Promise Compositional Methods</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <link href="../Resources/TableStyles/PlainLines.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_ReactorPromiseDesign.htm">The Reactor-Promise Design Pattern</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Promise Compositional Methods</span>
+        </div>
+        <h3>Promise Compositional Methods</h3>
+        <p class="Body">Use the following compositional methods for a <span class="Code">Promise</span>:</p>
+        <table style="mc-table-style: url('../Resources/TableStyles/PlainLines.css');margin-left: 0;margin-right: auto;width: 100%;" class="TableStyle-PlainLines" cellspacing="0">
+            <col class="Column-Column1" style="width: 202px;" />
+            <col class="Column-Column1" style="width: 156px;" />
+            <col class="Column-Column1" />
+            <thead>
+                <tr class="Head-Header1">
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Method</p>
+                    </th>
+                    <th class="HeadE-Column1-Header1">
+                        <p class="CellHeading">Type</p>
+                    </th>
+                    <th class="HeadD-Column1-Header1">
+                        <p class="CellHeading">Description</p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">flatMap(final Function&lt;T, Promise&lt;R&gt;&gt; func)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;R&gt; Promise&lt;R&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a new promise that, on completion of the current promise, completes by mapping the result using the supplied function</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">map(final Function&lt;T, R&gt; func)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">&lt;R&gt; Promise&lt;R&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a new promise that, on completion of the current promise, completes by mapping the result using the supplied function</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">pure(final T result)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">static &lt;T&gt; Promise&lt;T&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a completed promise with the specified result</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">pure(Throwable th)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">static &lt;T&gt; Promise&lt;T&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a completed promise with the specified error result</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">sequence(final List&lt;Promise&lt;T&gt;&gt; promises)</p>
+                    </td>
+                    <td class="BodyE-Column1-Body1">
+                        <p class="CellBodyAPI">static &lt;T&gt; Promise&lt;T&gt;</p>
+                    </td>
+                    <td class="BodyD-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise that completes when the supplied list of promises complete</p>
+                    </td>
+                </tr>
+                <tr class="Body-Body1">
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">sequenceAny(List&lt;Promise&lt;?&gt;&gt; promises)</p>
+                    </td>
+                    <td class="BodyB-Column1-Body1">
+                        <p class="CellBodyAPI">static Promise&lt;List&lt;Object&gt;&gt;</p>
+                    </td>
+                    <td class="BodyA-Column1-Body1">
+                        <p class="CellBodyAPI">Returns a promise that completes when the supplied list of promises complete</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="SubHead">pure()</p>
+        <p class="Body">The <span class="Code">pure()</span> methods return a direct conclusion, which is the simplest type of result:</p>
+        <div class="CodeSample">
+            <p class="Code">try {</p>
+            <p class="CodeIndent">ServiceProviderResponse response = new ServiceProviderResponse();</p>
+            <p class="CodeIndent">response.setStatus(Status.COMPLETE);</p>
+            <p class="CodeIndent">// This Promise's isCompleted() will return true</p>
+            <p class="CodeIndent">return Promise.pure(response);</p>
+            <p class="Code">}</p>
+            <p class="Code">catch (Exception e) {</p>
+            <p class="CodeIndent">String err = "Exception for " + method.getName() + "'" + uri +</p>
+            <p class="CodeIndent2">"': " + e.toString();</p>
+            <p class="CodeIndent">// This Promise's isFailed() will return true</p>
+            <p class="CodeIndent">return Promise.pure(new Exception(err));</p>
+            <p class="Code">}</p>
+            <p class="SubHead">Map()</p>
+            <p class="Body">A service adapter typically uses <span class="Code">map()</span> to translate between an external cloud vendor data type and an internal <span class="AgilityDocsProductName">Agility Platform</span> data type. In the following example, the internal type is <span class="Code">java.lang.Integer</span>:</p>
+            <p class="Code">final Promise&lt;Integer&gt; mapped = promise.map(new Function&lt;CloudType, Integer&gt;() {</p>
+            <p class="CodeIndent">@Override</p>
+            <p class="CodeIndent">public Integer invoke(final CloudType result)</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">// If no exception is thrown, the returned Promise's isCompleted()</p>
+            <p class="CodeIndent2">// will return true.</p>
+            <p class="CodeIndent2">return new Integer(result.asInteger());</p>
+            <p class="CodeIndent">}</p>
+            <p class="Code">});</p>
+        </div>
+        <p class="SubHead">FlatMap()</p>
+        <p class="Body">The <span class="Code">flatMap()</span> method can translate from a set of intermediate results to a promise with the final aggregated result, such as the following example:</p>
+        <div class="CodeSample">
+            <p class="Code">final Promise&lt;Integer&gt; flattened = promise.flatMap(new Function&lt;List&lt;CloudType&gt;, Promise&lt;Integer&gt;&gt;() {</p>
+            <p class="CodeIndent">@Override</p>
+            <p class="CodeIndent">public Promise&lt;Integer&gt; invoke(final List&lt;CloudType&gt; intermediate)</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent2">int sum = 0;</p>
+            <p class="CodeIndent2">for (CloudType result : intermediate) {</p>
+            <p class="CodeIndent2">sum += result.asInteger();</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">return Promise.pure(new Integer(sum));</p>
+            <p class="CodeIndent">}</p>
+            <p class="Code">});</p>
+        </div>
+        <p class="SubHead">Sequence()</p>
+        <p class="Body">The <span class="Code">sequence()</span> method, together with a mapping method, can combine the results of multiple Promises after they are completed, such as the following example:</p>
+        <div class="CodeSample">
+            <p class="CodeFirst">Promise&lt;Integer&gt; mappedGrandTotal(List&lt; Promise&lt;Integer&gt; &gt; promises)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">Promise&lt; List&lt;Integer&gt; &gt; promise = Promise.sequence(promises);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">return promise.map(new Function&lt;List&lt;Integer&gt;, Integer&gt;() {</p>
+            <p class="CodeIndent2">@Override</p>
+            <p class="CodeIndent2">public Integer invoke(final List&lt;Integer&gt; subs)</p>
+            <p class="CodeIndent2">{</p>
+            <p class="CodeIndent3">int grand = 0;</p>
+            <p class="CodeIndent3">for (Integer sub : subs) {</p>
+            <p class="CodeIndent3">grand += sub.intValue();</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">return new Integer(grand);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">});</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="SubHead">SequenceAny()</p>
+        <p class="Body">The <span class="Code">sequenceAny()</span> method is similar to <span class="Code">sequence()</span> but can work with Promises associated with generic types. The following is an example:</p>
+        <div class="CodeSample">
+            <p class="Code">Promise&lt;Integer&gt; flattenedGrandTotal(List&lt; Promise&lt;Object&gt; &gt; promises)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">Promise&lt; List&lt;Object&gt; &gt; promise = Promise.sequence(promises);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">return promise.flatMap(new Function&lt; List&lt;Object&gt; , Promise&lt;Integer&gt; &gt;() {</p>
+            <p class="CodeIndent2">@Override</p>
+            <p class="CodeIndent2">public Promise&lt;Integer&gt; invoke(final List&lt;Object&gt; subs)</p>
+            <p class="CodeIndent2">{</p>
+            <p class="CodeIndent3">int grand = 0;</p>
+            <p class="CodeIndent3">for (Object sub : subs) {</p>
+            <p class="CodeIndent4">if (sub instanceof Integer) {</p>
+            <p class="CodeIndent4">grand += ((Integer)sub).intValue();</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent4">else if (sub instanceof Long) {</p>
+            <p class="CodeIndent4">grand += ((Long)sub).intValue();</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent4">else if (sub instanceof String) {</p>
+            <p class="CodeIndent5">try {</p>
+            <p class="CodeIndent5">grand += Integer.parseInt((String)sub);</p>
+            <p class="CodeIndent5">}</p>
+            <p class="CodeIndent5">catch (NumberFormatException nfe) {</p>
+            <p class="CodeIndent5">String err = "Invalid sub: " + (String)sub;</p>
+            <p class="CodeIndent5">return Promise.pure(new Exception(err));</p>
+            <p class="CodeIndent5">}</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">return Promise.pure(new Integer(grand));</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">});</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

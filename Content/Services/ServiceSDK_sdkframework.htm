@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Asynchronous Results</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Asynchronous Results</span>
+        </div>
+        <h2>
+            <br />Asynchronous Results</h2>
+        <p class="Body">The Services SDK framework is based on a reactive processing model where an implementation of the reactor pattern dispatches all IO, timers, messaging, and work out of a single thread (or small pool). Additionally, calls to external service providers utilize asynchronous communication libraries (such as HTTP) that provide callback type semantics on completion. Each of these supporting libraries (such as timers, messaging, and HTTP) have their own interfaces/semantics for dealing with asynchronous completion and failures. This results in increased complexity from the perspective of the adapter writer when trying to correctly sequence asynchronous logic and propagate failure conditions.</p>
+        <p class="Body">To resolve these issues a consistent way to represent and process completion is required. The following Java Promise class provides a wrapper that can be used with any third party library or integrated into custom libraries to enable a functional approach to combining/completing asynchronous results.</p>
+        <div class="CodeSample">
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* A promise to produce a result of type &lt;T&gt; at some point in the future.</p>
+            <p class="CodeIndent">* Enables a functional approach to transforming/completing work as intermediate</p>
+            <p class="CodeIndent">* results complete.</p>
+            <p class="CodeIndent">*</p>
+            <p class="CodeIndent">* @param &lt;T&gt;</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public class Promise&lt;T&gt;</p>
+            <p class="CodeIndent">{</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">*  Blocks until the promise is completed and result returned or</p>
+            <p class="CodeIndent">*  failure occurs.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public synchronized T get() throws Throwable;</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* @return true if the request has completed.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public boolean isCompleted();</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Signal that this promise is complete and notify any pending threads or mapped results</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void complete(T result);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Set a callback to be invoked on completion of the promise.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void onComplete(final Callback&lt;T&gt; cb);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* @return true if the request has failed.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public boolean isFailed();</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Signal that this promise is completed with an error and notify any pending threads or mapped results</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void failure(Throwable t);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Register a callback to be invoked if a failure condition occurs</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void onFailure(Callback&lt;Throwable&gt; cb);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* @return true if the request has been cancelled.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public boolean isCancelled();</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Signal that this promise is cancelled and notify any pending threads or pending results</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void cancel();</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Set a callback to be invoked on cancellation of the promise.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public void onCancel(final Callback&lt;Void&gt; cb);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Return a new promise that on completion of the current promise completes by mapping the result</p>
+            <p class="CodeIndent">* using the supplied function.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public &lt;R&gt; Promise&lt;R&gt; map(final Function&lt;T,R&gt; func);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Return a new promise that on completion of the current promise completes by mapping the result</p>
+            <p class="CodeIndent">* using the supplied function.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public &lt;R&gt; Promise&lt;R&gt; flatMap(final Function&lt;T,Promise&lt;R&gt;&gt; func);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a completed promise with the specified result.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;R&gt; Promise&lt;R&gt; pure(R result);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a completed promise with the specified error result.</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;R&gt; Promise&lt;R&gt; pure(Throwable t);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Wrap this promise with a promise that will handle exceptions throws</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public Promise&lt;T&gt; recover(final Function&lt;Throwable,T&gt; func);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a promise that completes when the supplied list of promises complete</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;T&gt; Promise&lt;List&lt;T&gt;&gt; sequence(List&lt;Promise&lt;T&gt;&gt; promises);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a promise that will execute work at some point in the future using the specified reactor</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;T&gt; Promise&lt;T&gt; promise(final Function0&lt;T&gt; func0, Reactor reactor);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a promise that will execute at some point in the future using the specified reactor</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;T&gt; Promise&lt;T&gt; delayed(final Function0&lt;T&gt; func, long delta, Reactor reactor);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">/**</p>
+            <p class="CodeIndent">* Returns a promise that will complete at some point in the future using the specified reactor</p>
+            <p class="CodeIndent">*/</p>
+            <p class="CodeIndent">public static &lt;T&gt; Promise&lt;T&gt; timeout(final T message, long delta, Reactor reactor);</p>
+            <p class="CodeIndent">}</p>
+        </div>
+        <p class="Body">Third party and/or internal libraries can easily be extended or wrapped to return a <span class="Code">Promise&lt;T&gt;</span> rather than using a unique approach for each. As an example, the internal HTTP library is extended to include the following promise method in addition to the existing execute:</p>
+        <div class="CodeSample">
+            <p class="Code">public interface IHttpClient</p>
+            <p class="Code">extends Closeable</p>
+            <p class="Code">{</p>
+            <p class="Code">...</p>
+            <p class="Code">public &lt;V&gt; Future&lt;V&gt; execute(final IHttpRequest request, final IHttpCallback&lt;V&gt; callback);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* Augment with a new method that returns a promise to the response rather than requiring a "callback"</p>
+            <p class="Code">* object that is invoked on completion.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public Promise&lt;IHttpResponse&gt; promise(final IHttpRequest request);</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="Body">Likewise with the existing AsyncService used by the adapters for messaging:</p>
+        <div class="CodeSample">
+            <p class="Code">public class AsyncService</p>
+            <p class="Code">{</p>
+            <p class="Code">...</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">public &lt;REQ extends Request, RSP extends Response&gt; Promise&lt;RSP&gt; promise(final REQ request);</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="Body">The following sections provide information about several scenarios that typically occur in an adapter and illustrate how a promise can be applied.</p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_frameworkMap.htm">Map</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_frameworkSequence.htm">Sequence</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_frameworkFlatMap.htm">FlatMap</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_frameworkErrorHandling.htm">Error Handling</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_frameworkCancellation.htm">Cancellation</a>
+            </p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

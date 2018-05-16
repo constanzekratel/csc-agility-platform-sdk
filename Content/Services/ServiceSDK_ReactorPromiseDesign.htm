@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Operations" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The Reactor-Promise Design Pattern</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="Servicesdk_interfaces.htm">Service Adapter Operations</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">The Reactor-Promise Design Pattern</span>
+        </div>
+        <h2>The Reactor-Promise Design Pattern</h2>
+        <p class="Body">The <span class="AgilityDocsProductName">Agility Platform</span> Services SDK incorporates the Reactor design pattern (<span class="URL">http://en.wikipedia.org/wiki/Reactor_pattern</span>) as provided by the Core Frameworks bundle (<span class="Code">com.servicemesh.core</span>). A key class for using the <span class="AgilityDocsProductName">Agility Platform</span>Reactor is <span class="Code">com.servicemesh.core.async.Promise</span>, which contains the results of a work request overseen by the Reactor.</p>
+        <p class="Body"><span class="Code">Promise</span> provides a functional approach for a service adapter to conduct the asynchronous operations defined by the Services SDK operations interfaces. The basis for this functional programming paradigm is the <span class="Code">Function</span> interface:</p>
+        <div class="CodeSample">
+            <p class="Code">package com.servicemesh.core.async;<br /></p>
+            <p class="Code">public interface Function&lt;A,R&gt; {</p>
+            <p class="CodeIndent">public R invoke(A arg);</p>
+            <p class="Code">}</p>
+            <p class="SubHead">Class hierarchy</p>
+            <p class="Body">The following represents the class hierarchy for <span class="Code">Promise</span>:</p>
+            <p class="Code">Promise&lt;T&gt;</p>
+            <p class="CodeIndent">|</p>
+            <p class="CodeIndent">v</p>
+            <p class="Code">CompletablePromise&lt;T&gt;</p>
+        </div>
+        <p class="Body"><span class="Code">CompletablePromise</span> is not typically utilized directly in service adapter code. </p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorPromiseStatusMethods.htm">Promise Status Methods</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorPromiseControlMethods.htm">Promise Control Methods</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorPromiseCompositionalMethods.htm">Promise Compositional Methods</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorCompletablePromise.htm">CompletablePromise Class</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorHTTPclient.htm">HttpClient with Promises</a>
+            </p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

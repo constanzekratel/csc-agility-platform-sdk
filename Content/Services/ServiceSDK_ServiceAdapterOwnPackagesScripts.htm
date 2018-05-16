@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Adapter Examples" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Providing Packages and Scripts for the Adapter</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceAdapterExamples.htm">Service Adapter Examples</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Providing Packages and Scripts for the Adapter</span>
+        </div>
+        <h1>Providing Packages and Scripts for the Adapter</h1>
+        <p class="Body">A service adapter may support a service with dynamic attributes that must be applied on a VM instance that utilizes that service. For example, the cloud hosting the service may assign the service a fully qualified domain name that must be configured on a connected VM instance so that the VM instance can contact the service. The following describes the details of the example service adapter:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">A blueprint is defined with a connection from a workload to a service.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">When the blueprint is deployed, a service instance and template are created within a topology.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">When the topology starts, the service instance is provisioned in the associated cloud. This service instance has unique properties, such as a fully qualified domain name, that are assigned to the service instance by the cloud provider.</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">The VM instance that is started must be configured with the service's fully qualified domain name to use the service.</td>
+            </tr>
+        </table>
+        <p class="Body">In the <span class="AgilityDocsProductName">Agility Platform</span>, you configure a VM instance by adding a package containing a start-up script to the VM template. Normally, you use the Blueprint editor to place a Package in a Workload. However, you can write a service adapter to do this automatically.</p>
+        <p class="Body">For this example, a start-up script might place the service's fully qualified domain name in a file that is read by the application running on the VM instance. Because it is a dynamic attribute, the fully qualified domain name is passed to the start-up script by a script variable.</p>
+        <p class="Body">In the following example, the service adapter can maintain its packages and scripts at registration time.</p>
+        <div class="CodeSample">
+            <p class="Code">@Override</p>
+            <p class="Code">public void onRegistration(RegistrationResponse response)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">makePackage();</p>
+            <p class="Code">}</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">private void makePackage()</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">// Maintain a package that has one simple start-up script</p>
+            <p class="CodeIndent">Script myScript = makeScript();</p>
+            <p class="CodeIndent">if (myScript == null) {</p>
+            <p class="CodeIndent2">logger.error("onRegistration: unable to persist Script " +</p>
+            <p class="CodeIndent6">SCRIPT_NAME);</p>
+            <p class="CodeIndent2">return;</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">Link scriptLink = new Link();</p>
+            <p class="CodeIndent">scriptLink.setName(SCRIPT_NAME);</p>
+            <p class="CodeIndent">scriptLink.setId(myScript.getId());</p>
+            <p class="CodeIndent">scriptLink.setType("application/" + Script.class.getName() + "+xml");</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">Package pkg = new Package();</p>
+            <p class="CodeIndent">pkg.setName(PACKAGE_NAME);</p>
+            <p class="CodeIndent">pkg.setVersion(0);</p>
+            <p class="CodeIndent">pkg.getStartups().add(scriptLink);</p>
+            <p class="CodeIndent2">&#160;</p>
+            <p class="CodeIndent">Package myPkg = (Package)createOrUpdateAsset(pkg, null);</p>
+            <p class="CodeIndent">if (myPkg == null) {</p>
+            <p class="CodeIndent2">logger.error("onRegistration: unable to persist Package " +</p>
+            <p class="CodeIndent6">PACKAGE_NAME);</p>
+            <p class="CodeIndent2">return;</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">// ServiceAdapter can cache the myPkg/myScript objects for use</p>
+            <p class="CodeIndent">// in its sdk.service.operations.InstanceOperations</p>
+            <p class="Code">}</p>
+            <p class="Code">private Script makeScript(String description)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">Script script = new Script();</p>
+            <p class="CodeIndent">script.setName(SCRIPT_NAME);</p>
+            <p class="CodeIndent">script.setRunAsAdmin(true);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">Link string_type = new Link();</p>
+            <p class="CodeIndent">string_type.setName("string-any");</p>
+            <p class="CodeIndent">string_type.setType("application/" + PropertyType.class.getName() +</p>
+            <p class="CodeIndent6">"+xml");</p>
+            <p class="CodeIndent6">&#160;</p>
+            <p class="CodeIndent">PropertyDefinition variable = new PropertyDefinition();</p>
+            <p class="CodeIndent">variable.setName(SCRIPT_VARIABLE_NAME);</p>
+            <p class="CodeIndent">variable.setDisplayName(SCRIPT_VARIABLE_NAME);</p>
+            <p class="CodeIndent">variable.setReadable(true);</p>
+            <p class="CodeIndent">variable.setWritable(true);</p>
+            <p class="CodeIndent">variable.setMaxAllowed(1);</p>
+            <p class="CodeIndent">variable.setPropertyType(string_type);</p>
+            <p class="CodeIndent">script.getVariables().add(variable);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">String body = "#!/bin/bash\necho \"" +</p>
+            <p class="CodeIndent2">SCRIPT_VARIABLE_NAME + "=$" + SCRIPT_VARIABLE_NAME + "\"";</p>
+            <p class="CodeIndent">script.setBody(body);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">return (Script)createOrUpdateAsset(script, null);</p>
+            <p class="Code">}</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">private Asset createOrUpdateAsset(Asset asset, Asset parent)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">Asset dbAsset = null;</p>
+            <p class="CodeIndent">try {</p>
+            <p class="CodeIndent2">if (asset.getId() == null) {</p>
+            <p class="CodeIndent3">asset.setId(getAssetId(asset));</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">if (asset.getId() == null) {</p>
+            <p class="CodeIndent3">dbAsset = createAsset(asset, parent).get();</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">else {</p>
+            <p class="CodeIndent3">dbAsset = updateAsset(asset, parent).get();</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">catch (Throwable t) {</p>
+            <p class="CodeIndent2">logger.error("createOrUpdateAsset: " + asset.getClass().getName()</p>
+            <p class="CodeIndent6">+ " '" + asset.getName() + "': " + t);</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">return dbAsset;</p>
+            <p class="Code">}</p>
+            <p class="Code">private Integer getAssetId(Asset asset)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">Integer id = null;</p>
+            <p class="CodeIndent">try {</p>
+            <p class="CodeIndent2">Property filter = new Property();</p>
+            <p class="CodeIndent2">filter.setName("qterm.field.name");</p>
+            <p class="CodeIndent2">filter.setValue(asset.getName());</p>
+            <p class="CodeIndent2">&#160;</p>
+            <p class="CodeIndent2">List&lt;Property&gt; params = new ArrayList&lt;Property&gt;();</p>
+            <p class="CodeIndent2">params.add(filter);</p>
+            <p class="CodeIndent2">&#160;</p>
+            <p class="CodeIndent2">Promise&lt;List&lt;Asset&gt;&gt; promise =</p>
+            <p class="CodeIndent3">getAssets(asset.getClass().getName(), params);</p>
+            <p class="CodeIndent2">List&lt;Asset&gt; assets = promise.get();</p>
+            <p class="CodeIndent2">if (assets != null) {</p>
+            <p class="CodeIndent3">for (Asset listAsset : assets) {</p>
+            <p class="CodeIndent5">if (asset.getName().equals(listAsset.getName())) {</p>
+            <p class="CodeIndent6">id = listAsset.getId();</p>
+            <p class="CodeIndent6">&#160;</p>
+            <p class="CodeIndent6">if (logger.isDebugEnabled()) {</p>
+            <p class="CodeIndent6"> logger.debug("retrieveAsset: " +</p>
+            <p class="CodeIndent6"> asset.getClass().getName() + " '" +</p>
+            <p class="CodeIndent6"> asset.getName() +</p>
+            <p class="CodeIndent6"> "' , id=" + asset.getId());</p>
+            <p class="CodeIndent5">}</p>
+            <p class="CodeIndent5">break;</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">catch (Throwable t) {</p>
+            <p class="CodeIndent2">logger.error("retrieveAsset: " + asset.getClass().getName()</p>
+            <p class="CodeIndent6">+ " '" + asset.getName() + "': " + t);</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">return id;</p>
+            <p class="Code">}</p>
+            <p class="Body">When a topology that includes the service starts, the service instance completes its provisioning first because it is depended upon by the template connected to it. Therefore, the service adapter will know the service's dynamic attributes before the VM instance is provisioned. The adapter can implement its <span class="Code">sdk.service.operations.InstanceOperations</span> to assign its package to the template and store the service's dynamic attributes as variables on the VM instance.</p>
+            <p class="Code">@Override</p>
+            <p class="Code">public Promise&lt;InstanceResponse&gt; postProvision(InstancePostProvisionRequest request)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">InstanceResponse response = new InstanceResponse();</p>
+            <p class="CodeIndent">Instance instance = request.getInstance();</p>
+            <p class="CodeIndent">if (instance != null) {</p>
+            <p class="CodeIndent2">// Assign the package to the template now so that its startup</p>
+            <p class="CodeIndent2">// script gets executed</p>
+            <p class="CodeIndent2">Template template = request.getTemplate();</p>
+            <p class="CodeIndent2">if (assignPackage(template))</p>
+            <p class="CodeIndent3">response.getModified().add(template);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">if (setInstanceVariables(instance, request.getServiceInstance(),</p>
+            <p class="CodeIndent6">myScript.getVariables()))</p>
+            <p class="CodeIndent3">response.getModified().add(instance);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">response.setStatus(Status.COMPLETE);</p>
+            <p class="CodeIndent">return Promise.pure(response);</p>
+            <p class="Code">}</p>
+            <p class="Code">private boolean assignPackage(Template template)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">boolean modified = false;</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">if ((template != null) &amp;&amp; (myPackage != null)) {</p>
+            <p class="CodeIndent2">Link myPkgLink = null;</p>
+            <p class="CodeIndent2">&#160;</p>
+            <p class="CodeIndent2">for (Link pkg : template.getPackages()) {</p>
+            <p class="CodeIndent3">if (myPackage.getName().equals(pkg.getName())) {</p>
+            <p class="CodeIndent4">myPkgLink = pkg;</p>
+            <p class="CodeIndent4">break;</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">if (myPkgLink == null) {</p>
+            <p class="CodeIndent3">myPkgLink = new Link();</p>
+            <p class="CodeIndent3">myPkgLink.setName(myPackage.getName());</p>
+            <p class="CodeIndent3">myPkgLink.setType("application/" + Template.class.getName() + "+xml");</p>
+            <p class="CodeIndent3">myPkgLink.setId(myPackage.getId());</p>
+            <p class="CodeIndent3">template.getPackages().add(myPkgLink);</p>
+            <p class="CodeIndent3">modified = true;</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">else if (myPackage.getId() != myPkgLink.getId()) {</p>
+            <p class="CodeIndent3">myPkgLink.setId(myPackage.getId());</p>
+            <p class="CodeIndent3">modified = true;</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">return modified;</p>
+            <p class="Code">}</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">private boolean setInstanceVariables(Instance instance,</p>
+            <p class="CodeIndent6">ServiceInstance svcInstance,</p>
+            <p class="CodeIndent6">List&lt;PropertyDefinition&gt; variableDefs)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">boolean modified = false;</p>
+            <p class="CodeIndent">String svcHostname = getServiceHostname(svcInstance);</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">if (svcHostname != null) {</p>
+            <p class="CodeIndent2">for (PropertyDefinition variableDef : variableDefs) {</p>
+            <p class="CodeIndent3">AssetProperty variable = null;</p>
+            <p class="CodeIndent3">&#160;</p>
+            <p class="CodeIndent3">for (AssetProperty iVar : instance.getVariables()) {</p>
+            <p class="CodeIndent4">if (variableDef.getName().equals(iVar.getName())) {</p>
+            <p class="CodeIndent5">variable = iVar;</p>
+            <p class="CodeIndent5">break;</p>
+            <p class="CodeIndent4">}</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">if (variable == null) {</p>
+            <p class="CodeIndent4">variable = new AssetProperty();</p>
+            <p class="CodeIndent4">variable.setName(variableDef.getName());</p>
+            <p class="CodeIndent4">variable.setStringValue(svcHostname);</p>
+            <p class="CodeIndent4">instance.getVariables().add(variable);</p>
+            <p class="CodeIndent4">modified = true;</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent3">else if (! svcHostname.equals(variable.getStringValue())) {</p>
+            <p class="CodeIndent4">variable.setStringValue(svcHostname);</p>
+            <p class="CodeIndent4">modified = true;</p>
+            <p class="CodeIndent3">}</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">return modified;</p>
+            <p class="Code">}</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">private String getServiceHostname(ServiceInstance svcInstance)</p>
+            <p class="Code">{</p>
+            <p class="CodeIndent">String hostName = null;</p>
+            <p class="CodeIndent">if (svcInstance != null) {</p>
+            <p class="CodeIndent2">List&lt;AssetProperty&gt; configs = svcInstance.getConfigurations();</p>
+            <p class="CodeIndent2">if (! configs.isEmpty()) {</p>
+            <p class="CodeIndent3">hostName = configs.get(0).getStringValue();</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent">}</p>
+            <p class="CodeIndent">return hostName;</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="Body"><span class="Code">InstanceOperations.postProvision()</span> is executed immediately after the VM instance has completed its provisioning but before any start-up scripts have run. With the adapter having assigned its package to the template, the service configuration start-up script will be run later in the VM instance's work flow.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

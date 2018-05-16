@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Including Dynamic Service Adapter Information</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Including Dynamic Service Adapter Information</span>
+        </div>
+        <h3>Including Dynamic Service Adapter Information</h3>
+        <p class="Body">The following example uses Ant as the build tool and a service adapter  written in Java. The application is configured  so that  the version information is changed in one place, the Build.xml file. There are three files that are configured to support this: <span class="Code">Build.xml,</span> <span class="Code">MANIFEST.MF</span>, and <span class="Code">MyAdapter.java.</span> <![CDATA[ ]]></p>
+        <p class="SubHead">Build.xml</p>
+        <p class="Body">The following example provides excerpts from a typical Ant <span class="Code">Build.xml</span> file. Specifically, it replaces <span class="Code">%bundle_version</span> with the value of bundle.version as the combination of the major, minor, build version numbers. This way, the version number is specified in one place (Build.xml) and developers do not have to remember to update the version in a file when it is time to build a new version of the adapter.</p>
+        <div class="CodeSample">
+            <p class="Code">&lt;!-- version properties --&gt;</p>
+            <p class="CodeIndent">&lt;property name="version.major" value="1" /&gt;</p>
+            <p class="CodeIndent">&lt;property name="version.minor" value="0" /&gt;</p>
+            <p class="CodeIndent">&lt;property name="version.build" value="0" /&gt;</p>
+            <p class="CodeIndent">&lt;property name="bundle.version" value="${version.major}.${version.minor}.${version.build}" /&gt;</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">...</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">&lt;target name="deploy" depends="compile,deploy_unit_test,git-info" description="Generate and deploy bundle"&gt;</p>
+            <p class="CodeIndent">&lt;delete file="${bin}/${bundle.jar}" /&gt;</p>
+            <p class="CodeIndent">&lt;property name="manifest" value="${bin}/META-INF/MANIFEST.MF"/&gt;</p>
+            <p class="CodeIndent">&lt;copy file="META-INF/MANIFEST.MF" tofile="${manifest}" overwrite="true"/&gt;</p>
+            <p class="CodeIndent">&lt;replace file="${manifest}" token="%bundle_version"<br />value="${bundle.version}"/&gt;</p>
+            <p class="CodeIndent">&lt;echo file="${manifest}" append="true" message="Bundle-Description: Agility adapter for the MyAdapter service. Revision r${git.summary}.${line.separator}"/&gt;</p>
+            <p class="CodeIndent">&lt;property name="propfile" value="${bin}/resources/MyAdapter.properties"/&gt;</p>
+            <p class="CodeIndent">&lt;echo file="${propfile}"&gt;adapter.vendor=<span class="AgilityDocsCompanyName">DXC Technology</span> Agility Dev adapter.version=${bundle.version} <br />adapter.revision=r${git.summary}<br />&lt;/echo&gt;</p>
+            <p class="CodeIndent">&lt;jar destfile="${bin}/${bundle.jar}" manifest="${manifest}" basedir="${bin}"&gt;</p>
+            <p class="CodeIndent2">&lt;fileset dir="${bin}"&gt;</p>
+            <p class="CodeIndent3">&lt;include name="**/*.class"/&gt;</p>
+            <p class="CodeIndent3">&lt;include name="**/*.properties"/&gt;</p>
+            <p class="CodeIndent2">&lt;/fileset&gt;</p>
+            <p class="CodeIndent2">&lt;fileset dir="${lib}" includes="*.jar"/&gt;</p>
+            <p class="CodeIndent">&lt;/jar&gt;</p>
+            <p class="Code">&lt;/target&gt;</p>
+            <p class="SubHead">MANIFEST.MF</p>
+            <p class="Body">This excerpt demonstrates appending the Bundle-Description to the Manifest file and includes the current git revision in the description. The <span class="Code">MANIFEST.MF</span> file has no entry for <span class="Code">Bundle-Description</span>.</p>
+            <p class="Code">Manifest-Version: 1.0</p>
+            <p class="Code">Bundle-ManifestVersion: 2</p>
+            <p class="Code">Bundle-Name: MyAdapter</p>
+            <p class="Code">Bundle-SymbolicName: com.company.product.adapters.MyAdapter</p>
+            <p class="Code">Bundle-Version: %bundle_version</p>
+            <p class="Code">Bundle-Activator: com.company.product.adapters.MyAdapter</p>
+            <p class="Code">Bundle-Vendor: <span class="AgilityDocsCompanyName">DXC Technology</span> Agility Dev</p>
+        </div>
+        <p class="SubHead">MyAdapter.java</p>
+        <p class="Body">The <span class="Code">Build.xml</span> creates a properties file called <span class="Code">MyAdapter.properties</span>, which contains the vender, version, git revision information. This excerpt of <span class="Code">MyAdapter.java</span> saves these property values from the properties file into Java variables. It creates the version information string that is inserted into the <span class="AgilityDocsProductName">Agility Platform</span> AssetType descriptions. The version information string uses a "<span class="Code">(version gitRevision vendor)</span>" format. It also appends the version information string to the AssetType name and saves that as the description to be used for the AssetType.</p>
+        <div class="CodeSample">
+            <p class="Code">public static final String SERVICE_PROVIDER_NAME = "My Service Provider";</p>
+            <p class="CodeIndent">public static final String SERVICE_PROVIDER_DESCRIPTION;</p>
+            <p class="CodeIndent">public static final String SERVICE_PROVIDER_TYPE = "my-service-provider";</p>
+            <p class="CodeIndent">public static final String SERVICE_PROVIDER_VERSION;</p>
+            <p class="CodeIndent">&#160;</p>
+            <p class="CodeIndent">public static final String SERVICE_TYPE = "my-service";</p>
+            <p class="CodeIndent">public static final String SERVICE_NAME = "My Service";</p>
+            <p class="CodeIndent">public static final String SERVICE_DESCRIPTION;</p>
+            <p class="Code">&#160;</p>
+            <p class="CodeIndent">static {</p>
+            <p class="CodeIndent2">String PROP_FILE = "/resources/MyAdapter.properties";</p>
+            <p class="CodeIndent2">Properties props = new Properties();</p>
+            <p class="CodeIndent2">try {</p>
+            <p class="CodeIndent3">InputStream rs = <br /> AzureSQLAdapter.class.getResourceAsStream(PROP_FILE);</p>
+            <p class="CodeIndent3">if (rs != null)</p>
+            <p class="CodeIndent4">props.load(rs);</p>
+            <p class="CodeIndent3">else</p>
+            <p class="CodeIndent4">logger.error("Resource not found " + PROP_FILE);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">catch (Exception ex) {</p>
+            <p class="CodeIndent3">logger.error("Failed to load " + PROP_FILE + ": " + ex);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">SERVICE_PROVIDER_VERSION = props.getProperty("adapter.version", "0.0.0");</p>
+            <p class="CodeIndent2">String revision = props.getProperty("adapter.revision", "");</p>
+            <p class="CodeIndent2">String vendor = props.getProperty("adapter.vendor", "");</p>
+            <p class="Code">&#160;</p>
+            <p class="CodeIndent2">StringBuilder sb = new StringBuilder();</p>
+            <p class="CodeIndent2">sb.append(" (").append(SERVICE_PROVIDER_VERSION);</p>
+            <p class="CodeIndent2">if (! revision.isEmpty()) {</p>
+            <p class="CodeIndent3">sb.append(" ").append(revision);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">if (! vendor.isEmpty()) {</p>
+            <p class="CodeIndent3">sb.append(" ").append(vendor);</p>
+            <p class="CodeIndent2">}</p>
+            <p class="CodeIndent2">sb.append(")");</p>
+            <p class="CodeIndent2">SERVICE_PROVIDER_DESCRIPTION = SERVICE_PROVIDER_NAME + sb.toString();</p>
+            <p class="CodeIndent2">SERVICE_DESCRIPTION = SERVICE_NAME + sb.toString();</p>
+            <p class="CodeIndent">}</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The ServiceProviderType Asset Type</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">The ServiceProviderType Asset Type</span>
+        </div>
+        <h3>The ServiceProviderType Asset Type</h3>
+        <p class="Body">The <span class="Code">ServiceProviderType</span> specifies the communications mechanism for a service adapter to manage a service in a cloud. The <span class="Code">RegistrationRequest</span> <span class="Code">assetTypes</span> attribute should be populated with an Asset Type that represents the communications parameters for a service provider. This asset type extends from the base ServiceProviderType asset type. For more information, see <a href="ServicesProviderType.htm" class="Heading_And_Page MCXref xref xrefHeading_And_Page">Service Provider Asset Types </a>. </p>
+        <p class="Body">A Service Provider Type defined by a service adapter becomes available in the <span class="AgilityDocsProductName">Agility Platform</span> service provider type administration dialog upon activation of the adapter bundle. </p>
+        <p class="Body">For the following example, assume that a service provider uses a certificate with a private key to communicate with a cloud that provides the service:</p>
+        <div class="CodeSample">
+            <p class="Code">String X_PROPERTY_TYPE = "application/" + PropertyType.class.getName() + "+xml";</p>
+            <p class="Code">PropertyDefinition certificatePD = new PropertyDefinition();</p>
+            <p class="Code">certificatePD.setName("certificate");</p>
+            <p class="Code">certificatePD.setDescription("Certificate for service provider to access cloud.");</p>
+            <p class="Code">certificatePD.setDisplayName("Certificate");</p>
+            <p class="Code">certificatePD.setReadable(true);</p>
+            <p class="Code">certificatePD.setWritable(true);</p>
+            <p class="Code">certificatePD.setMaxAllowed(1);</p>
+            <p class="Code">Link binaryType = new Link();</p>
+            <p class="Code">binaryType.setName("binary");</p>
+            <p class="Code">binaryType.setType(X_PROPERTY_TYPE);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">certificatePD.setPropertyType(binaryType);<br /></p>
+            <p class="Code">PropertyDefinition privateKeyPD = new PropertyDefinition();</p>
+            <p class="Code">privateKeyPD.setName("private-key");</p>
+            <p class="Code">privateKeyPD.setDescription("Private key for service provider certificate.");</p>
+            <p class="Code">privateKeyPD.setDisplayName("Private Key");</p>
+            <p class="Code">privateKeyPD.setReadable(true);</p>
+            <p class="Code">privateKeyPD.setWritable(true);</p>
+            <p class="Code">privateKeyPD.setMaxAllowed(1);</p>
+            <p class="Code">Link encryptedType = new Link();</p>
+            <p class="Code">encryptedType.setName("encrypted");</p>
+            <p class="Code">encryptedType.setType(X_PROPERTY_TYPE);</p>
+            <p class="Code">privateKeyPD.setPropertyType(encryptedType);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">AssetType svcProviderAT = new AssetType();</p>
+            <p class="Code">svcProviderAT.setName("my-service-provider");</p>
+            <p class="Code">svcProviderAT.setDisplayName("Example Service Provider");</p>
+            <p class="Code">svcProviderAT.setDescription("Service provider definition example");</p>
+            <p class="Code">svcProviderAT.getPropertyDefinitions().add(certificatePD);</p>
+            <p class="Code">svcProviderAT.getPropertyDefinitions().add(privateKeyPD);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">// serviceprovidertype is the base type for the service provider type</p>
+            <p class="Code">// created by a service adapter</p>
+            <p class="Code">Link parent = new Link();</p>
+            <p class="Code">parent.setName("serviceprovidertype");</p>
+            <p class="Code">parent.setType("application/" + ServiceProviderType.class.getName() + "+xml");</p>
+            <p class="Code">svcProviderAT.setSuperType(parent);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">registration.getAssetTypes().add(svcProviderAT);</p>
+        </div>
+        <p class="Body">A corresponding <span class="Code">ServiceProviderType</span> object should also be added to the <span class="Code">RegistrationRequest</span> <span class="Code">serviceProviderTypes</span> attribute, such as the following example:</p>
+        <div class="CodeSample">
+            <p class="Code">ServiceProviderType serviceProviderType = new ServiceProviderType();</p>
+            <p class="Code">serviceProviderType.setName(svcProviderAT.getDisplayName());</p>
+            <p class="Code">serviceProviderType.setDescription(svcProviderAT.getDescription());</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">// This service provider must be directly associated with the service</p>
+            <p class="Code">// provider type AssetType included in the RegistrationRequest.</p>
+            <p class="Code">Link assetType = new Link();</p>
+            <p class="Code">assetType.setName(svcProviderAT.getName());</p>
+            <p class="Code">assetType.setType("application/" + AssetType.class.getName() + "+xml");</p>
+            <p class="Code">serviceProviderType.setAssetType(assetType);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">// This service provider must be associated with a service. The name should</p>
+            <p class="Code">// also be the name of the AssetType added to the RegistrationRequest for</p>
+            <p class="Code">// the service.</p>
+            <p class="Code">Link serviceType = new Link();</p>
+            <p class="Code">serviceType.setName("my-service");</p>
+            <p class="Code">serviceProviderType.getServiceTypes().add(serviceType);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">// This example service provider only relies on a certificate with a</p>
+            <p class="Code">// private key. Disable the four default properties for a service provider</p>
+            <p class="Code">// so that the Agility UI does not prompt for them.</p>
+            <p class="Code">serviceProviderType.getOptions().add(ServiceProviderOption.NO_HOSTNAME);</p>
+            <p class="Code">serviceProviderType.getOptions().add(ServiceProviderOption.NO_NETWORKS);</p>
+            <p class="Code">serviceProviderType.getOptions().add(ServiceProviderOption.NO_USERNAME);</p>
+            <p class="Code">serviceProviderType.getOptions().add(ServiceProviderOption.NO_PASSWORD);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">registration.getServiceProviderTypes().add(serviceProviderType);</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

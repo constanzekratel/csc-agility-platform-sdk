@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration|Design Connection Asset Type|Defining Connections for Services" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Using a Custom Design Connection Type</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceConnectionAssetType.htm">Design Connection Asset Type</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="ServiceSDK_DesignConnections.htm">Defining Connections for Services</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Using a Custom Design Connection Type</span>
+        </div>
+        <h5>Using a Custom Design Connection Type</h5>
+        <p class="Body">When you are providing support for connections to or from a service, you can use the base <span class="Code">DesignConnection</span> type or define a custom connection type. All custom connection types must have <span class="Code">DesignConnection</span> as the top-level parent. It possible to have a custom connection type inherit from another custom connection type. For example, you could have an inheritance chain similar to DesignConnection -&gt; CustomA -&gt; CustomB.</p>
+        <p class="Body">The main reason for using a custom connection type is to support properties associated with the connection. For example you might want a property named "Weight" so the system can determine which connections are more important. </p>
+        <p class="Body">Use the <span class="Code">getRegistrationRequest</span> method to define the custom connection type and add it to the AssetTypes list of the <span class="Code">RegistrationRequest</span>. For more information about using this method, see <a href="ServiceSDK_ServiceAssetTypeExtend.htm" class="Heading_And_Page MCXref xref xrefHeading_And_Page">Extending a Base Service Asset Type</a>. </p>
+        <p class="Important" data-mc-autonum="Important: &#160;"><span class="autonumber"><span class="Note">Important: &#160;</span></span>If you are defining multiple AssetTypes and want to allow custom connections between them, you must provide those AssetTypes to the <span class="Code">RegistrationRequest</span> twice. The first time without the connections and a second time with the connections. This is because the <span class="Code">ConnectionDefinition</span> expects both of the AssetTypes to exist.</p>
+        <p class="Body">The following example creates a custom connection with a single property:</p>
+        <div class="CodeSample">
+            <p class="Code">Link connection_link = new Link();</p>
+            <p class="Code">connection_link.setName("designconnection");</p>
+            <p class="Code">connection_link.setType("application/" + Service.class.getName() + "+xml");</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">Link integer_type = new Link();</p>
+            <p class="Code">integer_type.setName("integer-any");</p>
+            <p class="Code">integer_type.setType("application/" + PropertyType.class.getName() + "+xml");</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">PropertyDefinition weightPD = new PropertyDefinition();</p>
+            <p class="Code">weightPD.setName("weight");</p>
+            <p class="Code">weightPD.setDisplayName("Weight");</p>
+            <p class="Code">weightPD.setDescription("The weight of the connection");</p>
+            <p class="Code">weightPD.setReadable(true);</p>
+            <p class="Code">weightPD.setWritable(true);</p>
+            <p class="Code">weightPD.setMaxAllowed(1);</p>
+            <p class="Code">weightPD.setPropertyType(integer_type);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">AssetType customConnectionType = new AssetType();</p>
+            <p class="Code">customConnectionType.setName("customconnection");</p>
+            <p class="Code">customConnectionType.setDescription("Custom Connection for My Service");</p>
+            <p class="Code">customConnectionType.setDisplayName("Custom Connection");</p>
+            <p class="Code">customConnectionType.setSuperType(connection_link);</p>
+            <p class="Code">customConnectionType.getPropertyDefinitions().add(weightPD);</p>
+            <p class="Code">customConnectionType.setAllowExtensions(true);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">RegistrationRequest registration = new RegistrationRequest();</p>
+            <p class="Code">registration.getAssetTypes().add(customConnectionType);</p>
+        </div>
+        <p class="Body">Using this new custom connection type when you define a connections for the service is similar to the  example in <a href="ServiceSDK_DesignConnectionType.htm" class="Heading_And_Page MCXref xref xrefHeading_And_Page">Defining a Service Connection</a>. The difference is that instead of using a link to "<span class="Code">designconnection</span>" as the connection type, you would use a link to the new "<span class="Code">customconnection</span>" connection type.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

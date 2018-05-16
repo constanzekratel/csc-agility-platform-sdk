@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Service Framework Overview" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Service Framework Core Concepts</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="AboutServiceSDK.htm">Service Framework Overview</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">Core Concepts</span>
+        </div>
+        <h2>Service Framework Core Concepts</h2>
+        <p class="Body">Before you begin your service adapter development project, we recommend that you familiarize yourself with the following core concepts:</p>
+        <p class="SubHead">Service</p>
+        <p class="Body">A <span class="Italic">service</span> defines an integration with an external, cloud-based system that can be used by an application or deployment infrastructure. A defined application service can be used  in the composition of applications to provide support for functionality, such as a web service, database service, or message bus service. At deployment, the service instance is provisioned in the topology.  </p>
+        <p class="SubHead">Service provider</p>
+        <p class="Body">A <span class="Italic">service provider</span> is a component whose definition, based on the service provider type, is configured by <span class="AgilityDocsProductName">Agility Platform</span> administrators. The service provider definition specifies all of the parameters required to communicate with a cloud-based service provider and provision a service of that type. Upon deployment of the blueprint, the deployment policy evaluates the set of available target environments based on the availability of the required service and creates a binding from the generated deployment to the service provider.</p>
+        <p class="SubHead">Service connection</p>
+        <p class="Body">A <span class="Italic">service connection</span> is a design asset that specifies connection settings between an application service and the design elements that consume the service. The design elements for a service connection are service-to-service or service-to-workload. At runtime, a dependent node cannot start until all dependencies have successfully started. Additionally, if a dependency (service) stops or restarts, all workload dependent nodes (VM&#160;instances)&#160;execute all reconfigure scripts included in assigned packages.</p>
+        <p class="SubHead">Service instance</p>
+        <p class="Body">A <span class="Italic">service instance</span> is a runtime service that is created at deployment. <span class="AgilityDocsProductName">Agility Platform</span> creates a service binding to map the service requirements/configuration to a specific service provider. Users can use runtime operations to start/stop/restart/release the service instance. </p>
+        <p class="SubHead">Service adapter</p>
+        <p class="Body">A <span class="Italic">service adapter</span> is an OSGi bundle comprised of Java source files and provides the following functions within the <span class="AgilityDocsProductName">Agility Platform</span>:</p>
+        <table class="AutoNumber_p_BulletedFirst" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_BulletedFirst" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_BulletedFirst" valign="top" data-mc-autonum="■ ">Creates the  metadata that enables the supported service and service connections for use in a blueprint</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Creates the  metadata that enables the definition of the service provider</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Creates service instances for deployed blueprints</td>
+            </tr>
+        </table>
+        <table class="AutoNumber_p_Bulleted" style="width: 100%; margin-left: 0;" cellspacing="0" cellpadding="0">
+            <col style="width: 0px;" />
+            <col style="width: 20px;" />
+            <col style="width: auto;" />
+            <tr>
+                <td valign="top" />
+                <td class="AutoNumber_p_Bulleted" valign="top"><span class="BulletSymbol">■ </span>
+                </td>
+                <td class="AutoNumber_p_Bulleted" valign="top" data-mc-autonum="■ ">Manages lifecycle events for service provider, service instances, and the instances and service instances connected to a service instance</td>
+            </tr>
+        </table>
+        <p class="SubHead">Service binding</p>
+        <p class="Body">A <span class="Italic">service binding</span> is created at deployment to map the service instance to a specific service provider. The binding relates the service instance to the service provider and captures the configuration of the service instance when the blueprint is deployed. The binding additionally relates the service instance to any dependent services or workloads.</p>
+        <p class="SubHead">Service provider type</p>
+        <p class="Body">A <span class="Italic">service provider type</span> is defined by the service adapter to specify configuration parameters required to enable the service on the provider. <span class="AgilityDocsProductName">Agility Platform</span> incorporates the Service Provider Type asset type into its object model to support a hierarchy of defined service providers.</p>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

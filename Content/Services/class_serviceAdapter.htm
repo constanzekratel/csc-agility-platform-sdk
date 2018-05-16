@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="Using the Services SDK|Service Adapter Definition and Registration" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>The ServiceAdapter Base Class</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><a class="MCBreadcrumbsLink" href="ServiceSDK_usingServiceSDK.htm">Using the Services SDK</a><span class="MCBreadcrumbsDivider"> &gt; </span><a class="MCBreadcrumbsLink" href="registerServiceAdapter.htm">Service Adapter Definition and Registration</a><span class="MCBreadcrumbsDivider"> &gt; </span><span class="MCBreadcrumbs">The ServiceAdapter Base Class</span>
+        </div>
+        <h2>The ServiceAdapter Base Class</h2>
+        <p class="Body">The <span class="Code">ServiceAdapter</span> abstract base class contains abstract methods for the core messaging framework and OSGi service registration. The <span class="Code">ServiceAdapter</span> class implements the OSGi <span class="Code">BundleActivator</span> interface, which handles the adapter registration with the core platform and the registration of the message handlers for supported message types.</p>
+        <p class="Body">Service adapters should extend the following service adapter class and implement the abstract methods.</p>
+        <div class="CodeSample">
+            <p class="Code">public abstract class ServiceAdapter implements BundleActivator</p>
+            <p class="Code">{</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return Should return the name associated with the service provider type. Used to register the osgi service.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract String getServiceProviderType();</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return A descriptive name for the adapter.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract String getAdapterName();</p>
+            <p class="Code">/**</p>
+            <p class="Code">* Required meta-data to describe capabilities of the adapter/service provider. The returned RegistrationRequest</p>
+            <p class="Code">* is sent to the agility platform and the onRegistration method called with the response.</p>
+            <p class="Code">*</p>
+            <p class="Code">* @return</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract RegistrationRequest getRegistrationRequest();</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* Provides any information requested by the adapter during the registration request including</p>
+            <p class="Code">* the persistent identifier for the service provider.</p>
+            <p class="Code">*</p>
+            <p class="Code">* @param response</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract void onRegistration(RegistrationResponse response);</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return</p>
+            <p class="Code">* An optional interface that implements hooks in instance lifecycle for workloads</p>
+            <p class="Code">* dependent on the service.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public IInstanceLifecycle getInstanceOperations() { return null; }</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return</p>
+            <p class="Code">* A required interface used to manage the service provider.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract IServiceProvider getServiceProviderOperations();</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return</p>
+            <p class="Code">* A required interface to manage the lifecycle of bindings (service instances) to the</p>
+            <p class="Code">* service provider.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public abstract IServiceInstance getServiceInstanceOperations();</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">/**</p>
+            <p class="Code">* @return</p>
+            <p class="Code">* An optional interface to receive lifecycle (CRUD) notifications for specific</p>
+            <p class="Code">* asset types. An adapter will send a list of asset types it's interested in</p>
+            <p class="Code">* receiving CRUD event messages for when it builds it's initial registration message.</p>
+            <p class="Code">*/</p>
+            <p class="Code">public IAssetLifecyle getAssetNotificationOperations() { return new AssetOperations();}</p>
+            <p class="Code">&#160;</p>
+            <p class="Code">}</p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>

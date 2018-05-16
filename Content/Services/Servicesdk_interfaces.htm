@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" lang="en-us" xml:lang="en-us" data-mc-search-type="Stem" data-mc-help-system-file-name="AgilityServicesSDK.xml" data-mc-path-to-help-system="../../" data-mc-target-type="WebHelp2" data-mc-runtime-file-type="Topic" data-mc-preload-images="false" data-mc-in-preview-mode="false" data-mc-medium="non-print" data-mc-toc-path="" data-mc-ignored-words="https;DNS;API;s;Inbox;blog;Flatpress;CentOS;jsp;Wilshire;DFARS;DFAR;classpath;webapp;JavaScript;mozilla;SSH;HIDS;RDP;MySQL;IIS;SDLC;LDAP;DCHP;OSSec;IaaS;PaaS;SaaS;servicemesh;VMpackage;minPort;maxPort;VMPolicy;VMContainer;VMProject;VMEnvironment;Var;Envn;foreach;indexVarName;getVar;Eval;ignoreCase;Nemo;nemo;cpu_count;includeSelf;cpu_speed;disksize;setVar;instanceCount;maxThreads;maxProc;requiresPassport;Oper;existsVar;AccessControl;ProvisioningConstraint;Socks5;NX;TimeRange;VMScript;6u21;6u24;PortMapper;Syslog;Mountd;util;tstamp;AssetType;event0;event1;assetPath;assetType;VSYS" data-mc-condition-tag-expression="">
+    <!-- saved from url=(0016)http://localhost -->
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>Service Interfaces and Operations</title>
+        <link href="../../Skins/Default/Stylesheets/Slideshow.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/TextEffects.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Topic.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Styles.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Tablet.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../../Skins/Default/Stylesheets/Components/Mobile.css" rel="stylesheet" data-mc-generated="True" />
+        <link href="../Resources/Stylesheets/NoIndents.css" rel="stylesheet" />
+        <script src="../../Resources/Scripts/custom.modernizr.js">
+        </script>
+        <script src="../../Resources/Scripts/jquery.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.min.js">
+        </script>
+        <script src="../../Resources/Scripts/require.config.js">
+        </script>
+        <script src="../../Resources/Scripts/foundation.min.js">
+        </script>
+        <script src="../../Resources/Scripts/plugins.min.js">
+        </script>
+        <script src="../../Resources/Scripts/MadCapAll.js">
+        </script>
+    </head>
+    <body>
+        <div class="MCBreadcrumbsBox_0"><span class="MCBreadcrumbsPrefix">  <![CDATA[ ]]></span><span class="MCBreadcrumbs">Service Interfaces and Operations</span>
+        </div>
+        <h1>Service Interfaces and Operations</h1>
+        <p class="Body">Service adapters implement a series of interfaces to transform <span class="AgilityDocsProductName">Agility Platform</span> service operations into service-specific operations.  This chapter provides information about the potential interfaces that a service adapter can implement.  Service adapters must implement some of these interfaces while others are optional.  The registration message created by the Service adapter tells the Services framework which optional interfaces the adapter implements.</p>
+        <p class="Body">The following ERD provides an overview of the relevant entities within the <span class="AgilityDocsProductName">Agility Platform</span> data model. </p>
+        <p class="Anchor">
+            <img src="../Resources/Images/Services/aservicelifecycleorchestration_750x313.png" class="WiderOnline" style="width: 750;height: 313;" />
+        </p>
+        <p class="Body">Upon deployment of the blueprint, <span class="AgilityDocsProductName">Agility Platform</span> creates a service binding (ServiceBinding) to map the service requirements/configuration (Service) to a specific service provider (ServiceProvider). Service providers can be global in scope or optionally constrained to specific cloud environments/locations. The service binding is passed to the service adapter along with the desired service configuration (service asset meta-model properties) on deployment to instantiate an actual service instance (for example, database account, virtual load balancer instance, and so on). This service binding can be used by the adapter to persist the state of the service instance. Lifecycle operations are invoked on the service adapter as instances are provisioned, started, stopped, released to allow the adapter to inject configuration into the workload and/or make changes to the external service (for example, register the instance with a load balancer) as required.</p>
+        <div class="MCMiniTocBox_0">
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ReactorPromiseDesign.htm">The Reactor-Promise Design Pattern</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_ServiceAdapterClassSPI.htm">ServiceAdapter Class and SPI Interfaces</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IServiceProvider.htm">Service Provider (IServiceProvider)</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IInstanceLifecycle.htm">Instance Lifecycle (IInstanceLifecycle)</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IServiceInstance.htm">Service Instance (IServiceInstance)</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IServiceInstanceLifecycle.htm">Service Instance Lifecycle (IServiceInstanceLifecycle)</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IAssetLifecycle.htm">Asset Lifecycle (IAssetLifecycle)</a>
+            </p>
+            <p class="MiniTOC1_0"><a class="MiniTOC1" href="ServiceSDK_IConnection.htm">Connection (IConnection)</a>
+            </p>
+        </div>
+        <p class="copyright">Copyright © &#160;2008-<span class="AgilityDocsYear">2018</span> Computer Sciences Corporation, Inc. &#160;All rights reserved.</p>
+        <p class="Anchor">&#160;</p>
+    </body>
+</html>
